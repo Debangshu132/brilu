@@ -3,6 +3,7 @@ import random
 from flask import Flask, request
 from pymessenger.bot import Bot
 import os
+import wikipedia
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import euclidean_distances
 from nltk.stem import PorterStemmer
@@ -72,7 +73,11 @@ def get_message(query):
   m=match.index(min(match))
   if match==[] or min(match) > 1.9:
     unanswered.write(query+'\n')
-    return 'i dont know the answer yet! sorry'
+    give=tryansweringfromnet(query)
+    if give!='':
+        return tryansweringfromnet(query):
+    return 'I dont knnow the answer yet,sorry'
+    
   answerarr=answerarr[m].split('|')
   #print(random.choice(answerarr))
   return(random.choice(answerarr))
@@ -82,12 +87,17 @@ def stemming(mystring):
   for word in range(0,len(mystring)):
     my=my+ ps.stem(mystring[word])+' '
   return my
+def tryansweringfromnet(query):
+    ans=wikipedia.summary(query, sentences=1)
+    stringg='Here is what wikipedia has to tell about it '+ ans
+    return stringg
 
 #uses PyMessenger to send response to user
 def send_message(recipient_id, response):
     #sends user the text message provided via input response parameter
     bot.send_text_message(recipient_id, response)
     return "success"
+
 
 if __name__ == "__main__":
     app.run()
