@@ -7,6 +7,8 @@ import wikipedia
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import euclidean_distances
 from nltk.stem import PorterStemmer
+from nltk.corpus import stopwords
+stopWords = set(stopwords.words('english'))
 app = Flask(__name__)
 ACCESS_TOKEN = os.environ['ACCESS_TOKEN']
 VERIFY_TOKEN = os.environ['VERIFY_TOKEN']
