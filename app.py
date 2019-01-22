@@ -71,7 +71,7 @@ def get_message(query):
     p=euclidean_distances(ques[len(ques)-1],ques[f])
     match.append(p[0][0])
   m=match.index(min(match))
-  if match==[] or min(match) > 1.9:
+  if match==[] or min(match) > 1.6:
     unanswered.write(query+'\n')
     give=tryansweringfromnet(query)
     if give!='':
