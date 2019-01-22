@@ -78,11 +78,12 @@ def get_message(query):
     give=tryansweringfromnet(query)
     if give!='':
         return tryansweringfromnet(query)
-    return 'I dont knnow the answer yet,sorry'
-    
-  answerarr=answerarr[m].split('|')
-  #print(random.choice(answerarr))
-  return(random.choice(answerarr))
+    return 'I dont know the answer yet'
+  try:  
+   answerarr=answerarr[m].split('|')
+   return(random.choice(answerarr))
+  except:
+     return 'I dont knnow the answer yet!'   
 def stemming(mystring):
   mystring=mystring.split()
   my=''
