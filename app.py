@@ -90,9 +90,12 @@ def stemming(mystring):
     my=my+ ps.stem(mystring[word])+' '
   return my
 def tryansweringfromnet(query):
+   try: 
     ans=wikipedia.summary(query, sentences=1)
     stringg= ans
     return stringg
+   except:
+       return '' 
 
 #uses PyMessenger to send response to user
 def send_message(recipient_id, response):
