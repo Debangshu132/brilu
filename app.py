@@ -65,8 +65,9 @@ def get_message(query):
     p=euclidean_distances(ques[len(ques)-1],ques[f])
     match.append(p[0][0])
   m=match.index(min(match))
-  print(answerarr[m])
-  return(answerarr[m])
+  answerarr=answerarr[m].split('|')
+  #print(random.choice(answerarr))
+  return(random.choice(answerarr))
 
 #uses PyMessenger to send response to user
 def send_message(recipient_id, response):
