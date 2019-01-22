@@ -57,6 +57,9 @@ def get_message(query):
   unanswered=open("unansweredquestions.txt", "a")
   questionarr=questions.read().split("\n")
   #query=input("How may I help you:")
+  query=stemming(query)
+  for i in range(0,len(questionarr)):
+    questionarr[i]=stemming(questionarr[i])  
   questionarr.append(query)
   answerarr=answers.read().split("\n")
   vectorizer=CountVectorizer()
@@ -72,6 +75,12 @@ def get_message(query):
   answerarr=answerarr[m].split('|')
   #print(random.choice(answerarr))
   return(random.choice(answerarr))
+def stemming(mystring):
+  mystring=mystring.split()
+  my=''
+  for word in range(0,len(mystring)):
+    my=my+ ps.stem(mystring[word])+' '
+  return my
 
 #uses PyMessenger to send response to user
 def send_message(recipient_id, response):
