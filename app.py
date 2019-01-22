@@ -75,7 +75,7 @@ def get_message(query):
     unanswered.write(query+'\n')
     give=tryansweringfromnet(query)
     if give!='':
-        return tryansweringfromnet(query):
+        return tryansweringfromnet(query)
     return 'I dont knnow the answer yet,sorry'
     
   answerarr=answerarr[m].split('|')
