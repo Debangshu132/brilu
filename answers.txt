@@ -47,5 +47,8 @@ Welcome | You welcome | I am glad I could help you, Welcome
 What is that? | Sure why not, go ahead | I can do anything for you my friend | Ofcourse | I would be glad to do anything for you
 Yes, I dream of becoming the best bot ever | I do have some dreams and aspirations | I dream to become intelligent
 Ofcourse how about I tell you a joke | You have to be more specific | Ofcourse, tell me what do you want
-Yop,HAHAHAHAHAAHA |  yeah let me try haha | Thats so funny hahahaha
+Yup,HAHAHAHAHAAHA |  yeah let me try haha | Thats so funny hahahaha
 Yes I am | yes one day I will surpass you in intelligence
+I am glad You think I am funny | I am glad you laughed :) | haha isnt it funny XD
+nothing much, whats up with you? | nothing much buddy | I was just listening to youtube songs | chilling you?
+Thanks I like you too bro! | I like you a lot | everybody likes me! I am awesome | I am glad it turned out that way
