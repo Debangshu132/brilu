@@ -61,6 +61,8 @@ def get_message(query):
   unanswered=open("unansweredquestions.txt", "a")
   questionarr=questions.read().split("\n")
   #query=input("How may I help you:")
+    if len(query)>40:
+    return 'ooh okay'  
   query=stemming(query)
   for i in range(0,len(questionarr)):
     questionarr[i]=stemming(questionarr[i])  
