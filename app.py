@@ -89,7 +89,7 @@ def stemming(mystring):
   return my
 def tryansweringfromnet(query):
     ans=wikipedia.summary(query, sentences=1)
-    stringg='Here is what wikipedia has to tell about it '+ ans
+    stringg= ans
     return stringg
 
 #uses PyMessenger to send response to user
