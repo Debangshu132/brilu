@@ -54,6 +54,7 @@ def get_message(query):
 #def singlechat():
   questions = open("questions.txt", "r+")
   answers = open("answers.txt", "r+")
+  unanswered=open("unansweredquestions.txt", "a")
   questionarr=questions.read().split("\n")
   #query=input("How may I help you:")
   questionarr.append(query)
@@ -65,6 +66,9 @@ def get_message(query):
     p=euclidean_distances(ques[len(ques)-1],ques[f])
     match.append(p[0][0])
   m=match.index(min(match))
+  if match==[] or min(match) > 1.4:
+    unanswered.write(query+'\n')
+    return 'i dont know the answer yet! sorry'
   answerarr=answerarr[m].split('|')
   #print(random.choice(answerarr))
   return(random.choice(answerarr))
