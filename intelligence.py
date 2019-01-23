@@ -1,5 +1,5 @@
 from pymongo import MongoClient
-import pprint as p
+#import pprint as p
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import euclidean_distances
 from nltk.tokenize import word_tokenize
