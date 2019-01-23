@@ -54,53 +54,9 @@ def verify_fb_token(token_sent):
 def get_message(query):
   a,b,c=BRAIN(query)
   return(c)
-    #sample_responses = ["You are stunning!", "We're proud of you.", "Keep on being you!", "We're greatful to know you :)"]
-    # return selected item to the user
-   # return random.choice(sample_responses)
-  #def singlechat():
-  questions = open("questions.txt", "r+")
-  answers = open("answers.txt", "r+")
-  unanswered=open("unansweredquestions.txt", "a")
-  questionarr=questions.read().split("\n")
-  #query=input("How may I help you:")
-  if len(query)>40:
-    return 'ooh okay'  
-  query=stemming(query)
-  for i in range(0,len(questionarr)):
-    questionarr[i]=stemming(questionarr[i])  
-  questionarr.append(query)
-  answerarr=answers.read().split("\n")
-  vectorizer=CountVectorizer()
-  ques=vectorizer.fit_transform(questionarr).todense()
-  match=[]
-  for f in range(0,len(ques)-2):
-    p=euclidean_distances(ques[len(ques)-1],ques[f])
-    match.append(p[0][0])
-  m=match.index(min(match))
-  if match==[] or min(match) > 1.6:
-    unanswered.write(query+'\n')
-    give=tryansweringfromnet(query)
-    if give!='':
-        return tryansweringfromnet(query)
-    return 'I dont know the answer yet'
-  try:  
-   answerarr=answerarr[m].split('|')
-   return(random.choice(answerarr))
-  except:
-     return 'I dont knnow the answer yet!'   
-def stemming(mystring):
-  mystring=mystring.split()
-  my=''
-  for word in range(0,len(mystring)):
-    my=my+ ps.stem(mystring[word])+' '
-  return my
-def tryansweringfromnet(query):
-   try: 
-    ans=wikipedia.summary(query, sentences=1)
-    stringg= ans
-    return stringg
-   except:
-       return '' 
+  
+ 
+ 
 
 #uses PyMessenger to send response to user
 def send_message(recipient_id, response):
