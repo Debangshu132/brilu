@@ -51,12 +51,12 @@ def verify_fb_token(token_sent):
 
 #chooses a random message to send to the user
 def get_message(query):
-   a,b,c= i.BRAIN(query)
-   return(c)
+  a,b,c= i.BRAIN(query)
+  return(c)
     #sample_responses = ["You are stunning!", "We're proud of you.", "Keep on being you!", "We're greatful to know you :)"]
     # return selected item to the user
    # return random.choice(sample_responses)
-#def singlechat():
+  #def singlechat():
   questions = open("questions.txt", "r+")
   answers = open("answers.txt", "r+")
   unanswered=open("unansweredquestions.txt", "a")
