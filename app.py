@@ -52,8 +52,11 @@ def verify_fb_token(token_sent):
 
 #chooses a random message to send to the user
 def get_message(query):
-  a,b,c=BRAIN(query)
-  return(c)
+  try:  
+    a,b,c=BRAIN(query)
+    return(c)
+  except:
+    return 'I am sorry I dont know what to say'    
   
  
  
