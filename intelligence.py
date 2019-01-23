@@ -1,13 +1,7 @@
 from pymongo import MongoClient
-#import pprint as p
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import euclidean_distances
-from nltk.tokenize import word_tokenize
-#from pattern.en import suggest
 import random
-from nltk.corpus import stopwords
-stopWords = set(stopwords.words('english'))
-import wikipedia
 from nltk.stem import PorterStemmer
 ps=PorterStemmer()
 dummy=''
