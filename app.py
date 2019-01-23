@@ -4,6 +4,7 @@ from flask import Flask, request
 from pymessenger.bot import Bot
 import os
 import wikipedia
+import intelligence as i
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import euclidean_distances
 from nltk.stem import PorterStemmer
@@ -50,6 +51,8 @@ def verify_fb_token(token_sent):
 
 #chooses a random message to send to the user
 def get_message(query):
+   a,b,c= i.BRAIN(query)
+   return(c)
     #sample_responses = ["You are stunning!", "We're proud of you.", "Keep on being you!", "We're greatful to know you :)"]
     # return selected item to the user
    # return random.choice(sample_responses)
