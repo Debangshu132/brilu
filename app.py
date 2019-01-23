@@ -4,7 +4,7 @@ from flask import Flask, request
 from pymessenger.bot import Bot
 import os
 import wikipedia
-#import intelligence as i
+import intelligence as i
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import euclidean_distances
 from nltk.stem import PorterStemmer
