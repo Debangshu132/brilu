@@ -1,5 +1,6 @@
 #Python libraries that we need to import for our bot
 import random
+from pymongo import MongoClient
 from flask import Flask, request
 from pymessenger.bot import Bot
 import os
