@@ -111,8 +111,5 @@ def BRAIN(query):
     answer=findBestAnswer(pq)
     return('question','enquiry',answer)
 
-query=input("Enter karo bc")
-topic,mood,question=BRAIN(query)
-print(question)
 
 
