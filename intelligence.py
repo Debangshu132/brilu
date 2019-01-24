@@ -5,17 +5,23 @@ import random
 from nltk.stem import PorterStemmer
 ps=PorterStemmer()
 dummy=''
-#Fetching the data from the MongoDB database
+
 def fetchData():
     MONGODB_URI = "mongodb://Debangshu:Starrynight.1@ds163694.mlab.com:63694/brilu"
     client = MongoClient(MONGODB_URI, connectTimeoutMS=30000)
     db = client.get_database("brilu")
     col = db["Knowledgebase"]
     cursor = col.find()
+    # p.pprint(cursor[0])
     document = cursor[0]
+    #p.pprint(document.keys())
+    #p.pprint(document["chitchat"])
     return(document)
 
-#Functions to check if the query is a chitchat like hi ,hello,bye
+
+
+
+
 def findBest(query,document,topic):
    for mood in  document[topic].keys():
     for question in document[topic][mood]:
@@ -29,22 +35,25 @@ def answerBest(topic,mood,document):
       return(topic+'ans',mood,random.choice(document[topic+'ans'][mood]))
 
 
-#If it is not then it searches if the query is a question or not and returns the best matching question
-def findBestQuestion(query,document,que):
+
+def findBestQuery(query,document,que):
 
    questionarr = []
    intentarr=[]
    answerarr=[]
    for topics in document.keys():
-    if topics=='question':
+    if topics==que:
         for questionlist in document[topics].keys():
          for question in document[topics][questionlist]:
                questionarr.append(question)
                intentarr.append(questionlist)
+               #print(questionlist)
+
    query = stem(query)
    for i in range(0, len(questionarr)):
        questionarr[i] = stem(questionarr[i])
    questionarr.append(query)
+   #print(questionarr)
    vectorizer = CountVectorizer()
    ques = vectorizer.fit_transform(questionarr).todense()
    match = []
@@ -52,19 +61,25 @@ def findBestQuestion(query,document,que):
        p = euclidean_distances(ques[len(ques) - 1], ques[f])
        match.append(p[0][0])
    m = match.index(min(match))
+   #print(match)
    if match == [] or min(match) > 1.5:
       return 'sorry i dont know how to reply'
    probableQuestion=questionarr[m]
+   #print('probable question=',intentarr[m])
+   #print('query=',query)
    return (que,intentarr[m],probableQuestion)
 
-#returns the best answer to the question asked
+
 def findBestAnswer(probableQuestion,document):
     myanswers=[]
     for answer in document['questionans'][probableQuestion]:
+        #print(answer)
         myanswers.append(answer)
     return(random.choice(myanswers))
 
-#helper function for stemming of the words
+
+
+
 def stem(mystring):
   mystring=mystring.lower()
   mystring=mystring.split()
@@ -73,7 +88,6 @@ def stem(mystring):
     my=my+ ps.stem(mystring[word])+' '
   return my
 
-#Main function which calls other finctions and executes the commands one by one.This is the boss
 def BRAIN(query):
     document = fetchData()
     topic,mood,question=findBest(query,document,'chitchat')
@@ -88,6 +102,7 @@ def BRAIN(query):
         return ('question', 'call', document['journeys']['callrepresentativeans']['button'])
     answer = findBestAnswer(mood, document)
     return (topic, mood,answer)
+
 
 
 
