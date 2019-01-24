@@ -38,7 +38,7 @@ def receive_message():
                 #Facebook Messenger ID for user so we know where to send response back to
                 recipient_id = message['sender']['id']
                 if message['message'].get('text'):
-                    topic,mood,response = get_message(recipient_id)
+                    topic,mood,response = get_message(recipient_id,message['message'].get('text'))
                     send_message(recipient_id,topic,mood, response)
                 #if user sends us a GIF, photo,video, or any other non-text item
                 if message['message'].get('attachments'):
@@ -56,7 +56,7 @@ def verify_fb_token(token_sent):
 
 
 #chooses a random message to send to the user
-def get_message(recipient_id):
+def get_message(recipient_id,query):
  
   try:  
     topic,mood,response=BRAIN(query)
