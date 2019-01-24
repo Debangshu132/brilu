@@ -30,7 +30,7 @@ def answerBest(topic,mood,document):
 
 
 #If it is not then it searches if the query is a question or not and returns the best matching question
-def findBestQuestion(query,document):
+def findBestQuestion(query,document,que):
 
    questionarr = []
    intentarr=[]
@@ -55,7 +55,7 @@ def findBestQuestion(query,document):
    if match == [] or min(match) > 1.5:
       return 'sorry i dont know how to reply'
    probableQuestion=questionarr[m]
-   return (intentarr[m])
+   return (que,intentarr[m],probableQuestion)
 
 #returns the best answer to the question asked
 def findBestAnswer(probableQuestion,document):
@@ -82,9 +82,12 @@ def BRAIN(query):
     topic, mood,question=findBest(query,document,'comments')
     if mood !='not':
         return (answerBest(topic,mood,document))
-    pq = findBestQuestion(query,document)
-    answer=findBestAnswer(pq,document)
-    return('question','enquiry',answer)
+    topic,mood,question = findBestQuery(query,document,'question')
+
+    if mood =='callrepresentative':
+        return ('question', 'call', document['journeys']['callrepresentativeans']['button'])
+    answer = findBestAnswer(mood, document)
+    return (topic, mood,answer)
 
 
 
