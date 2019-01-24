@@ -71,7 +71,7 @@ def get_message(recipient_id,query):
 def send_message(recipient_id, topic,mood,response):
     #sends user the text message provided via input response parameter
     if mood=='call':
-          bot.send_button_message(recipient_id,'call Now',response)
+          bot.send_button_message(recipient_id,'Not Satisfied with my responses? Call Our Representative! ',response)
           return 'success'  
     bot.send_text_message(recipient_id, response)
     return "success"
