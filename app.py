@@ -39,7 +39,7 @@ def receive_message():
                 recipient_id = message['sender']['id']
                 if message['message'].get('text'):
                     response_sent_text = get_message(recipient_id,message['message'].get('text'))
-                    send_message(recipient_id, response_sent_text)
+                    send_message(recipient_id, response_sent_text,,message['message'].get('text'))
                 #if user sends us a GIF, photo,video, or any other non-text item
                 if message['message'].get('attachments'):
                     response_sent_nontext = 'sorry i cannot handle attachments now, but wait for an update'
@@ -57,9 +57,7 @@ def verify_fb_token(token_sent):
 
 #chooses a random message to send to the user
 def get_message(recipient_id,query):
-  if query=='order':
-      bot.send_button_message(recipient_id,'open it',button)
-      return 'success'  
+ 
   try:  
     a,b,c=BRAIN(query)
     return(c)
@@ -70,8 +68,11 @@ def get_message(recipient_id,query):
  
 
 #uses PyMessenger to send response to user
-def send_message(recipient_id, response):
+def send_message(recipient_id, response,query):
     #sends user the text message provided via input response parameter
+    if query=='order':
+      bot.send_button_message(recipient_id,'open it',button)
+      return 'success'  
     bot.send_text_message(recipient_id, response)
     return "success"
 
