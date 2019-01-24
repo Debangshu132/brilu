@@ -42,8 +42,8 @@ def receive_message():
                     send_message(recipient_id,topic,mood, response)
                 #if user sends us a GIF, photo,video, or any other non-text item
                 if message['message'].get('attachments'):
-                    response_sent_nontext = 'sorry i cannot handle attachments now, but wait for an update'
-                    send_message(recipient_id, response_sent_nontext)
+                    response = 'sorry i cannot handle attachments now, but wait for an update'
+                    send_message(recipient_id,topic,mood, response)
     return "Message Processed"
 
 
