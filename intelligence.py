@@ -36,7 +36,6 @@ def answerBest(topic,mood):
 #If it is not then it searches if the query is a question or not and returns the best matching question
 
 def findBestQuestion(query):
-
    questionarr = []
    intentarr=[]
    answerarr=[]
@@ -46,13 +45,10 @@ def findBestQuestion(query):
          for question in document[topics][questionlist]:
                questionarr.append(question)
                intentarr.append(questionlist)
-               #print(questionlist)
-
    query = stem(query)
    for i in range(0, len(questionarr)):
        questionarr[i] = stem(questionarr[i])
    questionarr.append(query)
-   #print(questionarr)
    vectorizer = CountVectorizer()
    ques = vectorizer.fit_transform(questionarr).todense()
    match = []
@@ -60,13 +56,12 @@ def findBestQuestion(query):
        p = euclidean_distances(ques[len(ques) - 1], ques[f])
        match.append(p[0][0])
    m = match.index(min(match))
-   #print(match)
    if match == [] or min(match) > 1.5:
       return 'sorry i dont know how to reply'
    probableQuestion=questionarr[m]
    print('probable question=',intentarr[m])
-   #print('query=',query)
    return (intentarr[m])
+
 #returns the best answer to the question asked
 def findBestAnswer(probableQuestion):
     myanswers=[]
