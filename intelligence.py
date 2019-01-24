@@ -7,7 +7,7 @@ ps=PorterStemmer()
 dummy=''
 #Fetching the data from the MongoDB database
 def fetchData():
-    MONGODB_URI = os.environ['MONGODB_URI']
+    MONGODB_URI = "mongodb://Debangshu:Starrynight.1@ds163694.mlab.com:63694/brilu"
     client = MongoClient(MONGODB_URI, connectTimeoutMS=30000)
     db = client.get_database("brilu")
     col = db["Knowledgebase"]
