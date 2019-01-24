@@ -12,10 +12,7 @@ def fetchData():
     db = client.get_database("brilu")
     col = db["Knowledgebase"]
     cursor = col.find()
-    # p.pprint(cursor[0])
     document = cursor[0]
-    #p.pprint(document.keys())
-    #p.pprint(document["chitchat"])
     return(document)
 
 #Functions to check if the query is a chitchat like hi ,hello,bye
@@ -44,13 +41,10 @@ def findBestQuestion(query,document):
          for question in document[topics][questionlist]:
                questionarr.append(question)
                intentarr.append(questionlist)
-               #print(questionlist)
-
    query = stem(query)
    for i in range(0, len(questionarr)):
        questionarr[i] = stem(questionarr[i])
    questionarr.append(query)
-   #print(questionarr)
    vectorizer = CountVectorizer()
    ques = vectorizer.fit_transform(questionarr).todense()
    match = []
@@ -58,19 +52,15 @@ def findBestQuestion(query,document):
        p = euclidean_distances(ques[len(ques) - 1], ques[f])
        match.append(p[0][0])
    m = match.index(min(match))
-   #print(match)
    if match == [] or min(match) > 1.5:
       return 'sorry i dont know how to reply'
    probableQuestion=questionarr[m]
-   #print('probable question=',intentarr[m])
-   #print('query=',query)
    return (intentarr[m])
 
 #returns the best answer to the question asked
 def findBestAnswer(probableQuestion,document):
     myanswers=[]
     for answer in document['questionans'][probableQuestion]:
-        #print(answer)
         myanswers.append(answer)
     return(random.choice(myanswers))
 
