@@ -14,11 +14,11 @@ ACCESS_TOKEN = os.environ['ACCESS_TOKEN']
 VERIFY_TOKEN = os.environ['VERIFY_TOKEN']
 bot = Bot (ACCESS_TOKEN)
 ps=PorterStemmer()
-button="{
+button={
   "type": "web_url",
   "url": "https://www.google.com/",
   "title": "Open Google",
-}"
+}
 #We will receive messages that Facebook sends our bot at this endpoint
 @app.route("/", methods=['GET', 'POST'])
 def receive_message():
@@ -58,7 +58,7 @@ def verify_fb_token(token_sent):
 #chooses a random message to send to the user
 def get_message(recipient_id,query):
   if query=='order':
-      bot.send_button_message(recipient_id,button)
+      bot.send_button_message(recipient_id,'open it',button)
       return 'success'  
   try:  
     a,b,c=BRAIN(query)
