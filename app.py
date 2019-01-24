@@ -14,11 +14,11 @@ ACCESS_TOKEN = os.environ['ACCESS_TOKEN']
 VERIFY_TOKEN = os.environ['VERIFY_TOKEN']
 bot = Bot (ACCESS_TOKEN)
 ps=PorterStemmer()
-button='{
+button=[{
   "type": "web_url",
-  "url": "https://www.google.com/",
+  "url": "https://www.facebook.com/",
   "title": "Open Google",
-}'
+}]
 #We will receive messages that Facebook sends our bot at this endpoint
 @app.route("/", methods=['GET', 'POST'])
 def receive_message():
