@@ -5,7 +5,7 @@ import random
 from nltk.stem import PorterStemmer
 ps=PorterStemmer()
 dummy=''
-
+#Fetching the data from the MongoDB database
 def fetchData():
     MONGODB_URI = "mongodb://Debangshu:Starrynight.1@ds163694.mlab.com:63694/brilu"
     client = MongoClient(MONGODB_URI, connectTimeoutMS=30000)
@@ -18,10 +18,7 @@ def fetchData():
     #p.pprint(document["chitchat"])
     return(document)
 
-
-
-
-
+#Functions to check if the query is a chitchat like hi ,hello,bye
 def findBest(query,document,topic):
    for mood in  document[topic].keys():
     for question in document[topic][mood]:
@@ -35,7 +32,7 @@ def answerBest(topic,mood,document):
       return(topic+'ans',mood,random.choice(document[topic+'ans'][mood]))
 
 
-
+#If it is not then it searches if the query is a question or not and returns the best matching question
 def findBestQuestion(query,document):
 
    questionarr = []
@@ -68,6 +65,8 @@ def findBestQuestion(query,document):
    #print('probable question=',intentarr[m])
    #print('query=',query)
    return (intentarr[m])
+
+#returns the best answer to the question asked
 def findBestAnswer(probableQuestion,document):
     myanswers=[]
     for answer in document['questionans'][probableQuestion]:
@@ -75,6 +74,7 @@ def findBestAnswer(probableQuestion,document):
         myanswers.append(answer)
     return(random.choice(myanswers))
 
+#helper function for stemming of the words
 def stem(mystring):
   mystring=mystring.lower()
   mystring=mystring.split()
@@ -83,6 +83,7 @@ def stem(mystring):
     my=my+ ps.stem(mystring[word])+' '
   return my
 
+#Main function which calls other finctions and executes the commands one by one.This is the boss
 def BRAIN(query):
     document = fetchData()
     topic,mood,question=findBest(query,document,'chitchat')
