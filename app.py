@@ -14,6 +14,11 @@ ACCESS_TOKEN = os.environ['ACCESS_TOKEN']
 VERIFY_TOKEN = os.environ['VERIFY_TOKEN']
 bot = Bot (ACCESS_TOKEN)
 ps=PorterStemmer()
+button="{
+  "type": "web_url",
+  "url": "https://www.google.com/",
+  "title": "Open Google",
+}"
 #We will receive messages that Facebook sends our bot at this endpoint
 @app.route("/", methods=['GET', 'POST'])
 def receive_message():
@@ -33,7 +38,7 @@ def receive_message():
                 #Facebook Messenger ID for user so we know where to send response back to
                 recipient_id = message['sender']['id']
                 if message['message'].get('text'):
-                    response_sent_text = get_message(message['message'].get('text'))
+                    response_sent_text = get_message(recipient_id,message['message'].get('text'))
                     send_message(recipient_id, response_sent_text)
                 #if user sends us a GIF, photo,video, or any other non-text item
                 if message['message'].get('attachments'):
@@ -51,7 +56,10 @@ def verify_fb_token(token_sent):
 
 
 #chooses a random message to send to the user
-def get_message(query):
+def get_message(recipient_id,query):
+  if query=='order':
+      bot.send_button_message(recipient_id,button)
+      return 'success'  
   try:  
     a,b,c=BRAIN(query)
     return(c)
