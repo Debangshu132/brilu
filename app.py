@@ -38,8 +38,8 @@ def receive_message():
                 #Facebook Messenger ID for user so we know where to send response back to
                 recipient_id = message['sender']['id']
                 if message['message'].get('text'):
-                    topic,mood,response_sent_text = get_message(recipient_id,message['message'].get('text'))
-                    send_message(recipient_id,topic,mood, response_sent_text)
+                    topic,mood,response = get_message(recipient_id)
+                    send_message(recipient_id,topic,mood, response)
                 #if user sends us a GIF, photo,video, or any other non-text item
                 if message['message'].get('attachments'):
                     response_sent_nontext = 'sorry i cannot handle attachments now, but wait for an update'
@@ -56,13 +56,13 @@ def verify_fb_token(token_sent):
 
 
 #chooses a random message to send to the user
-def get_message(recipient_id,query):
+def get_message(recipient_id):
  
   try:  
     topic,mood,response=BRAIN(query)
     return(topic,mood,response)
   except:
-    return 'I am sorry I dont know what to say'    
+    return 'dummy','dummy','I am sorry I dont know what to say'    
   
  
  
@@ -72,7 +72,7 @@ def send_message(recipient_id, topic,mood,response):
     #sends user the text message provided via input response parameter
     if topic=='journeys':
        if mood=='call':
-          bot.send_button_message(recipient_id,'open it',button)
+          bot.send_button_message(recipient_id,'call Now',response)
           return 'success'  
     bot.send_text_message(recipient_id, response)
     return "success"
