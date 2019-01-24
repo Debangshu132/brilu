@@ -20,28 +20,17 @@ def fetchData():
 
 document=fetchData()
 mydict = document['question']
-def findBestChitchat(query,document):
-   for topic in  document["chitchat"].keys():
-    for question in document["chitchat"][topic]:
-        if(stem(query)==stem(question)):
-            return('chitchat',topic,query)
-   return('notChitchat','notChitchat','notChitchat')
 
-def answerBestChitchat(mood):
+
+def findBest(query,document,topic):
+   for mood in  document[topic].keys():
+    for question in document[topic][mood]:
+        if(stem(query)==stem(question)):
+            return(topic,mood,random.choice(document[topic][mood]))
+   return ('not','not','not')
+def answerBest(mood):
     return('chitchat',mood,random.choice(document["chitchat"][mood]))
-def findBestComment(query,document):
-    for question in document["comments"]["praisecomment"]:
-        if stem(query)==stem(question):
-            return('comments','praisecomment',question)
-    for question in document["comments"]["Grateful"]:
-        if stem(query)==stem(question):
-            return('comments','Grateful',question)
-    for question in document["comments"]["negativecomment"]:
-        if stem(query)==stem(question):
-            return('comments','negativecomment',question)
-    return ('notComment','notComment','notComment')
-def answerBestComment(mood):
-    return ('chitchat', mood, random.choice(document["commentsans"][mood]))
+
 
 def findBestQuestion(query):
 
@@ -91,15 +80,13 @@ def stem(mystring):
   return my
 
 def BRAIN(query):
-    topic,mood,question=findBestChitchat(query,document)
-    print(topic,mood,question)
-    if mood !='notChitchat':
-        return (answerBestChitchat(mood))
-    topic, mood,question=findBestComment(query,document)
-    if mood !='notComment':
-        return (answerBestComment(mood))
+    topic,mood,question=findBest(query,document,'chitchat')
+    if mood !='not':
+        return (answerBest(mood))
+    topic, mood,question=findBest(query,document,'comments')
+    if mood !='not':
+        return (answerBest(mood))
     pq = findBestQuestion(query)
-    print(pq)
     answer=findBestAnswer(pq)
     return('question','enquiry',answer)
 
