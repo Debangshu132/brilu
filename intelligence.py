@@ -21,19 +21,11 @@ def fetchData():
 document=fetchData()
 mydict = document['question']
 def findBestChitchat(query,document):
-    for question in document["chitchat"]["Greetings"]:
+   for topic in  document["chitchat"].keys():
+    for question in document["chitchat"][topic]:
         if(stem(query)==stem(question)):
-            return('chitchat','Greetings',query)
-    for question in document["chitchat"]["partings"]:
-        if(stem(query)==stem(question)):
-            return('chitchat','partings',query)
-    for question in document["chitchat"]["laughter"]:
-        if(stem(query)==stem(question)):
-            return('chitchat','laughter',query)
-    for question in document["chitchat"]["crying"]:
-        if(stem(query)==stem(question)):
-            return('chitchat','crying',query)
-    return('notChitchat','notChitchat','notChitchat')
+            return('chitchat',topic,query)
+   return('notChitchat','notChitchat','notChitchat')
 
 def answerBestChitchat(mood):
     return('chitchat',mood,random.choice(document["chitchat"][mood]))
