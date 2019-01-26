@@ -66,7 +66,7 @@ def typing(recipient_id):
   payload={"recipient":{"id":"recipient_id"},"sender_action":"typing_on"}
   response=requests.post(
     request_endpoint,
-            params=self.auth_args,
+            params=bot.auth_args,
             json=payload )
   result = response.json()
   return result
