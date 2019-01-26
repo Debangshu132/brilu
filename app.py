@@ -27,6 +27,9 @@ def receive_message():
     else:
         # get whatever message a user sent the bot
        output = request.get_json()
+       #for first time only
+       if output['entry'][0]['messaging'][0]['postback']['payload']=='Startyaar':
+         return 'Welcome I will help you with your exams!!'
        for event in output['entry']:
           messaging = event['messaging']
           for message in messaging:
