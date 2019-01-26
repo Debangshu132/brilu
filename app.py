@@ -34,7 +34,8 @@ def receive_message():
                 #Facebook Messenger ID for user so we know where to send response back to
                 recipient_id = message['sender']['id']
                 if message['message'].get('text'):
-                    typing(recipient_id)
+                    typingon=typing(recipient_id)
+                    print(typingon)
                     topic,mood,response = get_message(recipient_id,message['message'].get('text'))
                     send_message(recipient_id,topic,mood, response)
                 #if user sends us a GIF, photo,video, or any other non-text item
