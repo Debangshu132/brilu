@@ -31,7 +31,7 @@ def receive_message():
       try:  
        if output['entry'][0]['messaging'][0]['postback']['payload']=='Startyaar':
          return 'Welcome I will help you with your exams!!'
-      catch:  
+      except:  
        for event in output['entry']:
           messaging = event['messaging']
           for message in messaging:
