@@ -33,7 +33,7 @@ def receive_message():
          welcome='Welcome I will help you with your exams!!'
          id=  output['entry'][0]['messaging'][0]['sender']['id']  
          send_message(id,'a','a', welcome)   
-         #pay(id,)   
+         getexamoptions()
          return welcome
       except:  
        for event in output['entry']:
@@ -71,6 +71,17 @@ def get_message(recipient_id,query):
     return(topic,mood,response)
   except:
     return 'dummy','dummy','I am sorry I dont know what to say'    
+def getexamoptions():
+    payload= {"recipient":{"id":"<PSID>"}, 
+                "message":{"text": "Please choose an exam from below:",
+                  "quick_replies":[{"content_type":"text",
+                                           "title":"IIT JEE",
+                                         "payload":"IIT JEE"
+                                  }]
+                          }
+             }     
+    pay(payload)
+    return 'success'
   
 def pay(payload):
   request_endpoint = "https://graph.facebook.com/v2.6/me/messages?access_token="+os.environ['ACCESS_TOKEN']
