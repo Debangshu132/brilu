@@ -31,7 +31,7 @@ def receive_message():
       try:  
        if output['entry'][0]['messaging'][0]['postback']['payload']=='Startyaar':
          name= output['entry'][0]['messaging'][0]['sender']['first_name']
-         welcome='Welcome'+name+ '! I am your friend brilu and I will help you with your exams!! :)'
+         welcome='Welcome'+str(name)+ '! I am your friend brilu and I will help you with your exams!! :)'
          id=  output['entry'][0]['messaging'][0]['sender']['id']  
          send_message(id,'a','a', welcome)   
          getexamoptions(id)
