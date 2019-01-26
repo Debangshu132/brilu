@@ -67,7 +67,7 @@ def typing(recipient_id):
   request_endpoint = "https://graph.facebook.com/v2.6/me/messages?access_token="+os.environ['ACCESS_TOKEN']
   payload={"recipient":{"id":"recipient_id"},"sender_action":"typing_on"}
   response=requests.post(
-    request_endpoint,
+    request_endpoint, params=bot.auth_args,
             json=payload )
   result = response.json()
   return result
