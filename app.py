@@ -30,7 +30,10 @@ def receive_message():
       #for first time only
       try:  
        if output['entry'][0]['messaging'][0]['postback']['payload']=='Startyaar':
-         return 'Welcome I will help you with your exams!!'
+         welcome='Welcome I will help you with your exams!!'
+         id=  output['entry'][0]['messaging'][0]['sender']['id']  
+         send_message(id,'a','a', welcome)
+         return welcome
       except:  
        for event in output['entry']:
           messaging = event['messaging']
