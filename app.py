@@ -4,6 +4,7 @@ from pymongo import MongoClient
 from flask import Flask, request
 from pymessenger.bot import Bot
 import os
+import requests
 import wikipedia
 from intelligence import BRAIN
 from sklearn.feature_extraction.text import CountVectorizer
