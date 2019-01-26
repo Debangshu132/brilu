@@ -57,7 +57,8 @@ def verify_fb_token(token_sent):
 
 #chooses a random message to send to the user
 def get_message(recipient_id,query):
- 
+  if query=='Get Started':
+     return 'dummy','dummy','Welcome'   
   try:  
     topic,mood,response=BRAIN(query)
     return(topic,mood,response)
