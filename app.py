@@ -33,7 +33,7 @@ def receive_message():
          welcome='Welcome I will help you with your exams!!'
          id=  output['entry'][0]['messaging'][0]['sender']['id']  
          send_message(id,'a','a', welcome)   
-         getexamoptions()
+         getexamoptions(id)
          return welcome
       except:  
        for event in output['entry']:
@@ -71,12 +71,16 @@ def get_message(recipient_id,query):
     return(topic,mood,response)
   except:
     return 'dummy','dummy','I am sorry I dont know what to say'    
-def getexamoptions():
-    payload= {"recipient":{"id":"<PSID>"}, 
+def getexamoptions(id):
+    payload= {"recipient":{"id":id}, 
                 "message":{"text": "Please choose an exam from below:",
                   "quick_replies":[{"content_type":"text",
-                                           "title":"IIT JEE",
-                                         "payload":"IIT JEE"
+                                           "title":"JEE Advanced",
+                                         "payload":"JEE Advanced"
+                                  },
+                                  {"content_type":"text",
+                                           "title":"JEE Mains",
+                                         "payload":"JEE Mains"
                                   }]
                           }
              }     
