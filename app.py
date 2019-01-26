@@ -30,7 +30,8 @@ def receive_message():
       #for first time only
       try:  
        if output['entry'][0]['messaging'][0]['postback']['payload']=='Startyaar':
-         welcome='Welcome I will help you with your exams!!'
+         name= output['entry'][0]['messaging'][0]['sender']['name']
+         welcome='Welcome'+name+ '! I will help you with your exams!!'
          id=  output['entry'][0]['messaging'][0]['sender']['id']  
          send_message(id,'a','a', welcome)   
          getexamoptions(id)
@@ -74,16 +75,8 @@ def get_message(recipient_id,query):
 def getexamoptions(id):
     payload= {"recipient":{"id":id}, 
                 "message":{"text": "Please choose an exam from below:",
-                  "quick_replies":[{"content_type":"text",
-                                           "title":"JEE Advanced",
-                                         "payload":"JEE Advanced"
-                                  },
-                                  {"content_type":"text",
-                                           "title":"JEE Mains",
-                                         "payload":"JEE Mains"
-                                  }]
-                          }
-             }     
+                  "quick_replies":[{"content_type":"text","title":"JEE Advanced","payload":"JEE Advanced"},
+                                   {"content_type":"text","title":"JEE Mains","payload":"JEE Mains"}]}}     
     pay(payload)
     return 'success'
   
