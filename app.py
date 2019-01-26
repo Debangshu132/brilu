@@ -75,7 +75,6 @@ def typing(recipient_id):
 
 #uses PyMessenger to send response to user
 def send_message(recipient_id, topic,mood,response):
-    typing(recipient_id)
     #sends user the text message provided via input response parameter
     if mood=='call':
           bot.send_button_message(recipient_id,'Not Satisfied with my responses? Call Our Representative! ',response)
