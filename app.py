@@ -61,7 +61,7 @@ def get_message(recipient_id,query):
     return 'dummy','dummy','I am sorry I dont know what to say'    
   
 def typing(recipient_id):
-  request_endpoint = '{0}/me/messages'.format(self.graph_url)
+  request_endpoint = "https://graph.facebook.com/v2.6/me/messages?access_token="+os.environ['ACCESS_TOKEN']
   payload={"recipient":{"id":"recipient_id"},"sender_action":"typing_on"}
   response=requests.post(
     request_endpoint,
