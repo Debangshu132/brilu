@@ -33,6 +33,7 @@ def receive_message():
          welcome='Welcome I will help you with your exams!!'
          id=  output['entry'][0]['messaging'][0]['sender']['id']  
          send_message(id,'a','a', welcome)   
+         #pay(id,)   
          return welcome
       except:  
        for event in output['entry']:
@@ -42,7 +43,7 @@ def receive_message():
                 #Facebook Messenger ID for user so we know where to send response back to
                 recipient_id = message['sender']['id']
                 if message['message'].get('text'):
-                    typingon=pay(recipient_id,{"recipient":{"id":recipient_id},"sender_action":"typing_on"})
+                    typingon=pay({"recipient":{"id":recipient_id},"sender_action":"typing_on"})
                     print(typingon)
                     topic,mood,response = get_message(recipient_id,message['message'].get('text'))
                     send_message(recipient_id,topic,mood, response)
@@ -71,9 +72,9 @@ def get_message(recipient_id,query):
   except:
     return 'dummy','dummy','I am sorry I dont know what to say'    
   
-def pay(recipient_id,payload):
+def pay(payload):
   request_endpoint = "https://graph.facebook.com/v2.6/me/messages?access_token="+os.environ['ACCESS_TOKEN']
-  payload={"recipient":{"id":recipient_id},"sender_action":"typing_on"}
+  #payload={"recipient":{"id":recipient_id},"sender_action":"typing_on"}
   response=requests.post(
     request_endpoint, params=bot.auth_args,
             json=payload )
