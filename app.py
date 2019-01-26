@@ -14,11 +14,6 @@ ACCESS_TOKEN = os.environ['ACCESS_TOKEN']
 VERIFY_TOKEN = os.environ['VERIFY_TOKEN']
 bot = Bot (ACCESS_TOKEN)
 ps=PorterStemmer()
-button=[{
-  "type": "web_url",
-  "url": "https://www.facebook.com/",
-  "title": "Open Google",
-}]
 #We will receive messages that Facebook sends our bot at this endpoint
 @app.route("/", methods=['GET', 'POST'])
 def receive_message():
@@ -65,11 +60,20 @@ def get_message(recipient_id,query):
   except:
     return 'dummy','dummy','I am sorry I dont know what to say'    
   
- 
+def typing(recipient_id):
+  request_endpoint = '{0}/me/messages'.format(self.graph_url)
+  payload={"recipient":{"id":"recipient_id"},"sender_action":"typing_on"}
+  response=requests.post(
+    request_endpoint,
+            params=self.auth_args,
+            json=payload )
+  result = response.json()
+  return result
  
 
 #uses PyMessenger to send response to user
 def send_message(recipient_id, topic,mood,response):
+    typing(recipient_id)
     #sends user the text message provided via input response parameter
     if mood=='call':
           bot.send_button_message(recipient_id,'Not Satisfied with my responses? Call Our Representative! ',response)
