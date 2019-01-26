@@ -32,7 +32,7 @@ def receive_message():
        if output['entry'][0]['messaging'][0]['postback']['payload']=='Startyaar':
          welcome='Welcome I will help you with your exams!!'
          id=  output['entry'][0]['messaging'][0]['sender']['id']  
-         send_message(id,'a','a', welcome)
+         send_message(id,'a','a', welcome)   
          return welcome
       except:  
        for event in output['entry']:
@@ -42,7 +42,7 @@ def receive_message():
                 #Facebook Messenger ID for user so we know where to send response back to
                 recipient_id = message['sender']['id']
                 if message['message'].get('text'):
-                    typingon=typing(recipient_id)
+                    typingon=pay(recipient_id,{"recipient":{"id":recipient_id},"sender_action":"typing_on"})
                     print(typingon)
                     topic,mood,response = get_message(recipient_id,message['message'].get('text'))
                     send_message(recipient_id,topic,mood, response)
@@ -71,7 +71,7 @@ def get_message(recipient_id,query):
   except:
     return 'dummy','dummy','I am sorry I dont know what to say'    
   
-def typing(recipient_id):
+def pay(recipient_id,payload):
   request_endpoint = "https://graph.facebook.com/v2.6/me/messages?access_token="+os.environ['ACCESS_TOKEN']
   payload={"recipient":{"id":recipient_id},"sender_action":"typing_on"}
   response=requests.post(
@@ -79,8 +79,7 @@ def typing(recipient_id):
             json=payload )
   result = response.json()
   return result
- 
-
+        
 #uses PyMessenger to send response to user
 def send_message(recipient_id, topic,mood,response):
     #sends user the text message provided via input response parameter
