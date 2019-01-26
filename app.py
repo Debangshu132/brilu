@@ -25,11 +25,13 @@ def receive_message():
         return verify_fb_token(token_sent)
     #if the request was not get, it must be POST and we can just proceed with sending a message back to user
     else:
-        # get whatever message a user sent the bot
-       output = request.get_json()
-       #for first time only
+      # get whatever message a user sent the bot
+      output = request.get_json()
+      #for first time only
+      try:  
        if output['entry'][0]['messaging'][0]['postback']['payload']=='Startyaar':
          return 'Welcome I will help you with your exams!!'
+      catch:  
        for event in output['entry']:
           messaging = event['messaging']
           for message in messaging:
