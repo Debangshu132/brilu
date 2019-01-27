@@ -45,8 +45,8 @@ def receive_message():
                     #checkPostback(output)
                     isQuickReply=checkQuickReply(message['message'].get('text'),recipient_id)
                     if isQuickReply==False:
-                        send_message(recipient_id,topic,mood, response)
-                        quickreply(recipient_id,['Lets test','Inspire me'])
+                        #send_message(recipient_id,topic,mood, response)
+                        quickreply(recipient_id,['Lets test','Inspire me'],response)
                 #if user sends us a GIF, photo,video, or any other non-text item
                 if message['message'].get('attachments'):
                     response = 'sorry i cannot handle attachments now, but wait for an update'
@@ -71,8 +71,8 @@ def get_message(recipient_id,query):
     return(topic,mood,response)
   except:
     return 'dummy','dummy','I am sorry I dont know what to say'    
-def quickreply(id,listofitems):
-    payload = {"recipient": {"id": id}, "message": {"text": "Choose one from below","quick_replies": []}}
+def quickreply(id,listofitems,text):
+    payload = {"recipient": {"id": id}, "message": {"text":text,"quick_replies": []}}
     for item in listofitems:
         payload['message']['quick_replies'].append({"content_type":"text","title":str(item),"payload":str(item)})   
     pay(payload)
@@ -94,17 +94,17 @@ def checkPostback(output):
          send_message(id,'a','a', welcome)
          time.sleep(2)   
          exam='Choose any exam to start practising probems!'   
-         send_message(id,'a','a', exam)
+         #send_message(id,'a','a', exam)
          time.sleep(1)   
-         quickreply(id,listOfExams)
+         quickreply(id,listOfExams,exam)
     
 def checkQuickReply(text,id): 
          try: 
            msges,listofitems=decision(text)
-           for msg in msges:
-              send_message(id,'a','a', msg)
+           for msg in range(0,len(msges)-2):
+              send_message(id,'a','a', msges[msg])
               time.sleep(2)
-           quickreply(id,listofitems) 
+           quickreply(id,listofitems,msges[len(msges)-1]) 
            return True
          except:
             return False    
