@@ -27,7 +27,7 @@ def decision(input):
          msg=['Okay so GATE it is! I will give you some random questions from the GATEpaper',' untill you decide its enough']
          listitems=['Okay Sure','Go Back']
          return msg,listitems 
-     if input=='Lets Test':
+     if input=='Lets test':
            msg=['okay lets test you buddy','choose an exam from below']
            listitems=['JEE Advanced','JEE Mains','GATE']
            return msg,listitems  
