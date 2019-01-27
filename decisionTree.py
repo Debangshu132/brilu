@@ -10,7 +10,7 @@ def fetchData():
     #p.pprint(document.keys())
     #p.pprint(document["chitchat"])
     return(userInfo)
-userInfo=fetchData()
+
 
 def listOfExams():
     return ['JEE Advanced','JEE Mains','GATE']
@@ -31,11 +31,7 @@ def decision(input):
             msg=['okay,Lets start']
             listitems=[]
             return msg,listitems 
-def askQuestion(topic):
-    question="who is the father of the nation"
-    options=['MK Ghandhi','Nehru','Salman Khan','Jayanta']
-    Right='MK Ghandhi'
-    return question,options,Right
+
     
         
         
