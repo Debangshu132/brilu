@@ -115,7 +115,7 @@ def questionloop(topic):
         options=['MK Ghandhi','Nehru','Salman Khan','Jayanta']
         Right='MK Ghandhi'
         bot.send_button_message(recipient_id,question,options)
-              
+        return 0
         
 #uses PyMessenger to send response to user
 def send_message(recipient_id, topic,mood,response):
