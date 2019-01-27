@@ -13,5 +13,9 @@ def decision(input):
             msg='okay,Which exam would you like to take'
             listitems=listOfExams()   
             return msg, listitems
+     if input=='Okay Sure':
+            msg='okay,Lets start'
+            listitems=[]
+            return msg,listitems    
         
     
