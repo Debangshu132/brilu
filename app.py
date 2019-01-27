@@ -27,17 +27,9 @@ def receive_message():
     else:
       # get whatever message a user sent the bot
       output = request.get_json()
-      #for first time only
-      try:  
-       if output['entry'][0]['messaging'][0]['postback']['payload']=='Startyaar':
-         #name= output['entry'][0]['messaging'][0]['sender']['name']
-         welcome='Welcome! I am your friend brilu and I will help you with your exams!! :)'
-         id=  output['entry'][0]['messaging'][0]['sender']['id']  
-         send_message(id,'a','a', welcome)   
-         getexamoptions(id)
-         return welcome
-      except:  
-       for event in output['entry']:
+      #for first time only check if this is the get started click or no
+      checkGetStarted()
+      for event in output['entry']:
           messaging = event['messaging']
           for message in messaging:
             if message.get('message'):
@@ -88,6 +80,16 @@ def pay(payload):
             json=payload )
   result = response.json()
   return result
+def checkGetStarted():
+     try:  
+       if output['entry'][0]['messaging'][0]['postback']['payload']=='Startyaar':
+         #name= output['entry'][0]['messaging'][0]['sender']['name']
+         welcome='Welcome! I am your friend brilu and I will help you with your exams!! :)'
+         id=  output['entry'][0]['messaging'][0]['sender']['id']  
+         send_message(id,'a','a', welcome)   
+         getexamoptions(id)
+      except:  
+          pass  
         
 #uses PyMessenger to send response to user
 def send_message(recipient_id, topic,mood,response):
