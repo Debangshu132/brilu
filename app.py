@@ -82,12 +82,19 @@ def pay(payload):
   return result
 def checkPostback(output):
     if output['entry'][0]['messaging'][0].get('postback'):
+      id=  output['entry'][0]['messaging'][0]['sender']['id']    
       if output['entry'][0]['messaging'][0]['postback']['payload']=='Startyaar':
          welcome='Welcome! I am your friend brilu and I will help you with your exams!! :)'
-         id=  output['entry'][0]['messaging'][0]['sender']['id']  
          send_message(id,'a','a', welcome)   
          getexamoptions(id)
-      
+      if output['entry'][0]['messaging'][0]['postback']['payload']=='JEE mains':
+         msg='Okay so JEE mains it is! I will give you some random questions from mains paper as practice untill you decide its time to do something else'
+         send_message(id,'a','a', msg)   
+         getexamoptions(id)
+      if output['entry'][0]['messaging'][0]['postback']['payload']=='JEE advanced':
+         msg='Okay so JEE advanced it is! I will give you some random questions from the advanced paper as practice untill you decide its time to do something else'
+         send_message(id,'a','a', msg)   
+         getexamoptions(id)      
         
 #uses PyMessenger to send response to user
 def send_message(recipient_id, topic,mood,response):
