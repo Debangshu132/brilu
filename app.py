@@ -67,7 +67,7 @@ def get_message(recipient_id,query):
     return(topic,mood,response)
   except:
     return 'dummy','dummy','I am sorry I dont know what to say'    
-def quickreply(id,listofoptions):
+def quickreply(id,listofitems):
     payload = {"recipient": {"id": id},
                "message": {"text": "Please choose an exam from below:",
                            "quick_replies": []}}
