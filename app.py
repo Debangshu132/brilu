@@ -6,7 +6,7 @@ from pymessenger.bot import Bot
 import os
 import requests
 import wikipedia
-from decisionTree import decision
+from decisionTree import decision,listOfExams
 from intelligence import BRAIN
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import euclidean_distances
@@ -16,7 +16,7 @@ ACCESS_TOKEN = os.environ['ACCESS_TOKEN']
 VERIFY_TOKEN = os.environ['VERIFY_TOKEN']
 bot = Bot (ACCESS_TOKEN)
 ps=PorterStemmer()
-listOfExams=['JEE Advanced','JEE Mains','GATE']
+listOfExams=listOfExams()
 #We will receive messages that Facebook sends our bot at this endpoint
 @app.route("/", methods=['GET', 'POST'])
 def receive_message():
