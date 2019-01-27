@@ -15,6 +15,7 @@ ACCESS_TOKEN = os.environ['ACCESS_TOKEN']
 VERIFY_TOKEN = os.environ['VERIFY_TOKEN']
 bot = Bot (ACCESS_TOKEN)
 ps=PorterStemmer()
+listOfExams=['JEE Advanced','JEE Mains']
 #We will receive messages that Facebook sends our bot at this endpoint
 @app.route("/", methods=['GET', 'POST'])
 def receive_message():
@@ -66,11 +67,14 @@ def get_message(recipient_id,query):
     return(topic,mood,response)
   except:
     return 'dummy','dummy','I am sorry I dont know what to say'    
-def getexamoptions(id):
-    payload= {"recipient":{"id":id}, 
-                "message":{"text": "Please choose an exam from below:",
-                  "quick_replies":[{"content_type":"text","title":"JEE Advanced","payload":"JEE Advanced"},
-                                   {"content_type":"text","title":"JEE Mains","payload":"JEE Mains"}]}}     
+def quickreply(id,listofoptions):
+    payload = {"recipient": {"id": id},
+               "message": {"text": "Please choose an exam from below:",
+                           "quick_replies": []}}
+    for item in listofitems:
+        {"content_type": "text", "title": "JEE Advanced", "payload": "JEE Advanced"},
+        payload['message']['quick_replies'].append({"content_type":"text","title":str(item),"payload":str(item)})
+    print(payload)    
     pay(payload)
     return 'success'
   
@@ -87,8 +91,9 @@ def checkPostback(output):
       id=  output['entry'][0]['messaging'][0]['sender']['id']    
       if output['entry'][0]['messaging'][0]['postback']['payload']=='Startyaar':
          welcome='Welcome! I am your friend brilu and I will help you with your exams!! :)'
-         send_message(id,'a','a', welcome)   
-         getexamoptions(id)
+         send_message(id,'a','a', welcome)
+         quickreply(id,listOfExams)
+    
 def checkQuickReply(text,id): 
       if text=='JEE Mains':
          msg='Okay so JEE mains it is! I will give you some random questions from mains paper as practice untill you decide its time to do something else'
