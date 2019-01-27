@@ -101,7 +101,7 @@ def checkPostback(output):
 def checkQuickReply(text,id): 
          try: 
            msges,listofitems=decision(text)
-           for msg in range(0,len(msges)-2):
+           for msg in range(0,len(msges)-1):
               send_message(id,'a','a', msges[msg])
               time.sleep(2)
            quickreply(id,listofitems,msges[len(msges)-1]) 
