@@ -6,6 +6,7 @@ from pymessenger.bot import Bot
 import os
 import requests
 import wikipedia
+from decisionTree import decision
 from intelligence import BRAIN
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import euclidean_distances
@@ -91,12 +92,10 @@ def checkPostback(output):
          quickreply(id,listOfExams)
     
 def checkQuickReply(text,id): 
-      if text=='JEE Mains':
-         msg='Okay so JEE mains it is! I will give you some random questions from mains paper as practice untill you decide its time to do something else'
-         send_message(id,'a','a', msg)   
-      if text=='JEE Advanced':
-         msg='Okay so JEE advanced it is! I will give you some random questions from the advanced paper as practice untill you decide its time to do something else'
-         send_message(id,'a','a', msg)   
+           msg,listofitems=decision(text)
+           send_message(id,'a','a', msg)
+           quickreply(id,listofitems) 
+           return 0
               
         
 #uses PyMessenger to send response to user
