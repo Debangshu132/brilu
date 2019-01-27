@@ -67,7 +67,7 @@ def get_message(recipient_id,query):
     return(topic,mood,response)
   except:
     return 'dummy','dummy','I am sorry I dont know what to say'    
-"""def quickreply(id,listofitems):
+def quickreply(id,listofitems):
     payload = {"recipient": {"id": id},
                "message": {"text": "Please choose an exam from below:",
                            "quick_replies": []}}
@@ -75,7 +75,7 @@ def get_message(recipient_id,query):
         payload['message']['quick_replies'].append({"content_type":"text","title":str(item),"payload":str(item)})
     print(payload)    
     pay(payload)
-    return 'success'"""
+    return 'success'
   
 def pay(payload):
   request_endpoint = "https://graph.facebook.com/v2.6/me/messages?access_token="+os.environ['ACCESS_TOKEN']
@@ -91,7 +91,7 @@ def checkPostback(output):
       if output['entry'][0]['messaging'][0]['postback']['payload']=='Startyaar':
          welcome='Welcome! I am your friend brilu and I will help you with your exams!! :)'
          send_message(id,'a','a', welcome)
-         #quickreply(id,listOfExams)
+         quickreply(id,listOfExams)
     
 def checkQuickReply(text,id): 
       if text=='JEE Mains':
