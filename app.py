@@ -71,7 +71,7 @@ def get_message(recipient_id,query):
   except:
     return 'dummy','dummy','I am sorry I dont know what to say'    
 def quickreply(id,listofitems):
-    payload = {"recipient": {"id": id}, "message": {"text": "Please choose an option from below:","quick_replies": []}}
+    payload = {"recipient": {"id": id}, "message": {"text": "","quick_replies": []}}
     for item in listofitems:
         payload['message']['quick_replies'].append({"content_type":"text","title":str(item),"payload":str(item)})   
     pay(payload)
@@ -91,6 +91,9 @@ def checkPostback(output):
       if output['entry'][0]['messaging'][0]['postback']['payload']=='Startyaar':
          welcome='Welcome! I am your friend brilu and I will help you with your exams!! :)'
          send_message(id,'a','a', welcome)
+         exam='please choose an exam to start your test'   
+         time.sleep(2)
+         send_message(id,'a','a', exam)
          quickreply(id,listOfExams)
     
 def checkQuickReply(text,id): 
