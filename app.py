@@ -71,7 +71,7 @@ def get_message(recipient_id,query):
   except:
     return 'dummy','dummy','I am sorry I dont know what to say'    
 def quickreply(id,listofitems):
-    payload = {"recipient": {"id": id}, "message": {"text": "","quick_replies": []}}
+    payload = {"recipient": {"id": id}, "message": {"quick_replies": []}}
     for item in listofitems:
         payload['message']['quick_replies'].append({"content_type":"text","title":str(item),"payload":str(item)})   
     pay(payload)
