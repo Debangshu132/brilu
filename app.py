@@ -101,8 +101,8 @@ def checkPostback(output):
 def checkQuickReply(text,id): 
          try: 
            msges,listofitems=decision(text)
-           if len(listofitems)==0:
-                questionLoop('math')
+           #if len(listofitems)==0:
+            #    questionLoop('math')
            for msg in msges:
               send_message(id,'a','a', msg)
               time.sleep(2)
