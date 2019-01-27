@@ -39,8 +39,8 @@ def receive_message():
                     typingon=pay({"recipient":{"id":recipient_id},"sender_action":"typing_on"})
                     print(typingon)
                     topic,mood,response = get_message(recipient_id,message['message'].get('text'))
-                    checkPostback(output)
-                    checkQuickReply(message['message'].get('text'))
+                    #checkPostback(output)
+                    checkQuickReply(message['message'].get('text'),recipient_id)
                     send_message(recipient_id,topic,mood, response)
                 #if user sends us a GIF, photo,video, or any other non-text item
                 if message['message'].get('attachments'):
@@ -89,7 +89,8 @@ def checkPostback(output):
          welcome='Welcome! I am your friend brilu and I will help you with your exams!! :)'
          send_message(id,'a','a', welcome)   
          getexamoptions(id)
-def checkQuickReply(text):        
+def checkQuickReply(text,id): 
+      id=  output['entry'][0]['messaging'][0]['sender']['id']   
       if text=='JEE Mains':
          msg='Okay so JEE mains it is! I will give you some random questions from mains paper as practice untill you decide its time to do something else'
          send_message(id,'a','a', msg)   
