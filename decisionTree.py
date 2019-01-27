@@ -35,6 +35,7 @@ def askQuestion(topic):
     question="who is the father of the nation"
     options=['MK Ghandhi','Nehru','Salman Khan','Jayanta']
     Right='MK Ghandhi'
+    return question,options,Right
     
         
         
