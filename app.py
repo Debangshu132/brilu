@@ -28,7 +28,7 @@ def receive_message():
       # get whatever message a user sent the bot
       output = request.get_json()
       #for first time only check if this is the get started click or no
-      checkGetStarted()
+      #checkGetStarted()
       try:  
        if output['entry'][0]['messaging'][0]['postback']['payload']=='Startyaar':
          #name= output['entry'][0]['messaging'][0]['sender']['name']
