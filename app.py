@@ -29,7 +29,7 @@ def receive_message():
       # get whatever message a user sent the bot
       output = request.get_json()
       #for first time only check if this is the get started click or no
-      #checkPostback(output)
+      checkPostback(output)
       for event in output['entry']:
           messaging = event['messaging']
           for message in messaging:
@@ -40,7 +40,7 @@ def receive_message():
                     typingon=pay({"recipient":{"id":recipient_id},"sender_action":"typing_on"})
                     print(typingon)
                     topic,mood,response = get_message(recipient_id,message['message'].get('text'))
-                    checkPostback(output)
+                    #checkPostback(output)
                     checkQuickReply(message['message'].get('text'),recipient_id)
                     send_message(recipient_id,topic,mood, response)
                 #if user sends us a GIF, photo,video, or any other non-text item
