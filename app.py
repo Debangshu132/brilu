@@ -101,8 +101,8 @@ def checkPostback(output):
 def checkQuickReply(text,id): 
          try: 
            msges,listofitems=decision(text)
-           #if len(listofitems)==0:
-            #    questionLoop('math')
+           if len(listofitems)==0:
+                questionLoop(id,'math')
            for msg in msges:
               send_message(id,'a','a', msg)
               time.sleep(2)
@@ -110,7 +110,7 @@ def checkQuickReply(text,id):
            return True
          except:
             return False 
-def questionloop(topic):  
+def questionloop(recipient_id,topic):  
         question="who is the father of the nation"
         options=['MK Ghandhi','Nehru','Salman Khan','Jayanta']
         Right='MK Ghandhi'
