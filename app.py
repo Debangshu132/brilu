@@ -39,11 +39,12 @@ def receive_message():
                 recipient_id = message['sender']['id']
                 if message['message'].get('text'):
                     typingon=pay({"recipient":{"id":recipient_id},"sender_action":"typing_on"})
-                    print(typingon)
+                 
                     topic,mood,response = get_message(recipient_id,message['message'].get('text'))
                     #checkPostback(output)
-                    checkQuickReply(message['message'].get('text'),recipient_id)
-                    send_message(recipient_id,topic,mood, response)
+                    isQuickReply=checkQuickReply(message['message'].get('text'),recipient_id)
+                    if isQuickReply==False:
+                        send_message(recipient_id,topic,mood, response)
                 #if user sends us a GIF, photo,video, or any other non-text item
                 if message['message'].get('attachments'):
                     response = 'sorry i cannot handle attachments now, but wait for an update'
@@ -92,10 +93,13 @@ def checkPostback(output):
          quickreply(id,listOfExams)
     
 def checkQuickReply(text,id): 
+         try: 
            msg,listofitems=decision(text)
            send_message(id,'a','a', msg)
            quickreply(id,listofitems) 
-           return 0
+           return True
+         except:
+            return False    
               
         
 #uses PyMessenger to send response to user
