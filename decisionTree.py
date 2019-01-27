@@ -6,11 +6,11 @@ def fetchData():
     col = db["usersInfo"]
     cursor = col.find()
     # p.pprint(cursor[0])
-    document = cursor[0]
+    userInfo = cursor[0]
     #p.pprint(document.keys())
     #p.pprint(document["chitchat"])
-    return(document)
-
+    return(userInfo)
+userInfo=fetchData()
 
 def listOfExams():
     return ['JEE Advanced','JEE Mains','GATE']
@@ -30,6 +30,12 @@ def decision(input):
      if input=='Okay Sure':
             msg=['okay,Lets start']
             listitems=[]
-            return msg,listitems    
+            return msg,listitems 
+def askQuestion(topic):
+    question="who is the father of the nation"
+    options=['MK Ghandhi','Nehru','Salman Khan','Jayanta']
+    Right='MK Ghandhi'
+    
+        
         
     
