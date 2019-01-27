@@ -23,6 +23,14 @@ def decision(input):
          msg=['Okay so JEE advanced it is! I will give you some random questions from the advanced paper',' untill you decide its enough']
          listitems=['Okay Sure','Go Back']
          return msg,listitems 
+     if input=='GATE':
+         msg=['Okay so GATE it is! I will give you some random questions from the GATEpaper',' untill you decide its enough']
+         listitems=['Okay Sure','Go Back']
+         return msg,listitems 
+     if input=='Lets Test':
+           msg=['okay lets test you buddy','choose an exam from below']
+           listitems=['JEE Advanced','JEE Mains','GATE']
+           return msg,listitems  
      if input=='Go Back':
             msg=['okay going back,Which exam would you like to take']
             listitems=listOfExams()   
