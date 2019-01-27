@@ -98,6 +98,7 @@ def checkQuickReply(text,id):
            msges,listofitems=decision(text)
            for msg in msges:
               send_message(id,'a','a', msg)
+              pay({"recipient":{"id":recipient_id},"sender_action":"typing_on"})
               time.sleep(2)
            quickreply(id,listofitems) 
            return True
