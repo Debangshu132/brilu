@@ -94,8 +94,9 @@ def checkPostback(output):
     
 def checkQuickReply(text,id): 
          try: 
-           msg,listofitems=decision(text)
-           send_message(id,'a','a', msg)
+           msges,listofitems=decision(text)
+           for msg in msges:
+              send_message(id,'a','a', msg)
            quickreply(id,listofitems) 
            return True
          except:
