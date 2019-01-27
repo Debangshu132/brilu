@@ -82,8 +82,8 @@ def pay(payload):
   return result
 def checkPostback(output):
      if output['entry'][0]['messaging'][0].get('postback'):
-       if output['entry'][0]['messaging'][0]['postback']['payload']=='Startyaar':
-         #name= output['entry'][0]['messaging'][0]['sender']['name']
+         payload=output['entry'][0]['messaging'][0]['postback']['payload']
+         pay(decisionTree())
          welcome='Welcome! I am your friend brilu and I will help you with your exams!! :)'
          id=  output['entry'][0]['messaging'][0]['sender']['id']  
          send_message(id,'a','a', welcome)   
