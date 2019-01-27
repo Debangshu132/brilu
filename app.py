@@ -8,6 +8,7 @@ import requests
 import wikipedia
 from decisionTree import decision,listOfExams
 from intelligence import BRAIN
+import time
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import euclidean_distances
 from nltk.stem import PorterStemmer
@@ -97,6 +98,7 @@ def checkQuickReply(text,id):
            msges,listofitems=decision(text)
            for msg in msges:
               send_message(id,'a','a', msg)
+              time.sleep(2)
            quickreply(id,listofitems) 
            return True
          except:
