@@ -101,21 +101,14 @@ def checkPostback(output):
 def checkQuickReply(text,id): 
          try: 
            msges,listofitems=decision(text)
-           #if len(listofitems)==0:
-           #     questionLoop(id,'math')
            for msg in msges:
               send_message(id,'a','a', msg)
               time.sleep(2)
            quickreply(id,listofitems) 
            return True
          except:
-            return False 
-def questionloop(recipient_id,topic):  
-        question="who is the father of the nation"
-        options=['MK Ghandhi','Nehru','Salman Khan','Jayanta']
-        Right='MK Ghandhi'
-        bot.send_button_message(recipient_id,question,options)
-        return 0
+            return False    
+              
         
 #uses PyMessenger to send response to user
 def send_message(recipient_id, topic,mood,response):
