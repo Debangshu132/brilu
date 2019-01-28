@@ -49,7 +49,7 @@ def askQuestion(topic):
            response['button'].append({"type": "postback","title": option,"payload": 'right'})
          else:
              response['button'].append({"type": "postback", "title": option, "payload": 'wrong'})
-    return response
+    return question,response
 
     
         
