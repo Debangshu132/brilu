@@ -115,11 +115,11 @@ def sendQuestion(id):
     response=askQuestion('Math',id)
     #bot.send_text_message(id, question)
     bot.send_button_message(id,'Not Satisfied ',
-                        {"button": [    {
+                         [    {
      "type": "phone_number",
                     "title": "Call Now!!",
                     "payload": "+917384342412"
-    }})
+    }])
     #pay(response)
     return 'success'
         
