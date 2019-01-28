@@ -6,7 +6,7 @@ from pymessenger.bot import Bot
 import os
 import requests
 import wikipedia
-from decisionTree import decision,listOfExams,askQuestion,resultOfQuickreply
+from decisionTree import decision,listOfExams,askQuestion
 from intelligence import BRAIN
 import time
 from sklearn.feature_extraction.text import CountVectorizer
@@ -36,9 +36,9 @@ def receive_message():
           messaging = event['messaging']
           for message in messaging:
             if message.get('message'):
-                   #Facebook Messenger ID for user so we know where to send response back to
-                   recipient_id = message['sender']['id']
-                   if message['message'].get('text'):
+                #Facebook Messenger ID for user so we know where to send response back to
+                recipient_id = message['sender']['id']
+                if message['message'].get('text'):
                     typingon=pay({"recipient":{"id":recipient_id},"sender_action":"typing_on"})
                     if  message['message'].get('quick_reply'):
                       if message['message']['quick_reply']['payload']=='right':
@@ -47,10 +47,7 @@ def receive_message():
                       if message['message']['quick_reply']['payload']=='wrong':
                         quickreply(recipient_id,['Try again','Go Back'],'sorry thats wrong!')
                         return "Message Processed"
-                    """ms,li,check=resultOfQuickreply(message)
-                    if check==True:
-                       quickreply[ recipient_id,li,ms]
-                       return "Message Processed"""
+                   
                     topic,mood,response = get_message(recipient_id,message['message'].get('text'))
                     #checkPostback(output)
                     isQuickReply=checkQuickReply(message['message'].get('text'),recipient_id)
