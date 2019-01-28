@@ -40,7 +40,7 @@ def decision(input):
             listitems=['Go Back']
             return msg,listitems 
 def askQuestion(topic):
-    question="who is the father of the nation"
+    question=""
     options=['gandhi','nehru','jayanta','netaji']
     right='gandhi'
     response=[{"type": "postback", "title": 'gandhi',"payload": 'right'},{"type": "postback", "title": 'jayanta',"payload": 'right'},
