@@ -97,9 +97,9 @@ def checkPostback(output):
          time.sleep(1)   
          quickreply(id,listOfExams,exam)
       if output['entry'][0]['messaging'][0]['postback']['payload']=='right':
-          quickreply(recipient_id,['Lets test','Inspire me'],'Thats right!!')
+          quickreply(id,['Lets test','Inspire me'],'Thats right!!')
       if output['entry'][0]['messaging'][0]['postback']['payload']=='wrong':
-          quickreply(recipient_id,['Try again','Inspire me'],'Sorry thats wrong!')      
+          quickreply(id,['Try again','Inspire me'],'Sorry thats wrong!')      
     
 def checkQuickReply(text,id): 
          try: 
