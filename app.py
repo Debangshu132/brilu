@@ -102,7 +102,8 @@ def checkQuickReply(text,id):
          try: 
            msges,listofitems=decision(text)
            if msges[0]=='okay,Lets start':
-                sendQuestion(id)
+                question="who is the father of the nation"
+                sendQuestion(id,question,['gandhi','nehru','jayanta','netaji'],'gandhi')
                 return True
            for msg in range(0,len(msges)-1):
               send_message(id,'a','a', msges[msg])
@@ -111,11 +112,15 @@ def checkQuickReply(text,id):
            return True
          except:
             return False    
-def sendQuestion(id):
-    question,response=askQuestion('Math')
-    #bot.send_text_message(id, question)
-    bot.send_button_message(id,question,response)
-    return 'success'
+def  sendQuestion(id,question,listofitems,right):
+    payload = {"recipient": {"id": id}, "message": {"text":question,"quick_replies": []}}
+    for item in listofitems:
+        if item==right:
+           payload['message']['quick_replies'].append({"content_type":"text","title":str(item),"payload":'right'}) 
+         if item!=right:
+           payload['message']['quick_replies'].append({"content_type":"text","title":str(item),"payload":'wrong'}) 
+    pay(payload)
+    return 'success'   
         
 #uses PyMessenger to send response to user
 def send_message(recipient_id, topic,mood,response):
