@@ -43,18 +43,17 @@ def askQuestion(topic):
     question="who is the father of the nation"
     options=['gandhi','nehru','jayanta','netaji']
     right='gandhi'
-    response= [
+    response=[
                 {
                     "type": "phone_number",
                     "title": "Call Now!!",
                     "payload": "+917384342412"
                 },
-        {
+         {
                     "type": "phone_number",
                     "title": "Call Now!!",
                     "payload": "+917384342412"
                 }
-        
             ]
     """
     for option in options:
