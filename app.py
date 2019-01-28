@@ -40,12 +40,12 @@ def receive_message():
                 recipient_id = message['sender']['id']
                 if message['message'].get('text'):
                     typingon=pay({"recipient":{"id":recipient_id},"sender_action":"typing_on"})
-                    if message['message']['quick_reply']['payload']=='right':
+                    """if message['message']['quick_reply']['payload']=='right':
                         quickreply(recipient_id,['Another one','Go Back'],'Thats right')
                         return "Message Processed"
                     if message['message']['quick_reply']['payload']=='wrong':
                         quickreply(recipient_id,['Try again','Go Back'],'sorry thats wrong!')
-                        return "Message Processed"
+                        return "Message Processed"""
                     topic,mood,response = get_message(recipient_id,message['message'].get('text'))
                     #checkPostback(output)
                     isQuickReply=checkQuickReply(message['message'].get('text'),recipient_id)
