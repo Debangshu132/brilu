@@ -28,7 +28,7 @@ def decision(input):
          listitems=['Okay Sure','Go Back']
          return msg,listitems 
      if input=='Lets test':
-           msg=['okay lets test you !','choose an exam from below']
+           msg=['okay lets test you buddy','choose an exam from below']
            listitems=['JEE Advanced','JEE Mains','GATE']
            return msg,listitems  
      if input=='Go Back':
@@ -40,8 +40,8 @@ def decision(input):
             listitems=['Go Back']
             return msg,listitems 
 def askQuestion(topic):
-    question="$$ (x+1)^2 $$"
-    options=['A','B','C','D']
+    question="Who is the father of the nation?"
+    options=['gandhi','nehru','jayanta','netaji']
     right='gandhi'
     return question,options,right
 
