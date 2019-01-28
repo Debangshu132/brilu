@@ -113,7 +113,7 @@ def checkQuickReply(text,id):
             return False    
 def sendQuestion(id):
     question,response=askQuestion('Math')
-    bot.send_text_message(id, question)
+    #bot.send_text_message(id, question)
     bot.send_button_message(id,question,response)
     return 'success'
         
