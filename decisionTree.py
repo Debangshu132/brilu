@@ -43,12 +43,15 @@ def askQuestion(topic):
     question="who is the father of the nation"
     options=['gandhi','nehru','jayanta','netaji']
     right='gandhi'
-    response={ "buttons": []}
+    payload={
+        "template_type":"button",
+        "text":question,
+        "buttons": []}
     for option in options:
          if option==right:
-           response['button'].append({"type": "postback","title": option,"payload": 'right'})
+           payload['buttons'].append({"type": "postback","title": option,"payload": 'right'})
          else:
-             response['button'].append({"type": "postback", "title": option, "payload": 'wrong'})
+             payload['buttons'].append({"type": "postback", "title": option, "payload": 'wrong'})
     return question,response
 
     
