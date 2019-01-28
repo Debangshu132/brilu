@@ -44,12 +44,12 @@ def askQuestion(topic):
     options=['gandhi','nehru','jayanta','netaji']
     right='gandhi'
     response=[{"type": "postback", "title": 'gandhi',"payload": 'right'},{"type": "postback", "title": 'jayanta',"payload": 'right'}]
-    
+    """
     for option in options:
         if option==right:
             response.append({"type": "postback", "title": option,"payload": "right"})
         if option!=right:    
-           response.append({"type": "postback", "title": option,"payload": "wrong"})
+           response.append({"type": "postback", "title": option,"payload": "wrong"})"""
     return question,response
 
     
