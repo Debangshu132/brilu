@@ -32,12 +32,12 @@ def decision(input):
            listitems=['JEE Advanced','JEE Mains','GATE']
            return msg,listitems  
      if input=='Go Back':
-            msg=['okay going back,Which exam would you like to take']
+            msg=['Going back,Which exam would you like to take']
             listitems=listOfExams()   
             return msg, listitems
      if input=='Okay Sure':
             msg=['okay,Lets start']
-            listitems=[]
+            listitems=['Go Back']
             return msg,listitems 
 def askQuestion(topic):
     question="who is the father of the nation"
