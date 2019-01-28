@@ -39,29 +39,17 @@ def decision(input):
             msg=['okay,Lets start']
             listitems=['Go Back']
             return msg,listitems 
-def askQuestion(topic,id):
+def askQuestion(topic):
     question="who is the father of the nation"
     options=['gandhi','nehru','jayanta','netaji']
     right='gandhi'
-    payload={
-        "template_type":"button",
-        "text":question,
-        "buttons": []}
+    response= []
     for option in options:
-         if option==right:
-           payload['buttons'].append({"type": "postback","title": option,"payload": 'right'})
-         else:
-             payload['buttons'].append({"type": "postback", "title": option, "payload": 'wrong'})
-    response={
-    "recipient":{
-    "id":id
-  },
-   "message":{
-    "attachment":{
-      "type":"template",
-      "payload":payload
-    } }}       
-    return response
+        if option==right:
+            response.append({"type": "postback", "title": option,"payload": 'right'})
+        if option!=right:    
+           response.append({"type": "postback", "title": option,"payload": 'right'})
+    return question,response
 
     
         
