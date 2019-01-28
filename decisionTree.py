@@ -28,7 +28,7 @@ def decision(input):
          listitems=['Okay Sure','Go Back']
          return msg,listitems 
      if input=='Lets test':
-           msg=['okay lets test you buddy','choose an exam from below']
+           msg=['okay lets test you !','choose an exam from below']
            listitems=['JEE Advanced','JEE Mains','GATE']
            return msg,listitems  
      if input=='Go Back':
@@ -41,7 +41,7 @@ def decision(input):
             return msg,listitems 
 def askQuestion(topic):
     question="$$ (x+1)^2 $$"
-    options=['gandhi','nehru','jayanta','netaji']
+    options=['A','B','C','D']
     right='gandhi'
     return question,options,right
 
