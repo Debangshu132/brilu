@@ -43,12 +43,25 @@ def askQuestion(topic):
     question="who is the father of the nation"
     options=['gandhi','nehru','jayanta','netaji']
     right='gandhi'
-    response= []
+    response= [
+                {
+                    "type": "phone_number",
+                    "title": "Call Now!!",
+                    "payload": "+917384342412"
+                },
+        {
+                    "type": "phone_number",
+                    "title": "Call Now!!",
+                    "payload": "+917384342412"
+                }
+        
+            ]
+    """
     for option in options:
         if option==right:
             response.append({"type": "postback", "title": option,"payload": 'right'})
         if option!=right:    
-           response.append({"type": "postback", "title": option,"payload": 'right'})
+           response.append({"type": "postback", "title": option,"payload": 'wrong'})"""
     return question,response
 
     
