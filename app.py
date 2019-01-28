@@ -114,7 +114,18 @@ def checkQuickReply(text,id):
 def sendQuestion(id):
     question,response=askQuestion('Math')
     #bot.send_text_message(id, question)
-    bot.send_button_message(id,question,response)
+    bot.send_button_message(id,question,[
+                {
+                    "type": "phone_number",
+                    "title": "Call Now!!",
+                    "payload": "+917384342412"
+                },
+         {
+                    "type": "phone_number",
+                    "title": "Call Now!!",
+                    "payload": "+917384342412"
+                }
+            ])
     return 'success'
         
 #uses PyMessenger to send response to user
