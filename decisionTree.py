@@ -39,14 +39,14 @@ def decision(input):
             msg=['okay,Lets start']
             listitems=['Go Back']
             return msg,listitems 
-def resultOfQuickreply(message):        
+"""def resultOfQuickreply(message):        
      if  message['message'].get('quick_reply'):
                       if message['message']['quick_reply']['payload']=='right':
                         return('Thats right',['Another one','Go Back'],True)
                       if message['message']['quick_reply']['payload']=='wrong':
                         return ('sorry thats wrong!',['Try again','Go Back'],True)
      else:
-        return 'sorry thats wrong!',['Try again','Go Back'],False
+        return 'sorry thats wrong!',['Try again','Go Back'],False"""
                          
 def askQuestion(topic):
     question="Who is the father of the nation?"
