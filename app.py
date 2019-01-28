@@ -101,7 +101,7 @@ def checkPostback(output):
 def checkQuickReply(text,id): 
          try: 
            msges,listofitems=decision(text)
-           if msges[0]=='Okay Sure':
+           if msges[0]=='okay,Lets start':
                 sendQuestion(id)
                 return True
            for msg in range(0,len(msges)-1):
