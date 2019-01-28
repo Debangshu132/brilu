@@ -39,7 +39,7 @@ def decision(input):
             msg=['okay,Lets start']
             listitems=['Go Back']
             return msg,listitems 
-def askQuestion(topic):
+def askQuestion(topic,id):
     question="who is the father of the nation"
     options=['gandhi','nehru','jayanta','netaji']
     right='gandhi'
@@ -52,6 +52,15 @@ def askQuestion(topic):
            payload['buttons'].append({"type": "postback","title": option,"payload": 'right'})
          else:
              payload['buttons'].append({"type": "postback", "title": option, "payload": 'wrong'})
+    response={
+    "recipient":{
+    "id":id
+  },
+   "message":{
+    "attachment":{
+      "type":"template",
+      "payload":payload
+    } }}       
     return response
 
     
