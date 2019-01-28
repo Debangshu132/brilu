@@ -50,7 +50,7 @@ def receive_message():
                     ms,li,check=resultOfQuickreply(message)
                     if check==True:
                        quickreply[ recipient_id,li,ms]
-                       return "Message Processed"""
+                       return "Message Processed"
                     topic,mood,response = get_message(recipient_id,message['message'].get('text'))
                     #checkPostback(output)
                     isQuickReply=checkQuickReply(message['message'].get('text'),recipient_id)
