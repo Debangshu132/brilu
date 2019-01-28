@@ -41,7 +41,7 @@ def decision(input):
             return msg,listitems 
 def askQuestion(topic):
     question="Who is the father of the nation?"
-    options=['  A','  B','  C','  D']
+    options=['    A  ','    B  ','    C  ','    D  ']
     right='gandhi'
     return question,options,right
 
