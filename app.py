@@ -6,7 +6,7 @@ from pymessenger.bot import Bot
 import os
 import requests
 import wikipedia
-from decisionTree import decision,listOfExams
+from decisionTree import decision,listOfExams,askQuestion
 from intelligence import BRAIN
 import time
 from sklearn.feature_extraction.text import CountVectorizer
@@ -102,7 +102,7 @@ def checkQuickReply(text,id):
          try: 
            msges,listofitems=decision(text)
            if len(listofitems)==0:
-                sendQuestion()
+                sendQuestion(id)
            for msg in range(0,len(msges)-1):
               send_message(id,'a','a', msges[msg])
               time.sleep(2)
@@ -110,7 +110,10 @@ def checkQuickReply(text,id):
            return True
          except:
             return False    
-              
+def sendQuestion(id):
+    response=askQuestion('Math')
+    bot.send_text_message(id, response)
+    return 'success'
         
 #uses PyMessenger to send response to user
 def send_message(recipient_id, topic,mood,response):
