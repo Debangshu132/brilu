@@ -92,11 +92,14 @@ def checkPostback(output):
       if output['entry'][0]['messaging'][0]['postback']['payload']=='Startyaar':
          welcome='Welcome! I am your friend brilu and I will help you with your exams!! :)'
          send_message(id,'a','a', welcome)
-         time.sleep(2)   
+         time.sleep(1)   
          exam='Choose any exam to start practising probems!'   
-         #send_message(id,'a','a', exam)
          time.sleep(1)   
          quickreply(id,listOfExams,exam)
+      if output['entry'][0]['messaging'][0]['postback']['payload']=='right':
+          quickreply(recipient_id,['Lets test','Inspire me'],'Thats right!!')
+      if output['entry'][0]['messaging'][0]['postback']['payload']=='wrong':
+          quickreply(recipient_id,['Try again','Inspire me'],'Sorry thats wrong!')      
     
 def checkQuickReply(text,id): 
          try: 
