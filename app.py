@@ -96,8 +96,9 @@ def checkPostback(output):
       id=  output['entry'][0]['messaging'][0]['sender']['id']    
       if output['entry'][0]['messaging'][0]['postback']['payload']=='Startyaar':
          welcome='Welcome! I am your friend brilu and I will help you with your exams!! :)'
+         time.sleep(0.5) 
          send_message(id,'a','a', welcome)
-         time.sleep(1)   
+         pay({"recipient":{"id":id},"sender_action":"typing_on"})
          exam='Choose any exam to start practising probems!'   
          time.sleep(1)   
          quickreply(id,listOfExams,exam)
