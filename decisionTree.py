@@ -39,6 +39,17 @@ def decision(input):
             msg=['okay,Lets start']
             listitems=[]
             return msg,listitems 
+def askQuestion(topic):
+    question="who is the father of the nation"
+    options=['gandhi','nehru','jayanta','netaji']
+    right='gandhi'
+    response={ "button": []}
+    for option in options:
+         if option==right:
+           response['button'].append({"type": "postback","title": option,"payload": 'right'})
+         else:
+             response['button'].append({"type": "postback", "title": option, "payload": 'wrong'})
+    return response
 
     
         
