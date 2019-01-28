@@ -43,13 +43,13 @@ def askQuestion(topic):
     question="who is the father of the nation"
     options=['gandhi','nehru','jayanta','netaji']
     right='gandhi'
-    response=[]
+    response=[{"type": "postback", "title": 'gandhi',"payload": 'right'},{"type": "postback", "title": 'jayanta',"payload": 'right'}]
     
     for option in options:
         if option==right:
-            response.append({"type": "postback", "title": option,"payload": 'right'})
+            response.append({"type": "postback", "title": option,"payload": "right"})
         if option!=right:    
-           response.append({"type": "postback", "title": option,"payload": 'wrong'})
+           response.append({"type": "postback", "title": option,"payload": "wrong"})
     return question,response
 
     
