@@ -40,7 +40,7 @@ def receive_message():
                 recipient_id = message['sender']['id']
                 if message['message'].get('text'):
                     typingon=pay({"recipient":{"id":recipient_id},"sender_action":"typing_on"})
-                    if message['message']['quick_reply']['payload']:
+                    if message['message']['quick_reply']:
                       if message['message']['quick_reply']['payload']=='right':
                         quickreply(recipient_id,['Another one','Go Back'],'Thats right')
                         return "Message Processed"
