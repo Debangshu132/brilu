@@ -112,15 +112,9 @@ def checkQuickReply(text,id):
          except:
             return False    
 def sendQuestion(id):
-    response=askQuestion('Math',id)
+    question,response=askQuestion('Math',id)
     #bot.send_text_message(id, question)
-    bot.send_button_message(id,'Not Satisfied ',
-                         [    {
-     "type": "phone_number",
-                    "title": "Call Now!!",
-                    "payload": "+917384342412"
-    }])
-    #pay(response)
+    bot.send_button_message(id,question,response)
     return 'success'
         
 #uses PyMessenger to send response to user
