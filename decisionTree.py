@@ -40,7 +40,7 @@ def decision(input):
             listitems=['Go Back']
             return msg,listitems 
 def askQuestion(topic):
-    question="Who is the father of the nation?"
+    question="$$(x+1)^2$$"
     options=['gandhi','nehru','jayanta','netaji']
     right='gandhi'
     return question,options,right
