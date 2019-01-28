@@ -45,14 +45,14 @@ def askQuestion(topic):
     right='gandhi'
     response=[
                 {
-                    "type": "phone_number",
+                    "type": "postback",
                     "title": "Call Now!!",
-                    "payload": "+917384342412"
+                    "payload": 'right'
                 },
          {
-                    "type": "phone_number",
+                    "type": "postback",
                     "title": "Call Now!!",
-                    "payload": "+917384342412"
+                    "payload": 'right'
                 }
             ]
     """
