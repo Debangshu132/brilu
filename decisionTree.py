@@ -36,14 +36,11 @@ def decision(input):
             msg=['Going back,Which exam would you like to take']
             listitems=listOfExams()   
             return msg, listitems
-     if input=='Okay Sure':
+     if input=='Okay Sure' or input=='Try Another'  or input=='Another One':
             msg=['okay,Lets start']
             listitems=['Go Back']
             return msg,listitems
-     if input=='Okay Sure':
-            msg=['okay,Lets start']
-            listitems=['Go Back']
-            return msg,listitems   
+       
 """def resultOfQuickreply(message):        
      if  message['message'].get('quick_reply'):
                       if message['message']['quick_reply']['payload']=='right':
