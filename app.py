@@ -130,7 +130,7 @@ def sendQuestion(id):
       for item in options:
         if item==right:
            payload['message']['quick_replies'].append({"content_type":"text","title":str(item),"payload":'right'})
-           updateUsersInformation(id,totalquestionasked=int(getUserInformation(id,totalquestionasked))+1)
+           updateUsersInformation(id,totalquestionasked=int(getUserInformation(id,'totalquestionasked'))+1)
         else:
            payload['message']['quick_replies'].append({"content_type":"text","title":str(item),"payload":'wrong'})  
       pay(payload)
