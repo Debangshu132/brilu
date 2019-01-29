@@ -42,10 +42,10 @@ def receive_message():
                     typingon=pay({"recipient":{"id":recipient_id},"sender_action":"typing_on"})
                     if  message['message'].get('quick_reply'):
                       if message['message']['quick_reply']['payload']=='right':
-                        quickreply(recipient_id,['Another one','Go Back'],'Thats right')
+                        quickreply(recipient_id,['Another One','Go Back'],'Thats right')
                         return "Message Processed"
                       if message['message']['quick_reply']['payload']=='wrong':
-                        quickreply(recipient_id,['Try another','Go Back'],'sorry thats wrong!')
+                        quickreply(recipient_id,['Try Another','Go Back'],'sorry thats wrong!')
                         return "Message Processed"
                    
                     topic,mood,response = get_message(recipient_id,message['message'].get('text'))
