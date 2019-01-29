@@ -8,13 +8,11 @@ def fetchData():
     cursor = col.find()
     # p.pprint(cursor[0])
     userInfo = cursor[0]
-    #p.pprint(document.keys())
-    #p.pprint(document["chitchat"])
     return(userInfo)
 
 
 def listOfExams():
-    return ['JEE Advanced','JEE Mains','GATE']
+    return ['JEE Mains','physics','biology']
 def decision(input):
      if input=='JEE Mains':
          msg=['Okay so JEE mains it is! I will give you some random questions from mains paper ',' untill you decide its enough']
@@ -62,7 +60,7 @@ def askQuestion(topic):
     question="Who is the father of the nation?"
     options=['  A  ','  B  ','  C  ','  D  ']
     right='gandhi'
-    questionanswer=fetchQuestionanswer('physics')
+    questionanswer=fetchQuestionanswer('biology')
     question= questionanswer['question']
     options=questionanswer['options']
     right=questionanswer['right']
