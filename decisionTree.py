@@ -62,6 +62,11 @@ def decision(input):
             msg=['okay,Lets start']
             listitems=['Go Back']
             return msg,listitems
+        
+      if input=='Inspire me':  
+            msg=['Inspire me']
+            listitems=['Go Back','Lets test']
+            return msg,listitems
 """def resultOfQuickreply(message):        
      if  message['message'].get('quick_reply'):
                       if message['message']['quick_reply']['payload']=='right':
