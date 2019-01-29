@@ -125,7 +125,8 @@ def checkQuickReply(text,id):
                return True 
            for msg in range(0,len(msges)-2):
               send_message(id,'a','a', msges[msg])
-              time.sleep(2)
+              typingon=pay({"recipient":{"id":recipient_id},"sender_action":"typing_on"})
+              time.sleep(1)
            updateUsersInformation(id, currenttopic=str(msges[len(msges)-1])) 
            quickreply(id,listofitems,msges[len(msges)-2]) 
            return True
