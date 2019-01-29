@@ -143,7 +143,7 @@ def sendQuestion(id):
             else:
               payload['message']['quick_replies'].append({"content_type":"text","title":shortOptions[itemindex],"payload":'wrong'})
          pay(payload)
-         return 'success   
+         return 'success'  
         
 #uses PyMessenger to send response to user
 def send_message(recipient_id, topic,mood,response):
