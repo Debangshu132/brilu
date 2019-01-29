@@ -43,6 +43,8 @@ def receive_message():
                     if  message['message'].get('quick_reply'):
                       if message['message']['quick_reply']['payload']=='right':
                         quickreply(recipient_id,['Another One','Go Back'],'Thats right')
+                        updateUsersInformation(recipient_id,totalquestionasked=int(getUserInformation(recipient_id,'totalquestionasked'))+1)
+                        updateUsersInformation(recipient_id,totalquestionright=int(getUserInformation(recipient_id,'totalquestionright'))+1)
                         return "Message Processed"
                       if message['message']['quick_reply']['payload']=='wrong':
                         quickreply(recipient_id,['Try Another','Go Back'],'sorry thats wrong!')
@@ -130,7 +132,7 @@ def sendQuestion(id):
       for item in options:
         if item==right:
            payload['message']['quick_replies'].append({"content_type":"text","title":str(item),"payload":'right'})
-           updateUsersInformation(id,totalquestionasked=int(getUserInformation(id,'totalquestionasked'))+1)
+           
         else:
            payload['message']['quick_replies'].append({"content_type":"text","title":str(item),"payload":'wrong'})  
       pay(payload)
