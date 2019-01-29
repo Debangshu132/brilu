@@ -34,7 +34,7 @@ def decision(input):
          listitems=['Okay Sure','Go Back']
          return msg,listitems 
      if input=='Lets test':
-           msg=['okay lets test you buddy','choose an exam from below','biology']
+           msg=['okay lets test your knowledge! ','choose a topic from below','biology']
            listitems=['JEE Mains','physics','biology']
            return msg,listitems  
      if input=='Go Back':
@@ -56,8 +56,12 @@ def decision(input):
         
      if input=='Results':
             msg=['Results','Okay let me check your results!!']
-            listitems=['Details','Go Back']
+            listitems=['Details','Go Back','Continue']
             return msg,listitems      
+     if input=='Continue':
+            msg=['okay,Lets start']
+            listitems=['Go Back']
+            return msg,listitems
 """def resultOfQuickreply(message):        
      if  message['message'].get('quick_reply'):
                       if message['message']['quick_reply']['payload']=='right':
