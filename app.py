@@ -123,7 +123,7 @@ def checkQuickReply(text,id):
          except:
             return False    
 def sendQuestion(id):
-    question,options,right=askQuestion('Math')
+    question,options,right,exceeded=askQuestion('Math')
     payload = {"recipient": {"id": id}, "message": {"text":question,"quick_replies": []}}
     for item in options:
         if item==right:
