@@ -135,7 +135,7 @@ def sendQuestion(id):
       return 'success'
     if exceeded==True:
          shortOptions=['A','B','C','D']
-         questionAns=question+'\n'+"A)"+options[0]+"\n"+"B)"+options[1]+"\n"++"C)"+options[2]+"\n"++"D)"+options[3]+"\n"
+         questionAns=question+'\n'+"A)"+options[0]+"\n"+"B)"+options[1]+"\n"+"C)"+options[2]+"\n"+"D)"+options[3]+"\n"
          payload = {"recipient": {"id": id}, "message": {"text":questionAns,"quick_replies": []}}
          for itemindex in range(0,4):
             if options[itemindex]==right:
