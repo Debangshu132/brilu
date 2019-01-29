@@ -126,6 +126,7 @@ def checkQuickReply(text,id):
                 return True  
            if msges[0]==  'Inspire me':
                  send_gif_message(id,'study quotes')
+                 quickreply(id,listofitems,'lets study now!')
                  return True  
            if msges[0]=="Results":
                send_message(id,'a','a', msges[1])
