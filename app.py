@@ -48,6 +48,7 @@ def receive_message():
                         return "Message Processed"
                       if message['message']['quick_reply']['payload']=='wrong':
                         quickreply(recipient_id,['Try Another','Go Back'],'sorry thats wrong!')
+                        updateUsersInformation(recipient_id,totalquestionasked=int(getUserInformation(recipient_id,'totalquestionasked'))+1)
                         return "Message Processed"
                    
                     topic,mood,response = get_message(recipient_id,message['message'].get('text'))
