@@ -47,7 +47,7 @@ def receive_message():
                         updateUsersInformation(recipient_id,totalquestionright=int(getUserInformation(recipient_id,'totalquestionright'))+1)
                         return "Message Processed"
                       if message['message']['quick_reply']['payload']=='wrong':
-                        quickreply(recipient_id,['Try Another','Go Back'],'sorry thats wrong!')
+                        quickreply(recipient_id,['Try Another','Go Back','Show Results'],'sorry thats wrong!')
                         updateUsersInformation(recipient_id,totalquestionasked=int(getUserInformation(recipient_id,'totalquestionasked'))+1)
                         return "Message Processed"
                    
