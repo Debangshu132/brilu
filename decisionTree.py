@@ -55,7 +55,7 @@ def decision(input):
             return msg,listitems    
         
      if input=='Results':
-            msg=['Show Results','Okay let me check your results!!']
+            msg=['Results','Okay let me check your results!!']
             listitems=['Details','Go Back']
             return msg,listitems      
 """def resultOfQuickreply(message):        
