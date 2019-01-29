@@ -130,6 +130,7 @@ def sendQuestion(id):
       for item in options:
         if item==right:
            payload['message']['quick_replies'].append({"content_type":"text","title":str(item),"payload":'right'})
+           updateUsersInformation(id,totalquestionasked=int(getUserInformation(id,totalquestionasked))+1)
         else:
            payload['message']['quick_replies'].append({"content_type":"text","title":str(item),"payload":'wrong'})  
       pay(payload)
@@ -141,6 +142,7 @@ def sendQuestion(id):
          for itemindex in range(0,4):
             if options[itemindex]==right:
               payload['message']['quick_replies'].append({"content_type":"text","title":shortOptions[itemindex],"payload":'right'})
+              
             else:
               payload['message']['quick_replies'].append({"content_type":"text","title":shortOptions[itemindex],"payload":'wrong'})
          pay(payload)
@@ -162,7 +164,14 @@ def updateUsersInformation(ID, **kwargs):
     for key in kwargs:
         db.userInfo.update({"_id" : "5c4e064ffb6fc05326ad8c57"}, {"$set":{str(ID)+"."+str(key): kwargs[key]}},upsert=True);
     return(0)
-
+def getUserInformation(id,property):
+    MONGODB_URI = "mongodb://Debangshu:Starrynight.1@ds163694.mlab.com:63694/brilu"
+    client = MongoClient(MONGODB_URI, connectTimeoutMS=30000)
+    db = client.get_database("brilu")
+    col = db["userInfo"]
+    cursor = col.find()
+    userInfo = cursor[0]
+    return(userInfo[id][property])
 
 if __name__ == "__main__":
     app.run()
