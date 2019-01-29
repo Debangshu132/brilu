@@ -1,9 +1,10 @@
 from pymongo import MongoClient
+import random
 def fetchData():
     MONGODB_URI = "mongodb://Debangshu:Starrynight.1@ds163694.mlab.com:63694/brilu"
     client = MongoClient(MONGODB_URI, connectTimeoutMS=30000)
     db = client.get_database("brilu")
-    col = db["usersInfo"]
+    col = db["questionAnswers"]
     cursor = col.find()
     # p.pprint(cursor[0])
     userInfo = cursor[0]
@@ -52,7 +53,19 @@ def askQuestion(topic):
     question="Who is the father of the nation?"
     options=['  A  ','  B  ','  C  ','  D  ']
     right='gandhi'
+    questionanswer=fetchQuestionanswer('physics')
+    question= questionanswer['question']
+    optins=questionanswer['options']
+    right=questionanswer['right']
     return question,options,right
+def fetchQuestionanswer(topic):
+    MONGODB_URI = "mongodb://Debangshu:Starrynight.1@ds163694.mlab.com:63694/brilu"
+    client = MongoClient(MONGODB_URI, connectTimeoutMS=30000)
+    db = client.get_database("brilu")
+    col = db["questionAnswers"]
+    cursor = col.find()
+    questionAnswers = cursor[0]
+    return(random.choice(questionAnswers[topic]))
 
     
         
