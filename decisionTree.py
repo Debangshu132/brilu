@@ -66,7 +66,11 @@ def askQuestion(topic):
     question= questionanswer['question']
     options=questionanswer['options']
     right=questionanswer['right']
-    return question,options,right
+    exceeded=False
+    for option in options:
+        if len(option)>19:
+            exceeded=True
+    return question,options,right,exceeded
 def fetchQuestionanswer(topic):
     MONGODB_URI = "mongodb://Debangshu:Starrynight.1@ds163694.mlab.com:63694/brilu"
     client = MongoClient(MONGODB_URI, connectTimeoutMS=30000)
