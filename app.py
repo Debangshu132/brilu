@@ -127,7 +127,7 @@ def checkQuickReply(text,id):
          except:
             return False    
 def sendQuestion(id):
-    question,options,right,exceeded=askQuestion('Math')
+    question,options,right,exceeded=askQuestion(getUserInformation(id,'currenttopic'))
     updateUsersInformation(id,lastQuestion=question)
     if exceeded==False:
       payload = {"recipient": {"id": id}, "message": {"text":question,"quick_replies": []}}
