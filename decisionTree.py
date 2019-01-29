@@ -36,7 +36,7 @@ def decision(input):
             msg=['Going back,Which exam would you like to take']
             listitems=listOfExams()   
             return msg, listitems
-     if input=='Okay Sure' or input=='Try Another'  or input=='Another One':
+     if input=='Okay Sure':
             msg=['okay,Lets start']
             listitems=['Go Back']
             return msg,listitems
