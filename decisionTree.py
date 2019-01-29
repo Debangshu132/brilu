@@ -55,7 +55,7 @@ def askQuestion(topic):
     right='gandhi'
     questionanswer=fetchQuestionanswer('physics')
     question= questionanswer['question']
-    optins=questionanswer['options']
+    options=questionanswer['options']
     right=questionanswer['right']
     return question,options,right
 def fetchQuestionanswer(topic):
