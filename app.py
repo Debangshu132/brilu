@@ -106,7 +106,7 @@ def checkPostback(output):
          updateUsersInformation(id,lastQuestion="",totalquestionasked=0,totalquestionright=0,currenttopic="")
          send_message(id,'a','a', welcome)
          pay({"recipient":{"id":id},"sender_action":"typing_on"})
-         exam='Choose any exam to start practising probems!'   
+         exam='Choose any topic to start practising probems!'   
          time.sleep(1)   
          quickreply(id,listOfExams,exam)
       if output['entry'][0]['messaging'][0]['postback']['payload']=='right':
