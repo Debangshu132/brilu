@@ -22,19 +22,19 @@ def listOfExams():
     return ['JEE Mains','physics','biology']
 def decision(input):
      if input=='JEE Mains':
-         msg=['Okay so JEE mains it is! I will give you some random questions from mains paper ',' untill you decide its enough']
-         listitems=['Okay Sure','Go Back','JEE Mains']
+         msg=['Okay so JEE mains it is! I will give you some random questions from mains paper ',' untill you decide its enough','JEE Mains']
+         listitems=['Okay Sure','Go Back']
          return msg,listitems
      if input=='biology':
-         msg=['Okay so biology it is! I will give you some random questions from  biology',' untill you decide its enough']
-         listitems=['Okay Sure','Go Back','biology']
+         msg=['Okay so biology it is! I will give you some random questions from  biology',' untill you decide its enough','biology']
+         listitems=['Okay Sure','Go Back']
          return msg,listitems 
      if input=='physics':
-         msg=['Okay so physics it is! I will give you some random questions from physics',' untill you decide its enough']
-         listitems=['Okay Sure','Go Back','physics']
+         msg=['Okay so physics it is! I will give you some random questions from physics',' untill you decide its enough','physics']
+         listitems=['Okay Sure','Go Back']
          return msg,listitems 
      if input=='Lets test':
-           msg=['okay lets test you buddy','choose an exam from below']
+           msg=['okay lets test you buddy','choose an exam from below','biology']
            listitems=['JEE Mains','physics','biology']
            return msg,listitems  
      if input=='Go Back':
