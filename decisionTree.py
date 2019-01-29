@@ -40,6 +40,14 @@ def decision(input):
             msg=['okay,Lets start']
             listitems=['Go Back']
             return msg,listitems
+     if input=='Try Another':
+            msg=['okay,Lets start']
+            listitems=['Go Back']
+            return msg,listitems   
+     if input=='Another One':
+            msg=['okay,Lets start']
+            listitems=['Go Back']
+            return msg,listitems     
        
 """def resultOfQuickreply(message):        
      if  message['message'].get('quick_reply'):
