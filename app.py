@@ -124,6 +124,7 @@ def checkQuickReply(text,id):
             return False    
 def sendQuestion(id):
     question,options,right,exceeded=askQuestion('Math')
+    updateUsersInformation(id,lastQuestion=question)
     if exceeded==False:
       payload = {"recipient": {"id": id}, "message": {"text":question,"quick_replies": []}}
       for item in options:
@@ -153,6 +154,14 @@ def send_message(recipient_id, topic,mood,response):
           return 'success'  
     bot.send_text_message(recipient_id, response)
     return "success"
+
+def updateUsersInformation(ID, **kwargs):
+    MONGODB_URI = "mongodb://Debangshu:Starrynight.1@ds163694.mlab.com:63694/brilu"
+    client = MongoClient(MONGODB_URI, connectTimeoutMS=30000)
+    db = client.get_database("brilu")
+    for key in kwargs:
+        db.userInfo.update({"_id" : "5c4e064ffb6fc05326ad8c57"}, {"$set":{str(ID)+"."+str(key): kwargs[key]}},upsert=True);
+    return(0)
 
 
 if __name__ == "__main__":
