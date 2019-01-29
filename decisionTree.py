@@ -23,15 +23,15 @@ def listOfExams():
 def decision(input):
      if input=='JEE Mains':
          msg=['Okay so JEE mains it is! I will give you some random questions from mains paper ',' untill you decide its enough']
-         listitems=['Okay Sure','Go Back']
+         listitems=['Okay Sure','Go Back','JEE Mains']
          return msg,listitems
-     if input=='JEE Advanced':
+     if input=='biology':
          msg=['Okay so JEE advanced it is! I will give you some random questions from the advanced paper',' untill you decide its enough']
-         listitems=['Okay Sure','Go Back']
+         listitems=['Okay Sure','Go Back','biology']
          return msg,listitems 
-     if input=='GATE':
+     if input=='physics':
          msg=['Okay so GATE it is! I will give you some random questions from the GATEpaper',' untill you decide its enough']
-         listitems=['Okay Sure','Go Back']
+         listitems=['Okay Sure','Go Back','physics']
          return msg,listitems 
      if input=='Lets test':
            msg=['okay lets test you buddy','choose an exam from below']
@@ -67,7 +67,7 @@ def askQuestion(topic):
     question="Who is the father of the nation?"
     options=['  A  ','  B  ','  C  ','  D  ']
     right='gandhi'
-    questionanswer=fetchQuestionanswer('biology')
+    questionanswer=fetchQuestionanswer(topic)
     question= questionanswer['question']
     options=questionanswer['options']
     right=questionanswer['right']
