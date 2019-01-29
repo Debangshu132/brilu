@@ -47,8 +47,10 @@ def receive_message():
                         updateUsersInformation(recipient_id,totalquestionright=int(getUserInformation(recipient_id,'totalquestionright'))+1)
                         return "Message Processed"
                       if message['message']['quick_reply']['payload']=='wrong':
-                        quickreply(recipient_id,['Try Another','Go Back','Results'],'sorry thats wrong!')
+                        
                         updateUsersInformation(recipient_id,totalquestionasked=int(getUserInformation(recipient_id,'totalquestionasked'))+1)
+                        rightAns=getUserInformation(recipient_id,'lastRightAnswer')
+                        quickreply(recipient_id,['Try Another','Go Back','Results'],'sorry thats wrong!,the right answer is: '+'\n'+rightAns)
                         return "Message Processed"
                    
                     topic,mood,response = get_message(recipient_id,message['message'].get('text'))
@@ -133,7 +135,7 @@ def checkQuickReply(text,id):
             return False    
 def sendQuestion(id):
     question,options,right,exceeded=askQuestion(getUserInformation(id,'currenttopic'))
-    updateUsersInformation(id,lastQuestion=question)
+    updateUsersInformation(id,lastQuestion=question,lastRightAnswer=right)
     if exceeded==False:
       payload = {"recipient": {"id": id}, "message": {"text":question,"quick_replies": []}}
       for item in options:
