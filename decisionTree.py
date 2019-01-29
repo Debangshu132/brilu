@@ -54,7 +54,7 @@ def decision(input):
             listitems=['Go Back']
             return msg,listitems    
         
-     if input=='Show Results':
+     if input=='Results':
             msg=['Show Results','Okay let me check your results!!']
             listitems=['Details','Go Back']
             return msg,listitems      
