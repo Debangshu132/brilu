@@ -122,7 +122,7 @@ def checkQuickReply(text,id):
               send_message(id,'a','a', msges[msg])
               time.sleep(2)
            updateUsersInformation(id, currenttopic=str(msges[len(msges)-1])) 
-           quickreply(id,listofitems,msges[len(msges)-1]) 
+           quickreply(id,listofitems,msges[len(msges)-2]) 
            return True
          except:
             return False    
