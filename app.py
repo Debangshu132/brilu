@@ -118,7 +118,7 @@ def checkQuickReply(text,id):
            if msges[0]=='okay,Lets start':
                 sendQuestion(id)
                 return True
-           if msges[0]=="Show Results":
+           if msges[0]=="Results":
                send_message(id,'a','a', msges[1])
                result="I have asked you "+str(getUserInformation(id,'totalquestionasked'))+' questions until now, out of which you got '+str(getUserInformation(id,'totalquestionright'))+' correct!'
                quickreply(id,listofitems,result)
