@@ -101,7 +101,7 @@ def checkPostback(output):
       id=  output['entry'][0]['messaging'][0]['sender']['id']    
       if output['entry'][0]['messaging'][0]['postback']['payload']=='Startyaar':
          welcome='Welcome! I am your friend brilu and I will help you with your exams!! :)'
-         time.sleep(0.5) 
+         updateUsersInformation(id,lastQuestion="",totalquestionasked=0,totalquestionright=0,currenttopic="")
          send_message(id,'a','a', welcome)
          pay({"recipient":{"id":id},"sender_action":"typing_on"})
          exam='Choose any exam to start practising probems!'   
@@ -118,9 +118,10 @@ def checkQuickReply(text,id):
            if msges[0]=='okay,Lets start':
                 sendQuestion(id)
                 return True
-           for msg in range(0,len(msges)-1):
+           for msg in range(0,len(msges)-2):
               send_message(id,'a','a', msges[msg])
               time.sleep(2)
+           updateUsersInformation(id, currenttopic=str(msges[len(msges)-1])) 
            quickreply(id,listofitems,msges[len(msges)-1]) 
            return True
          except:
