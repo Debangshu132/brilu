@@ -43,14 +43,14 @@ def receive_message():
                     typingon=pay({"recipient":{"id":recipient_id},"sender_action":"typing_on"})
                     if  message['message'].get('quick_reply'):
                       if message['message']['quick_reply']['payload']=='right':
-                        send_gif_message(recipient_id, 'right')
+                        
                         quickreply(recipient_id,['Another One','Go Back','Results'],'Thats right')
                         updateUsersInformation(recipient_id,totalquestionasked=int(getUserInformation(recipient_id,'totalquestionasked'))+1)
                         updateUsersInformation(recipient_id,totalquestionright=int(getUserInformation(recipient_id,'totalquestionright'))+1)
                         
                         return "Message Processed"
                       if message['message']['quick_reply']['payload']=='wrong':
-                        send_gif_message(recipient_id, 'wrong')
+                        
                         updateUsersInformation(recipient_id,totalquestionasked=int(getUserInformation(recipient_id,'totalquestionasked'))+1)
                         rightAns=getUserInformation(recipient_id,'lastRightAnswer')
                         quickreply(recipient_id,['Try Another','Go Back','Results'],'sorry thats wrong!,the right answer is: '+'\n'+rightAns)
