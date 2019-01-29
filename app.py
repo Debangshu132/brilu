@@ -123,7 +123,10 @@ def checkQuickReply(text,id):
            msges,listofitems=decision(text)
            if msges[0]=='okay,Lets start':
                 sendQuestion(id)
-                return True
+                return True  
+           if msges[0]==  'Inspire me':
+                 send_gif_message(id,'study quotes')
+                 return True  
            if msges[0]=="Results":
                send_message(id,'a','a', msges[1])
                result="I have asked you "+str(getUserInformation(id,'totalquestionasked'))+' questions until now, out of which you got '+str(getUserInformation(id,'totalquestionright'))+' correct!'
