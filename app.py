@@ -45,12 +45,14 @@ def receive_message():
                         quickreply(recipient_id,['Another One','Go Back','Results'],'Thats right')
                         updateUsersInformation(recipient_id,totalquestionasked=int(getUserInformation(recipient_id,'totalquestionasked'))+1)
                         updateUsersInformation(recipient_id,totalquestionright=int(getUserInformation(recipient_id,'totalquestionright'))+1)
+                        send_gif_message(recipient_id, 'right')
                         return "Message Processed"
                       if message['message']['quick_reply']['payload']=='wrong':
-                        
+                        send_gif_message(recipient_id, 'wrong')
                         updateUsersInformation(recipient_id,totalquestionasked=int(getUserInformation(recipient_id,'totalquestionasked'))+1)
                         rightAns=getUserInformation(recipient_id,'lastRightAnswer')
                         quickreply(recipient_id,['Try Another','Go Back','Results'],'sorry thats wrong!,the right answer is: '+'\n'+rightAns)
+                        
                         return "Message Processed"
                    
                     topic,mood,response = get_message(recipient_id,message['message'].get('text'))
@@ -183,6 +185,20 @@ def getUserInformation(id,property):
     cursor = col.find()
     userInfo = cursor[0]
     return(userInfo[id][property])
+def search_gif(text):
+    #get a GIF that is similar to text sent
+    payload = {'s': text, 'api_key': '8uWKU7YtJ4bIzYcAnjRVov8poEHCCj8l'}
+    r = requests.get('http://api.giphy.com/v1/gifs/translate', params=payload)
+    r = r.json()
+    url = r['data']['images']['original']['url']
+    return url
+def send_gif_message(recipient_id, message):
+    gif_url = search_gif(message)
+    data = json.dumps({"recipient": {"id": recipient_id},"message": {"attachment": {"type": "image","payload": {"url": gif_url}}}})
+    params = {"access_token": ACCESS_TOKEN }
+    headers = {"Content-Type": "application/json"}
+    r = requests.post("https://graph.facebook.com/v2.6/me/messages", params=params, headers=headers, data=data)
+
 
 if __name__ == "__main__":
     app.run()
