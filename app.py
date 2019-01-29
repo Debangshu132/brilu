@@ -124,15 +124,26 @@ def checkQuickReply(text,id):
             return False    
 def sendQuestion(id):
     question,options,right,exceeded=askQuestion('Math')
-    payload = {"recipient": {"id": id}, "message": {"text":question,"quick_replies": []}}
-    for item in options:
+    if exceeded==False:
+      payload = {"recipient": {"id": id}, "message": {"text":question,"quick_replies": []}}
+      for item in options:
         if item==right:
            payload['message']['quick_replies'].append({"content_type":"text","title":str(item),"payload":'right'})
         else:
            payload['message']['quick_replies'].append({"content_type":"text","title":str(item),"payload":'wrong'})  
-    pay(payload)
-    return 'success'
-   
+      pay(payload)
+      return 'success'
+    if exceeded==True:
+         shortOptions=['A','B','C','D']
+         questionAns=question+'\n'+"A)"+options[0]+"\n"+"B)"+options[1]+"\n"++"C)"+options[2]+"\n"++"D)"+options[3]+"\n"
+         payload = {"recipient": {"id": id}, "message": {"text":questionAns,"quick_replies": []}}
+         for itemindex in range(0,4):
+            if options[itemindex]==right:
+              payload['message']['quick_replies'].append({"content_type":"text","title":shortOptions[itemindex],"payload":'right'})
+            else:
+              payload['message']['quick_replies'].append({"content_type":"text","title":shortOptions[itemindex],"payload":'wrong'})
+         pay(payload)
+         return 'success   
         
 #uses PyMessenger to send response to user
 def send_message(recipient_id, topic,mood,response):
