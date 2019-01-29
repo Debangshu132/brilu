@@ -39,7 +39,11 @@ def decision(input):
      if input=='Okay Sure':
             msg=['okay,Lets start']
             listitems=['Go Back']
-            return msg,listitems 
+            return msg,listitems
+     if input=='Okay Sure':
+            msg=['okay,Lets start']
+            listitems=['Go Back']
+            return msg,listitems   
 """def resultOfQuickreply(message):        
      if  message['message'].get('quick_reply'):
                       if message['message']['quick_reply']['payload']=='right':
