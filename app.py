@@ -86,7 +86,7 @@ def get_message(recipient_id,query):
     topic,mood,response=BRAIN(query)
     return(topic,mood,response)
   except:
-    return 'dummy','dummy','I am sorry I dont know what to say'    
+    return 'dummy','dummy','I am sorry I didnot quite get what you are saying'    
 def quickreply(id,listofitems,text):
     payload = {"recipient": {"id": id}, "message": {"text":text,"quick_replies": []}}
     for item in listofitems:
