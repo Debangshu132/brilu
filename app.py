@@ -212,7 +212,7 @@ def sendResult(id):
     response= [
                 {
              "type":"web_url",
-            "url":"ttp://brilu.herokuapp.com/result",
+            "url":"http://brilu.herokuapp.com/result",
             "title":"See result",
             "webview_height_ratio": "compact"
                 }
