@@ -209,8 +209,7 @@ def send_gif_message(recipient_id, message):
     headers = {"Content-Type": "application/json"}
     r = requests.post("https://graph.facebook.com/v2.6/me/messages", params=params, headers=headers, data=data)
 def sendResult(id):
-    response= {
-            "button": [
+    response= [
                 {
              "type":"web_url",
             "url":"https://brilu.herokuapp.com/result/",
@@ -218,7 +217,7 @@ def sendResult(id):
             "webview_height_ratio": "tall"
                 }
             ]
-        }
+        
     bot.send_button_message(id,'Get detailed result',response)
     return 'ok'
 @app.route("/result", methods=['GET', 'POST'])
