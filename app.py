@@ -212,7 +212,7 @@ def sendResult(id):
     response= [
                 {
              "type":"web_url",
-            "url":"https://briluresult.herokuapp.com/",
+            "url":"ttp://brilu.herokuapp.com/result",
             "title":"See result",
             "webview_height_ratio": "compact"
                 }
@@ -223,7 +223,7 @@ def sendResult(id):
 @app.route("/result", methods=['GET', 'POST'])
 def result():
     
-        return '123'
+        return render_template('chart.html')
 
 if __name__ == "__main__":
     app.run()
