@@ -226,8 +226,8 @@ def sendResult(id):
 @app.route("/result", methods=['GET', 'POST'])
 def result():
         global RID
-        return render_template('chart.html',int(right=getUserInformation(recipient_id,'totalquestionasked')),
-                               int(total=getUserInformation(recipient_id,'totalquestionright'))
+        return render_template('chart.html',int(right=getUserInformation(RID,'totalquestionasked')),
+                               int(total=getUserInformation(RID,'totalquestionright'))
 
 if __name__ == "__main__":
     app.run()
