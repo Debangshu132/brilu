@@ -7,7 +7,7 @@ import os
 import requests
 
 import json
-from decisionTree import decision,listOfExams,askQuestion
+from decisionTree import decision,listOfExams,askQuestion,handleResults
 from intelligence import BRAIN
 import time
 from sklearn.feature_extraction.text import CountVectorizer
@@ -130,8 +130,10 @@ def checkQuickReply(text,id):
                  return True  
            if msges[0]=="Results":
                send_message(id,'a','a', msges[1])
-               result="I have asked you "+str(getUserInformation(id,'totalquestionasked'))+' questions until now, out of which you got '+str(getUserInformation(id,'totalquestionright'))+' correct!'
-               send_gif_message(id, "nice")
+               total=int(getUserInformation(id,'totalquestionasked')) 
+               right=int(getUserInformation(id,'totalquestionright'))
+               result="I have asked you "+str(total)+' questions until now, out of which you got '+str(right)+' correct!'
+               send_gif_message(id, handleResults(total,right))
                quickreply(id,listofitems,result)
                return True 
            for msg in range(0,len(msges)-2):
