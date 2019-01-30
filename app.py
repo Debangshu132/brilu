@@ -207,7 +207,16 @@ def send_gif_message(recipient_id, message):
     params = {"access_token": ACCESS_TOKEN }
     headers = {"Content-Type": "application/json"}
     r = requests.post("https://graph.facebook.com/v2.6/me/messages", params=params, headers=headers, data=data)
-
+@app.route("/result", methods=['GET', 'POST'])
+def result():
+    if request.method == 'GET':
+        """Before allowing people to message your bot, Facebook has implemented a verify token
+        that confirms all requests that your bot receives came from Facebook."""
+        token_sent = request.args.get("hub.verify_token")
+        return verify_fb_token(token_sent)
+    #if the request was not get, it must be POST and we can just proceed with sending a message back to user
+    else:
+        return <h2>whats up </h2>
 
 if __name__ == "__main__":
     app.run()
