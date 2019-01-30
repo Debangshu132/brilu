@@ -67,6 +67,15 @@ def decision(input):
             msg=['Inspire me']
             listitems=['Go Back','Lets test']
             return msg,listitems
+def handleResults(total,right):
+    percent=(right*100.0/total)
+    if percent<=50:
+        return 'nice'
+    if percent<=80 and percent>50:
+        return 'fantastic'
+    if percent<=100 and percent>80:
+        return 'awesome'
+    
 """def resultOfQuickreply(message):        
      if  message['message'].get('quick_reply'):
                       if message['message']['quick_reply']['payload']=='right':
