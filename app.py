@@ -44,7 +44,7 @@ def receive_message():
                     if  message['message'].get('quick_reply'):
                       if message['message']['quick_reply']['payload']=='right':
                         
-                        quickreply(recipient_id,['Another One','Go Back','Results'],'Thats right')
+                        quickreply(recipient_id,['Another One','Go Back','Results'],'Thats right :D')
                         updateUsersInformation(recipient_id,totalquestionasked=int(getUserInformation(recipient_id,'totalquestionasked'))+1)
                         updateUsersInformation(recipient_id,totalquestionright=int(getUserInformation(recipient_id,'totalquestionright'))+1)
                         
@@ -53,7 +53,7 @@ def receive_message():
                         
                         updateUsersInformation(recipient_id,totalquestionasked=int(getUserInformation(recipient_id,'totalquestionasked'))+1)
                         rightAns=getUserInformation(recipient_id,'lastRightAnswer')
-                        quickreply(recipient_id,['Try Another','Go Back','Results'],'sorry thats wrong!,the right answer is: '+'\n'+rightAns)
+                        quickreply(recipient_id,['Try Another','Go Back','Results'],'sorry Thats wrong! :) ,the right answer is: '+'\n'+rightAns)
                         
                         return "Message Processed"
                    
