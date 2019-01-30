@@ -19,9 +19,11 @@ VERIFY_TOKEN = os.environ['VERIFY_TOKEN']
 bot = Bot (ACCESS_TOKEN)
 ps=PorterStemmer()
 listOfExams=listOfExams()
+RID=''
 #We will receive messages that Facebook sends our bot at this endpoint
 @app.route("/", methods=['GET', 'POST'])
 def receive_message():
+    global RID
     if request.method == 'GET':
         """Before allowing people to message your bot, Facebook has implemented a verify token
         that confirms all requests that your bot receives came from Facebook."""
@@ -39,6 +41,7 @@ def receive_message():
             if message.get('message'):
                 #Facebook Messenger ID for user so we know where to send response back to
                 recipient_id = message['sender']['id']
+                RID=recipient_id 
                 if message['message'].get('text'):
                     typingon=pay({"recipient":{"id":recipient_id},"sender_action":"typing_on"})
                     if  message['message'].get('quick_reply'):
@@ -222,8 +225,9 @@ def sendResult(id):
     return 'ok'
 @app.route("/result", methods=['GET', 'POST'])
 def result():
-    
-        return render_template('chart.html')
+        global RID
+        return render_template('chart.html',right=getUserInformation(recipient_id,'totalquestionasked'),
+                               total=getUserInformation(recipient_id,'totalquestionright')
 
 if __name__ == "__main__":
     app.run()
