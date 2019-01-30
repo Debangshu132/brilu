@@ -134,6 +134,7 @@ def checkQuickReply(text,id):
                right=int(getUserInformation(id,'totalquestionright'))
                result="I have asked you "+str(total)+' questions until now, out of which you got '+str(right)+' correct!'
                send_gif_message(id, handleResults(total,right))
+               sendResult(id) 
                quickreply(id,listofitems,result)
                return True 
            for msg in range(0,len(msges)-2):
@@ -207,6 +208,18 @@ def send_gif_message(recipient_id, message):
     params = {"access_token": ACCESS_TOKEN }
     headers = {"Content-Type": "application/json"}
     r = requests.post("https://graph.facebook.com/v2.6/me/messages", params=params, headers=headers, data=data)
+def sendResult(id):
+    response= {
+            "button": [
+                {
+             "type":"web_url",
+            "url":"https://brilu.herokuapp.com/result/",
+            "title":"See result",
+            "webview_height_ratio": "tall"
+                }
+            ]
+        }
+    bot.send_button_message(id,'Get detailed result',response)
 @app.route("/result", methods=['GET', 'POST'])
 def result():
     if request.method == 'GET':
