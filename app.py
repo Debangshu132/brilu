@@ -1,7 +1,7 @@
 #Python libraries that we need to import for our bot
 import random
 from pymongo import MongoClient
-from flask import Flask, request
+from flask import Flask, request,render_template
 from pymessenger.bot import Bot
 import os
 import requests
@@ -216,7 +216,7 @@ def result():
         return verify_fb_token(token_sent)
     #if the request was not get, it must be POST and we can just proceed with sending a message back to user
     else:
-        return 'whats up'
+        return render_template('chart.html')
 
 if __name__ == "__main__":
     app.run()
