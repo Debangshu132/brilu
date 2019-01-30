@@ -222,14 +222,8 @@ def sendResult(id):
     return 'ok'
 @app.route("/result", methods=['GET', 'POST'])
 def result():
-    if request.method == 'GET':
-        """Before allowing people to message your bot, Facebook has implemented a verify token
-        that confirms all requests that your bot receives came from Facebook."""
-        token_sent = request.args.get("hub.verify_token")
-        return verify_fb_token(token_sent)
-    #if the request was not get, it must be POST and we can just proceed with sending a message back to user
-    else:
-        return render_template('chart.html')
+    
+        return '123'
 
 if __name__ == "__main__":
     app.run()
