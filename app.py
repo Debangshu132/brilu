@@ -227,7 +227,7 @@ def sendResult(id):
 def result():
         global RID
         return render_template('chart.html',int(right=getUserInformation(RID,'totalquestionasked')),
-                               int(total=getUserInformation(RID,'totalquestionright'))
+                               int(total=getUserInformation(RID,'totalquestionright')))
 
 if __name__ == "__main__":
     app.run()
