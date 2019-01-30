@@ -214,7 +214,7 @@ def sendResult(id):
              "type":"web_url",
             "url":"https://briluresult.herokuapp.com/",
             "title":"See result",
-            "webview_height_ratio": "tall"
+            "webview_height_ratio": "compact"
                 }
             ]
         
