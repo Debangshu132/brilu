@@ -220,6 +220,7 @@ def sendResult(id):
             ]
         }
     bot.send_button_message(id,'Get detailed result',response)
+    return 'ok'
 @app.route("/result", methods=['GET', 'POST'])
 def result():
     if request.method == 'GET':
