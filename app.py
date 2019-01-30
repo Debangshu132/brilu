@@ -131,6 +131,7 @@ def checkQuickReply(text,id):
            if msges[0]=="Results":
                send_message(id,'a','a', msges[1])
                result="I have asked you "+str(getUserInformation(id,'totalquestionasked'))+' questions until now, out of which you got '+str(getUserInformation(id,'totalquestionright'))+' correct!'
+               send_gif_message(id, "nice")
                quickreply(id,listofitems,result)
                return True 
            for msg in range(0,len(msges)-2):
