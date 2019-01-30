@@ -207,6 +207,9 @@ def send_gif_message(recipient_id, message):
     params = {"access_token": ACCESS_TOKEN }
     headers = {"Content-Type": "application/json"}
     r = requests.post("https://graph.facebook.com/v2.6/me/messages", params=params, headers=headers, data=data)
+@app.route("/result")
+def result():
+    return chart.html
 
 
 if __name__ == "__main__":
