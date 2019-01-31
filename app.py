@@ -221,14 +221,14 @@ def sendResult(id, gif,message):
       "quick_replies": [
       {
         "content_type":"text",
-        "title":"Quick Reply 1",
+        "title":"Go Back",
         
-        "payload":"payload1"
+        "payload":"Go Back"
       },
       {
         "content_type":"text",
-        "title":"Quick Reply 2",
-        "payload":"payload2"
+        "title":"Continue",
+        "payload":"Continue"
       }
     ],   
       "attachment":{
@@ -238,7 +238,7 @@ def sendResult(id, gif,message):
              "elements":[
                  {
                  "title":"Here is your result!",
-                   "image_url":url,
+                   #"image_url":url,
                      "subtitle":message,
                         "default_action": {
                             "type":"web_url",
