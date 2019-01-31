@@ -10,14 +10,14 @@ import json
 from decisionTree import decision,listOfExams,askQuestion,handleResults
 from intelligence import BRAIN
 import time
-from sklearn.feature_extraction.text import CountVectorizer
-from sklearn.metrics.pairwise import euclidean_distances
-from nltk.stem import PorterStemmer
+#from sklearn.feature_extraction.text import CountVectorizer
+#from sklearn.metrics.pairwise import euclidean_distances
+#from nltk.stem import PorterStemmer
 app = Flask(__name__)
 ACCESS_TOKEN = os.environ['ACCESS_TOKEN']
 VERIFY_TOKEN = os.environ['VERIFY_TOKEN']
 bot = Bot (ACCESS_TOKEN)
-ps=PorterStemmer()
+#ps=PorterStemmer()
 listOfExams=listOfExams()
 RID=''
 #We will receive messages that Facebook sends our bot at this endpoint
