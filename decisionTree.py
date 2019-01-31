@@ -28,6 +28,10 @@ def decision(input):
      if input=='biology':
          msg=['Okay so biology it is! I will give you some random questions from biology ',' untill you decide its enough','biology']
          listitems=['Okay Sure','Go Back']
+         return msg,listitems
+     if input=='math':
+         msg=['Okay so math it is! I will give you some random questions from math ',' untill you decide its enough','math']
+         listitems=['Okay Sure','Go Back']
          return msg,listitems 
      if input=='chemistry':
          msg=['Okay so chemistry it is! I will give you some random questions from chemistry ',' untill you decide its enough','chemistry']
