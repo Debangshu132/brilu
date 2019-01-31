@@ -137,7 +137,7 @@ def checkQuickReply(text,id):
                right=int(getUserInformation(id,'totalquestionright'))
                result="I have asked you "+str(total)+' questions until now, out of which you got '+str(right)+' correct!'
                send_gif_message(id, handleResults(total,right))
-               sendResult(id,handleResults(total,right),result) 
+               print(sendResult(id,handleResults(total,right),result)) 
                quickreply(id,listofitems,result)
                return True 
            for msg in range(0,len(msges)-2):
@@ -241,8 +241,8 @@ def sendResult(id, gif,message):
                 "webview_height_ratio": "compact"  
               } ] }]}}}}
     
-    pay(response)
-    return 'ok'
+    r=pay(response)
+    return r
 @app.route("/result/<id>", methods=['GET', 'POST'])
 def result(id):
         global RID
