@@ -238,7 +238,7 @@ def sendResult(id, gif,message):
              "elements":[
                  {
                  "title":"Here is your result!",
-                   "image_url":https://images.pexels.com/photos/1642883/pexels-photo-1642883.jpeg?cs=srgb&dl=adults-affection-couple-1642883.jpg&fm=jpg,
+                   #"image_url":https://images.pexels.com/photos/1642883/pexels-photo-1642883.jpeg?cs=srgb&dl=adults-affection-couple-1642883.jpg&fm=jpg,
                      "subtitle":message,
                         "default_action": {
                             "type":"web_url",
