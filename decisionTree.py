@@ -19,7 +19,7 @@ def updateUsersInformation(ID, **kwargs):
 
 
 def listOfExams():
-    return ['physics','biology','chemistry']
+    return ['physics','biology','chemistry','math']
 def decision(input):
      if input=='JEE Mains':
          msg=['Okay so JEE mains it is! I will give you some random questions from mains paper ',' untill you decide its enough','JEE Mains']
