@@ -107,9 +107,12 @@ def pay(payload):
   return result
 def checkPostback(output):
     if output['entry'][0]['messaging'][0].get('postback'):
-      id=  output['entry'][0]['messaging'][0]['sender']['id']    
+      id=  output['entry'][0]['messaging'][0]['sender']['id']  
+      a=requests.get("https://graph.facebook.com/2173146092778055?fields=first_name,last_name,profile_pic&access_token=ACCESS_TOKEN")
+      data=a.json()
+      name=data['first_name']
       if output['entry'][0]['messaging'][0]['postback']['payload']=='Startyaar':
-         welcome='Welcome! I am your friend brilu and I will help you with your exams!! :D'
+         welcome='Welcome! '+name+' I am your friend brilu and I will help you with your exams!! :D'
          updateUsersInformation(id,lastQuestion="",totalquestionasked=0,totalquestionright=0,currenttopic="")
          send_message(id,'a','a', welcome)
          pay({"recipient":{"id":id},"sender_action":"typing_on"})
