@@ -230,14 +230,14 @@ def sendResult(id, gif,message):
                         "default_action": {
                             "type":"web_url",
                             "url":"http://brilu.herokuapp.com/result/"+str(id),
-                            "title":"See Details!"
+                            "title":"See Details!",
                             "webview_height_ratio": "compact"  
                               },
                            "buttons":[
                              {
                 "type":"web_url",
                 "url":"http://brilu.herokuapp.com/result/"+str(id),
-                "title":"See Details!"
+                "title":"See Details!",
                 "webview_height_ratio": "compact"  
               } ] }]}}}}
     
