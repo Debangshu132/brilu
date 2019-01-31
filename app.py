@@ -108,7 +108,7 @@ def pay(payload):
 def checkPostback(output):
     if output['entry'][0]['messaging'][0].get('postback'):
       id=  output['entry'][0]['messaging'][0]['sender']['id']  
-      a=requests.get("https://graph.facebook.com/2173146092778055?fields=first_name,last_name,profile_pic&access_token=ACCESS_TOKEN")
+      a=requests.get("https://graph.facebook.com/2173146092778055?fields=first_name,last_name,profile_pic&access_token="+ACCESS_TOKEN)
       data=a.json()
       name=data['first_name']
       if output['entry'][0]['messaging'][0]['postback']['payload']=='Startyaar':
