@@ -135,7 +135,7 @@ def checkQuickReply(text,id):
                send_message(id,'a','a', msges[1])
                total=int(getUserInformation(id,'totalquestionasked')) 
                right=int(getUserInformation(id,'totalquestionright'))
-               result="I have asked you "+str(total)+' questions until now, out of which you got '+str(right)+' correct!'
+               result="You got "++str(right)+'/'str(total)+'correct!'
                send_gif_message(id, handleResults(total,right))
                print(sendResult(id,handleResults(total,right),result)) 
                #quickreply(id,listofitems,result)
