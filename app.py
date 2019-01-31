@@ -229,8 +229,7 @@ def result():
         R=int(getUserInformation('2173146092778055','totalquestionright'))
         T=int(getUserInformation('2173146092778055','totalquestionasked'))
         W=T-R      
-        return render_template('chart.html',right=R),
-                               wrong=W)
+        return render_template('chart.html',right=R, wrong=W)
 
 if __name__ == "__main__":
     app.run()
