@@ -113,7 +113,7 @@ def checkPostback(output):
       name=data['first_name']
       if output['entry'][0]['messaging'][0]['postback']['payload']=='Startyaar':
          welcome='Welcome! '+name+' I am your friend brilu and I will help you with your exams!! :D'
-         updateUsersInformation(id,lastQuestion="",totalquestionasked=0,totalquestionright=0,currenttopic="")
+         updateUsersInformation(id,lastQuestion="",totalquestionasked=0,totalquestionright=0,currenttopic="",name=name)
          send_message(id,'a','a', welcome)
          pay({"recipient":{"id":id},"sender_action":"typing_on"})
          exam='Choose any topic to start practising probems!'   
