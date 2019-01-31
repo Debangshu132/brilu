@@ -227,7 +227,7 @@ def sendResult(id):
 def result():
         global RID
         return render_template('chart.html',right=4,
-                               total=2)
+                               wrong=2)
 
 if __name__ == "__main__":
     app.run()
