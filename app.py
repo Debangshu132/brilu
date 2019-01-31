@@ -233,7 +233,7 @@ def sendResult(id, gif,message):
               {
                 "type": "web_url",
                 "url": "https://www.messenger.com/t/examchatbot", 
-                "title": "Chat now !"
+                "title": "Chat now"
               }]}]}}}}
     response=   {
      "recipient":{
