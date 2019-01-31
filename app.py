@@ -225,12 +225,12 @@ def sendResult(id, gif,message):
         "template_type": "generic",
         "elements": [
           {
-            "title": "Hey! I just took the exam on Brilu!!",
-            "subtitle": "My result is: "+ "\n" + message,
+            "title": "I was just answering Brilu's questions!!",
+            "subtitle": "He says: " + message,
             #"image_url": "<IMAGE_URL_TO_DISPLAY>",
             "default_action": {
               "type": "web_url",
-              "url": "https://www.messenger.com/t/examchatbot"
+              "url": "https://www.messenger.com/t/teacherchatbot"
             },
             "buttons": [
               {
