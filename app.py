@@ -215,7 +215,7 @@ def sendResult(id):
     response= [
                 {
              "type":"web_url",
-            "url":"http://brilu.herokuapp.com/result",
+            "url":"http://brilu.herokuapp.com/result/"+str(id),
             "title":"See result",
             "webview_height_ratio": "compact"
                 }
@@ -223,11 +223,11 @@ def sendResult(id):
         
     bot.send_button_message(id,'Get detailed result',response)
     return 'ok'
-@app.route("/result", methods=['GET', 'POST'])
-def result():
+@app.route("/result/<id>", methods=['GET', 'POST'])
+def result(id):
         global RID
-        R=int(getUserInformation(RID,'totalquestionright'))
-        T=int(getUserInformation(RID,'totalquestionasked'))
+        R=int(getUserInformation(id,'totalquestionright'))
+        T=int(getUserInformation(id,'totalquestionasked'))
         W=T-R      
         return render_template('chart.html',right=R, wrong=W)
 
