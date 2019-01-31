@@ -43,7 +43,7 @@ def decision(input):
          return msg,listitems 
      if input=='Lets test':
            msg=['okay lets test your knowledge! ','choose a topic from below','biology']
-           listitems=['JEE Mains','physics','biology']
+           listitems=listOfExams()
            return msg,listitems  
      if input=='Go Back':
             msg=['Going back,Which exam would you like to take']
