@@ -213,6 +213,28 @@ def send_gif_message(recipient_id, message):
     r = requests.post("https://graph.facebook.com/v2.6/me/messages", params=params, headers=headers, data=data)
 def sendResult(id, gif,message):
     url = search_gif(gif)
+    share={
+  "type": "element_share",
+  "share_contents": { 
+    "attachment": {
+      "type": "template",
+      "payload": {
+        "template_type": "generic",
+        "elements": [
+          {
+            "title": "Hey! I just took the exam on Brilu!!",
+            "subtitle": "My result is: "+ "\n" + message,
+            #"image_url": "<IMAGE_URL_TO_DISPLAY>",
+            "default_action": {
+              "type": "web_url",
+              "url": "https://www.messenger.com/t/examchatbot"
+            },
+            "buttons": [
+              {
+                "type": "web_url",
+                "url": "https://www.messenger.com/t/examchatbot", 
+                "title": "Chat now !"
+              }]}]}}}}
     response=   {
      "recipient":{
            "id":id
@@ -251,7 +273,7 @@ def sendResult(id, gif,message):
                 "url":"http://brilu.herokuapp.com/result/"+str(id),
                 "title":"See Details!",
                 "webview_height_ratio": "compact"  
-              } ] }]}}}}
+              },share ] }]}}}}
     
     r=pay(response)
     return r
