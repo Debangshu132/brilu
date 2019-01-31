@@ -226,8 +226,8 @@ def sendResult(id):
 @app.route("/result", methods=['GET', 'POST'])
 def result():
         global RID
-        R=int(getUserInformation('2173146092778055','totalquestionright'))
-        T=int(getUserInformation('2173146092778055','totalquestionasked'))
+        R=int(getUserInformation(RID,'totalquestionright'))
+        T=int(getUserInformation(RID,'totalquestionasked'))
         W=T-R      
         return render_template('chart.html',right=R, wrong=W)
 
