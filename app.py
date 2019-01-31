@@ -138,7 +138,7 @@ def checkQuickReply(text,id):
                result="I have asked you "+str(total)+' questions until now, out of which you got '+str(right)+' correct!'
                send_gif_message(id, handleResults(total,right))
                print(sendResult(id,handleResults(total,right),result)) 
-               quickreply(id,listofitems,result)
+               #quickreply(id,listofitems,result)
                return True 
            for msg in range(0,len(msges)-2):
               send_message(id,'a','a', msges[msg])
@@ -218,6 +218,19 @@ def sendResult(id, gif,message):
            "id":id
                       },
      "message":{
+      "quick_replies": [
+      {
+        "content_type":"text",
+        "title":"Quick Reply 1",
+        
+        "payload":"payload1"
+      },
+      {
+        "content_type":"text",
+        "title":"Quick Reply 2",
+        "payload":"payload2"
+      }
+    ],   
       "attachment":{
         "type":"template",
           "payload":{
