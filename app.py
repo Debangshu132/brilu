@@ -109,7 +109,7 @@ def checkPostback(output):
     if output['entry'][0]['messaging'][0].get('postback'):
       id=  output['entry'][0]['messaging'][0]['sender']['id']    
       if output['entry'][0]['messaging'][0]['postback']['payload']=='Startyaar':
-         welcome='Welcome! I am your friend brilu and I will help you with your exams!! :)'
+         welcome='Welcome! I am your friend brilu and I will help you with your exams!! :D'
          updateUsersInformation(id,lastQuestion="",totalquestionasked=0,totalquestionright=0,currenttopic="")
          send_message(id,'a','a', welcome)
          pay({"recipient":{"id":id},"sender_action":"typing_on"})
