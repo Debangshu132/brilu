@@ -78,18 +78,25 @@ def decision(input):
 def decisionRightWrong(rightwrong,numberofrightwrong):
     if rightwrong=='right':
         if numberofrightwrong==0:
-            return 'Thats right! :)'
+            Arr=['Thats right! :)','Yup, thats right','you got it right!','Your answer is correct :)']
+            return random.choice(Arr)
         if numberofrightwrong==1:
-            return 'Right again!!'
+             Arr=['Right again!','Yay! again right! :D','Absolutely right again!','You got it right again! :D']
+            return random.choice(Arr)
         if numberofrightwrong==2:
-            return 'Right again!!!! :D you are on fire'
+            Arr=['You are on fire :D , Thats right!','Wow I am so proud of you,Right AGAIN!! :D','You are a genius!,RIGHT AGAIN :D']
+            return random.choice(Arr)
+        
     if rightwrong=='wrong':
         if numberofrightwrong==0:
-            return 'Thats wrong !'
+            Arr=['Thats wrong !','Its wrong ','That answer is wrong','Sorry but its incorrect']
+            return random.choice(Arr)
         if numberofrightwrong==1:
-            return 'OOPS! wrong again!!' 
-        if numberofrightwrong==2:
-            return 'Well this is embarrasing. You should try harder may be' 
+            Arr=['OOPS! wrong again!','Its wrong again!!','You got it wrong again','thats incorrect again :)']
+            return random.choice(Arr)
+        if numberofrightwrong>=2:
+            Arr=['Well this is embarrasing. You should try harder may be :)','Think hard!! this is not good','Sorry to say but WRONG AGAIN!!!!' ]
+            return random.choice(Arr) 
     
     
     
