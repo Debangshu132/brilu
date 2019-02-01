@@ -63,7 +63,7 @@ def receive_message():
                         updateUsersInformation(recipient_id,totalquestionasked=int(getUserInformation(recipient_id,'totalquestionasked'))+1)
                         rightAns=getUserInformation(recipient_id,'lastRightAnswer')
                         
-                        noofconsecutivewrong=getUserInformation(recipient_id,'noofconsecutiveright')
+                        noofconsecutivewrong=getUserInformation(recipient_id,'noofconsecutivewrong')
                         updateUsersInformation(recipient_id,noofconsecutiveright=0)
                         updateUsersInformation(recipient_id,noofconsecutivewrong=noofconsecutivewrong+1)
                         reply=decisionRightWrong('wrong', noofconsecutivewrong)
