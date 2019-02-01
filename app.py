@@ -7,7 +7,7 @@ import os
 import requests
 
 import json
-from decisionTree import decision,listOfExams,askQuestion,handleResults
+from decisionTree import decision,listOfExams,askQuestion,handleResults,decisionRightWrong
 from intelligence import BRAIN
 import time
 #from sklearn.feature_extraction.text import CountVectorizer
@@ -47,9 +47,14 @@ def receive_message():
                     if  message['message'].get('quick_reply'):
                       if message['message']['quick_reply']['payload']=='right':
                         
-                        quickreply(recipient_id,['Another One','Go Back','Results'],'Thats right :D')
+                        
                         updateUsersInformation(recipient_id,totalquestionasked=int(getUserInformation(recipient_id,'totalquestionasked'))+1)
                         updateUsersInformation(recipient_id,totalquestionright=int(getUserInformation(recipient_id,'totalquestionright'))+1)
+                        
+                        noofconsecutiveright=getUserInformation(recipient_id,'noofconsecutiveright')
+                        updateUsersInformation(recipient_id,noofconsecutivewrong=0)
+                        reply=decisionRightWrong('right', noofconsecutiveright)
+                        quickreply(recipient_id,['Another One','Go Back','Results'],reply)
                         
                         return "Message Processed"
                       if message['message']['quick_reply']['payload']=='wrong':
