@@ -256,7 +256,7 @@ def sendResult(id, gif,message):
             "buttons": [
               {
                 "type": "web_url",
-                "url": "https://www.messenger.com/t/examchatbot", 
+                "url": "https://www.messenger.com/t/teacherchatbot", 
                 "title": "Chat now"
               }]}]}}}}
     response=   {
