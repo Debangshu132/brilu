@@ -62,7 +62,15 @@ def receive_message():
                         
                         updateUsersInformation(recipient_id,totalquestionasked=int(getUserInformation(recipient_id,'totalquestionasked'))+1)
                         rightAns=getUserInformation(recipient_id,'lastRightAnswer')
-                        quickreply(recipient_id,['Try Another','Go Back','Results'],'sorry Thats wrong! :) ,the right answer is: '+'\n'+rightAns)
+                        
+                        noofconsecutivewrong=getUserInformation(recipient_id,'noofconsecutiveright')
+                        updateUsersInformation(recipient_id,noofconsecutiveright=0)
+                        updateUsersInformation(recipient_id,noofconsecutivewrong=noofconsecutivewrong+1)
+                        reply=decisionRightWrong('wrong', noofconsecutivewrong)
+                        
+                        
+                        
+                        quickreply(recipient_id,['Try Another','Go Back','Results'],reply+ ' ,the right answer is: '+'\n'+rightAns)
                         
                         return "Message Processed"
                    
