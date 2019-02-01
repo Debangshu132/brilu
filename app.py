@@ -53,6 +53,7 @@ def receive_message():
                         
                         noofconsecutiveright=getUserInformation(recipient_id,'noofconsecutiveright')
                         updateUsersInformation(recipient_id,noofconsecutivewrong=0)
+                        updateUsersInformation(recipient_id,noofconsecutiveright=noofconsecutiveright+1)
                         reply=decisionRightWrong('right', noofconsecutiveright)
                         quickreply(recipient_id,['Another One','Go Back','Results'],reply)
                         
