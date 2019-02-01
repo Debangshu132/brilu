@@ -82,7 +82,7 @@ def decisionRightWrong(rightwrong,numberofrightwrong):
             return random.choice(Arr)
         if numberofrightwrong==1:
              Arr=['Right again!','Yay! again right! :D','Absolutely right again!','You got it right again! :D']
-            return random.choice(Arr)
+             return random.choice(Arr)
         if numberofrightwrong>=2:
             Arr=['You are on fire :D , Thats right!','Wow I am so proud of you,Right AGAIN!! :D','You are a genius!,RIGHT AGAIN :D']
             return random.choice(Arr)
