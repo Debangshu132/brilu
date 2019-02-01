@@ -73,7 +73,7 @@ def decision(input):
         
      if input=='I am Bored!':  
             msg=['I am Bored!']
-            listitems=['Go Back','Lets test']
+            listitems=['Go Back','Lets test','Tell me a joke']
             return msg,listitems
 def decisionRightWrong(rightwrong,numberofrightwrong):
     if rightwrong=='right':
