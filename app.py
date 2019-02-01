@@ -148,6 +148,8 @@ def checkQuickReply(text,id):
                  send_gif_message(id,'study quotes')
                  quickreply(id,listofitems,'lets study now!')
                  return True  
+           if msges[0]=='Going back,Which exam would you like to take':
+               updateUsersInformation(id,noofconsecutivewrong=0,noofconsecutiveright=0)
            if msges[0]=="Results":
                send_message(id,'a','a', msges[1])
                total=int(getUserInformation(id,'totalquestionasked')) 
