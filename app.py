@@ -127,6 +127,7 @@ def checkPostback(output):
       name=data['first_name']
       if output['entry'][0]['messaging'][0]['postback']['payload']=='Startyaar':
          welcome='Welcome! '+name+' I am your friend brilu and I will help you with your exams!! :D'
+         updateUsersInformation(id,noofconsecutivewrong=0,noofconsecutiveright=0)   
          updateUsersInformation(id,lastQuestion="",totalquestionasked=0,totalquestionright=0,currenttopic="",name=name)
          send_message(id,'a','a', welcome)
          pay({"recipient":{"id":id},"sender_action":"typing_on"})
@@ -142,6 +143,10 @@ def checkQuickReply(text,id):
          try: 
            msges,listofitems=decision(text)
            if msges[0]=='okay,Lets start':
+                sendQuestion(id)
+                updateUsersInformation(id,noofconsecutivewrong=0,noofconsecutiveright=0)
+                return True  
+           if msges[0]=='okay,Lets start again':
                 sendQuestion(id)
                 return True  
            if msges[0]==  'Inspire me':
