@@ -75,6 +75,16 @@ def decision(input):
             msg=['Inspire me']
             listitems=['Go Back','Lets test']
             return msg,listitems
+def decisionRightWrong(rightwrong,numberofrightwrong):
+    if rightwrong=='right':
+        if numberofrightwrong==0:
+            return 'Thats right ! :D'
+        if numberofrightwrong==1:
+            return 'Right again!!'
+    
+    
+    
+    
 def handleResults(total,right):
     percent=(right*100.0/total)
     if percent<=50:
