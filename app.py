@@ -55,7 +55,7 @@ def receive_message():
                         updateUsersInformation(recipient_id,noofconsecutivewrong=0)
                         updateUsersInformation(recipient_id,noofconsecutiveright=noofconsecutiveright+1)
                         reply=decisionRightWrong('right', noofconsecutiveright)
-                        quickreply(recipient_id,['Another One','Go Back','Results'],reply)
+                        quickreply(recipient_id,['Another One','Go Back','Results','I am Bored!'],reply)
                         
                         return "Message Processed"
                       if message['message']['quick_reply']['payload']=='wrong':
@@ -70,7 +70,7 @@ def receive_message():
                         
                         
                         
-                        quickreply(recipient_id,['Try Another','Go Back','Results'],reply+ ' ,the right answer is: '+'\n'+rightAns)
+                        quickreply(recipient_id,['Try Another','Go Back','Results','I am Bored!'],reply+ ' ,the right answer is: '+'\n'+rightAns)
                         
                         return "Message Processed"
                    
@@ -135,9 +135,9 @@ def checkPostback(output):
          time.sleep(1)   
          quickreply(id,listOfExams,exam)
       if output['entry'][0]['messaging'][0]['postback']['payload']=='right':
-          quickreply(id,['Lets test','Inspire me'],'Thats right!!')
+          quickreply(id,['Lets test','I am Bored!'],'Thats right!!')
       if output['entry'][0]['messaging'][0]['postback']['payload']=='wrong':
-          quickreply(id,['Try again','Inspire me'],'Sorry thats wrong!')      
+          quickreply(id,['Try again','I am Bored!'],'Sorry thats wrong!')      
     
 def checkQuickReply(text,id): 
          try: 
@@ -149,7 +149,7 @@ def checkQuickReply(text,id):
            if msges[0]=='okay,Lets start again':
                 sendQuestion(id)
                 return True  
-           if msges[0]==  'Inspire me':
+           if msges[0]==  'I am Bored!':
                  send_gif_message(id,'study quotes')
                  quickreply(id,listofitems,'lets study now!')
                  return True  
