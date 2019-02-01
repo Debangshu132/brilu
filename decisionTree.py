@@ -71,8 +71,8 @@ def decision(input):
             listitems=['Go Back']
             return msg,listitems
         
-     if input=='Inspire me':  
-            msg=['Inspire me']
+     if input=='I am Bored!':  
+            msg=['I am Bored!']
             listitems=['Go Back','Lets test']
             return msg,listitems
 def decisionRightWrong(rightwrong,numberofrightwrong):
