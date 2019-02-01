@@ -126,7 +126,7 @@ def checkPostback(output):
       data=a.json()
       name=data['first_name']
       if output['entry'][0]['messaging'][0]['postback']['payload']=='Startyaar':
-         welcome='Welcome! '+name+' I am your friend brilu and I will help you with your exams!! :D'
+         welcome='Welcome! '+name+' I am an AI-powered teacher bot,I will challenge your knowledge and help you learn while having fun! Get ready for a revolution in education :D'
          updateUsersInformation(id,noofconsecutivewrong=0,noofconsecutiveright=0)   
          updateUsersInformation(id,lastQuestion="",totalquestionasked=0,totalquestionright=0,currenttopic="",name=name)
          send_message(id,'a','a', welcome)
