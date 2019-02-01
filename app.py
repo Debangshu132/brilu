@@ -79,7 +79,7 @@ def receive_message():
                     isQuickReply=checkQuickReply(message['message'].get('text'),recipient_id)
                     if isQuickReply==False:
                         #send_message(recipient_id,topic,mood, response)
-                        quickreply(recipient_id,['Lets test','Inspire me'],response)
+                        quickreply(recipient_id,['Lets test', 'I am Bored!'],response)
                 #if user sends us a GIF, photo,video, or any other non-text item
                 if message['message'].get('attachments'):
                     response = 'sorry i cannot handle attachments now, but wait for an update'
