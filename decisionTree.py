@@ -54,11 +54,11 @@ def decision(input):
             listitems=['Go Back']
             return msg,listitems
      if input=='Try Another':
-            msg=['okay,Lets start']
+            msg=['okay,Lets start again']
             listitems=['Go Back']
             return msg,listitems   
      if input=='Another One':
-            msg=['okay,Lets start']
+            msg=['okay,Lets start again']
             listitems=['Go Back']
             return msg,listitems    
         
