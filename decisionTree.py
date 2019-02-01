@@ -78,9 +78,18 @@ def decision(input):
 def decisionRightWrong(rightwrong,numberofrightwrong):
     if rightwrong=='right':
         if numberofrightwrong==0:
-            return 'Thats right ! :D'
+            return 'Thats right! :)'
         if numberofrightwrong==1:
             return 'Right again!!'
+        if numberofrightwrong==2:
+            return 'Right again!!!! :D you are on fire'
+    if rightwrong=='wrong':
+        if numberofrightwrong==0:
+            return 'Thats wrong !'
+        if numberofrightwrong==1:
+            return 'OOPS! wrong again!!' 
+        if numberofrightwrong==2:
+            return 'Well this is embarrasing. You should try harder may be' 
     
     
     
