@@ -48,12 +48,12 @@ def receive_message():
                       if message['message']['quick_reply']['payload']=='right':
                         
                         currtopic=getUserInformation(recipient_id,"currenttopic")
-                        currtotal=str(currtopic)+'total'
-                        currright=str(currtopic)+'right'
+                        #currtotal=str(currtopic)+'total'
+                        #currright=str(currtopic)+'right'
                         updateUsersInformation(recipient_id,totalquestionasked=int(getUserInformation(recipient_id,'totalquestionasked'))+1)
                         updateUsersInformation(recipient_id,totalquestionright=int(getUserInformation(recipient_id,'totalquestionright'))+1)
-                        updateUsersInformation(recipient_id,currtotal=int(getUserInformation(recipient_id,str(currtotal)))+1)
-                        updateUsersInformation(recipient_id,currright=int(getUserInformation(recipient_id,str(currright)))+1)
+                        updateUsersInformation(recipient_id,str(str(currtopic)+'total')=int(getUserInformation(recipient_id,str(str(currtopic)+'total')))+1)
+                        updateUsersInformation(recipient_id,str(str(currtopic)+'total')=int(getUserInformation(recipient_id,str(str(currtopic)+'right')))+1)
                         noofconsecutiveright=getUserInformation(recipient_id,'noofconsecutiveright')
                         updateUsersInformation(recipient_id,noofconsecutivewrong=0)
                         updateUsersInformation(recipient_id,noofconsecutiveright=noofconsecutiveright+1)
