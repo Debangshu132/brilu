@@ -314,7 +314,20 @@ def result(id):
         global RID
         R=int(getUserInformation(id,'totalquestionright'))
         T=int(getUserInformation(id,'totalquestionasked'))
-        W=T-R      
+        PR=int(getUserInformation(id,'physicsright'))
+        PT=int(getUserInformation(id,'physicstotal'))
+        CR=int(getUserInformation(id,'chemistryright'))
+        CT=int(getUserInformation(id,'chemistrytotal'))
+        BR=int(getUserInformation(id,'biologyright'))
+        BT=int(getUserInformation(id,'biologytotal'))
+        MR=int(getUserInformation(id,'mathright'))
+        MT=int(getUserInformation(id,'mathtotal'))
+        W=T-R 
+        PW=PT-PR
+        BW=BT-BR 
+        CW=CT-CR 
+        MW=MT-MR 
+        
         return render_template('chart.html',right=R, wrong=W)
 
 if __name__ == "__main__":
