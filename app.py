@@ -345,13 +345,13 @@ def initializeUser(id):
                            noofconsecutiveright=0,
                            lastRightAnswer: "",
         physicstotal: 0,
-        physicsright": 0,
-        chemistrytotal": 0,
-        chemistryright": 0,
-        biologytotal": 0,
-        biologyright": 0,
-        mathtotal": 0,
-        mathright": 0
+        physicsright: 0,
+        chemistrytotal: 0,
+        chemistryright: 0,
+        biologytotal: 0,
+        biologyright: 0,
+        mathtotal: 0,
+        mathright: 0
                           )
     
 
