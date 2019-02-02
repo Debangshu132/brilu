@@ -48,12 +48,12 @@ def receive_message():
                       if message['message']['quick_reply']['payload']=='right':
                         
                         currtopic=getUserInformation(recipient_id,"currenttopic")
-                        currtotal=str(currtopic)+'total'
-                        currright=str(currtopic)+'right'
+                        #currtotal=str(currtopic)+'total'
+                        #currright=str(currtopic)+'right'
                         updateUsersInformation(recipient_id,totalquestionasked=int(getUserInformation(recipient_id,'totalquestionasked'))+1)
                         updateUsersInformation(recipient_id,totalquestionright=int(getUserInformation(recipient_id,'totalquestionright'))+1)
-                        updateUsersInformation(recipient_id,**{dummy(currtotal):int(getUserInformation(recipient_id,str(str(currtopic)+'total')))+1})
-                        updateUsersInformation(recipient_id,**{dummy(currright):int(getUserInformation(recipient_id,str(str(currtopic)+'right')))+1})
+                        updateUsersInformation(recipient_id,**{str(currtopic)+'total':int(getUserInformation(recipient_id,str(str(currtopic)+'total')))+1})
+                        updateUsersInformation(recipient_id,**{str(currtopic)+'right':int(getUserInformation(recipient_id,str(str(currtopic)+'right')))+1})
                         noofconsecutiveright=getUserInformation(recipient_id,'noofconsecutiveright')
                         updateUsersInformation(recipient_id,noofconsecutivewrong=0)
                         updateUsersInformation(recipient_id,noofconsecutiveright=noofconsecutiveright+1)
@@ -69,10 +69,15 @@ def receive_message():
                         noofconsecutivewrong=getUserInformation(recipient_id,'noofconsecutivewrong')
                         updateUsersInformation(recipient_id,noofconsecutiveright=0)
                         updateUsersInformation(recipient_id,noofconsecutivewrong=noofconsecutivewrong+1)
+                        
+                        
+                        
+                        currtopic=getUserInformation(recipient_id,"currenttopic")
+                        #currtotal=str(currtopic)+'total'
+                        updateUsersInformation(recipient_id,**{str(currtopic)+'total':int(getUserInformation(recipient_id,str(str(currtopic)+'total')))+1})
+                        
+                        
                         reply=decisionRightWrong('wrong', noofconsecutivewrong)
-                        
-                        
-                        
                         quickreply(recipient_id,['Try Another','Go Back','Results','I am Bored!'],reply+ ' ,the right answer is: '+'\n'+rightAns)
                         
                         return "Message Processed"
@@ -304,8 +309,6 @@ def sendResult(id, gif,message):
     
     r=pay(response)
     return r
-def dummy(text):
-    return text
 @app.route("/result/<id>", methods=['GET', 'POST'])
 def result(id):
         global RID
