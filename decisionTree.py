@@ -42,7 +42,7 @@ def decision(input):
          listitems=['Okay Sure','Go Back']
          return msg,listitems 
      if input=='Lets test':
-           msg=['okay lets test your knowledge! ','Choose a topic from below','biology']
+           msg=['Okay, lets test your knowledge! ','Choose a topic from below','biology']
            listitems=listOfExams()
            return msg,listitems  
      if input=='Go Back':
