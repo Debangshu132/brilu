@@ -22,23 +22,23 @@ def listOfExams():
     return ['physics','biology','chemistry','math']
 def decision(input):
      if input=='JEE Mains':
-         msg=['Okay so JEE mains it is! I will give you some random questions from mains paper ',' untill you decide its enough','JEE Mains']
+         msg=['Okay so JEE mains it is! I will continue giving you some random questions from mains paper ',' untill you decide its enough','JEE Mains']
          listitems=['Okay Sure','Go Back']
          return msg,listitems
      if input=='biology':
-         msg=['Okay so biology it is! I will give you some random questions from biology ',' untill you decide its enough','biology']
+         msg=['Okay so biology it is! I will continue giving you some random questions from biology ',' untill you decide its enough','biology']
          listitems=['Okay Sure','Go Back']
          return msg,listitems
      if input=='math':
-         msg=['Okay so math it is! I will give you some random questions from math ',' untill you decide its enough','math']
+         msg=['Okay so math it is! I will continue giving you some random questions from math ',' untill you decide its enough','math']
          listitems=['Okay Sure','Go Back']
          return msg,listitems 
      if input=='chemistry':
-         msg=['Okay so chemistry it is! I will give you some random questions from chemistry ',' untill you decide its enough','chemistry']
+         msg=['Okay so chemistry it is! I continue giving give you some random questions from chemistry ',' untill you decide its enough','chemistry']
          listitems=['Okay Sure','Go Back']
          return msg,listitems 
      if input=='physics':
-         msg=['Okay so physics it is! I will give you some random questions from physics ',' untill you decide its enough','physics']
+         msg=['Okay so physics it is! I will continue giving you some random questions from physics ',' untill you decide its enough','physics']
          listitems=['Okay Sure','Go Back']
          return msg,listitems 
      if input=='Lets test':
