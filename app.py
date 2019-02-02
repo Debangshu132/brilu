@@ -283,6 +283,11 @@ def sendResult(id, gif,message):
         "content_type":"text",
         "title":"Continue",
         "payload":"Continue"
+      },
+        {
+        "content_type":"text",
+        "title":"I am Bored!",
+        "payload":'I am Bored!'
       }
     ],   
       "attachment":{
