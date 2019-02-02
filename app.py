@@ -328,7 +328,7 @@ def result(id):
         CW=CT-CR 
         MW=MT-MR 
         
-        return render_template('chart.html',right=R, wrong=W)
+        return render_template('chart.html',R=R, W=W,PR=PR, PW=PW,CR=CR, CW=CW,MR=MR, MW=MW,BR=BR, BW=BW,)
 
 if __name__ == "__main__":
     app.run()
