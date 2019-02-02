@@ -135,8 +135,7 @@ def checkPostback(output):
       name=data['first_name']
       if output['entry'][0]['messaging'][0]['postback']['payload']=='Startyaar':
          welcome='Welcome! '+name+' I am an AI-powered teacher bot,I will challenge your knowledge and help you learn while having fun! Get ready for a revolution in education :D'
-         updateUsersInformation(id,noofconsecutivewrong=0,noofconsecutiveright=0)   
-         updateUsersInformation(id,lastQuestion="",totalquestionasked=0,totalquestionright=0,currenttopic="",name=name)
+         initializeUser(id)
          send_message(id,'a','a', welcome)
          pay({"recipient":{"id":id},"sender_action":"typing_on"})
          exam='Choose any topic to start practising problems!'   
@@ -333,7 +332,28 @@ def result(id):
         CW=CT-CR 
         MW=MT-MR 
         
-        return render_template('chart.html',R=R, W=W,PR=PR, PW=PW,CR=CR, CW=CW,MR=MR, MW=MW,BR=BR, BW=BW,)
+        return render_template('chart.html',R=R, W=W,PR=PR, PW=PW,CR=CR, CW=CW,MR=MR, MW=MW,BR=BR, BW=BW)
+def initializeUser(id):
+    a=requests.get("https://graph.facebook.com/"+id+"?fields=first_name,last_name,profile_pic&access_token="+ACCESS_TOKEN)
+    data=a.json()
+    name=data['first_name']
+    updateUsersInformation(id,lastQuestion="",
+                                totalquestionasked=0,
+                           totalquestionright=0,
+                           currenttopic="",name=name,
+                               noofconsecutivewrong=0,
+                           noofconsecutiveright=0,
+                           lastRightAnswer: "",
+        physicstotal: 0,
+        physicsright": 0,
+        chemistrytotal": 0,
+        chemistryright": 0,
+        biologytotal": 0,
+        biologyright": 0,
+        mathtotal": 0,
+        mathright": 0
+                          )
+    
 
 if __name__ == "__main__":
     app.run()
