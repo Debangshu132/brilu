@@ -51,7 +51,7 @@ def receive_message():
                         updateUsersInformation(recipient_id,totalquestionasked=int(getUserInformation(recipient_id,'totalquestionasked'))+1)
                         updateUsersInformation(recipient_id,totalquestionright=int(getUserInformation(recipient_id,'totalquestionright'))+1)
                         updateUsersInformation(recipient_id,currtopic+str(total)=int(getUserInformation(recipient_id,currtopic+'total'))+1)
-                        updateUsersInformation(recipient_id,currtopic+str(right)t=int(getUserInformation(recipient_id,currtopic+'right'))+1)
+                        updateUsersInformation(recipient_id,currtopic+str(right)=int(getUserInformation(recipient_id,currtopic+'right'))+1)
                         noofconsecutiveright=getUserInformation(recipient_id,'noofconsecutiveright')
                         updateUsersInformation(recipient_id,noofconsecutivewrong=0)
                         updateUsersInformation(recipient_id,noofconsecutiveright=noofconsecutiveright+1)
