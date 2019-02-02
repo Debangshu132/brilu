@@ -91,7 +91,7 @@ def receive_message():
                 #if user sends us a GIF, photo,video, or any other non-text item
                 if message['message'].get('attachments'):
                     response = 'sorry i cannot handle attachments now, but wait for an update'
-                    send_message(recipient_id,'dummy','dummy', response)
+                    quickreply(recipient_id,['Lets test', 'I am Bored!'],response)
     return "Message Processed"
 
 
