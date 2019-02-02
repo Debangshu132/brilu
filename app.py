@@ -304,7 +304,7 @@ def sendResult(id, gif,message):
                 "type":"web_url",
                 "url":"http://brilu.herokuapp.com/result/"+str(id),
                 "title":"See Details!",
-                "webview_height_ratio": "compact"  
+                "webview_height_ratio": "tall"  
               },share ] }]}}}}
     
     r=pay(response)
