@@ -346,6 +346,8 @@ def initializeUser(id):
                            lastRightAnswer= "",
         physicstotal= 0,
         physicsright= 0,
+        aptitudetotal= 0,
+        aptituderight= 0,                   
         chemistrytotal= 0,
         chemistryright= 0,
         biologytotal= 0,
