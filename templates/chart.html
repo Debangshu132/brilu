@@ -21,6 +21,14 @@
           function drawChart() {
 
             // Create the data table.
+            var data0 = new google.visualization.DataTable();
+            data0.addColumn('string', 'parameter');    
+            data0.addColumn('number', 'value');
+            data0.addRows([
+              ['right', {{AR}}],
+              ['wrong', {{AW}}],
+             
+            ]);    
             var data = new google.visualization.DataTable();
             data.addColumn('string', 'parameter');    
             data.addColumn('number', 'value');
@@ -65,6 +73,9 @@
             
 
             // Set chart options
+            var options0 = {'title':'Aptitude',
+                           'width':1000,'fontSize': 40,
+                           'height':700};    
             var options = {'title':'Overall Result',
                            'width':1000,'fontSize': 40,
                            'height':700};
@@ -84,6 +95,8 @@
                            'height':700};                           
 
             // Instantiate and draw our chart, passing in some options.
+            var chart0 = new google.visualization.PieChart(document.getElementById('chart_div0'));
+            chart0.draw(data0, options0);    
             var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
             chart.draw(data, options);
             var chart2 = new google.visualization.PieChart(document.getElementById('chart_div2'));
@@ -102,6 +115,7 @@
 
       <body>
         <!--Divs that will hold the charts-->
+         <div id="chart_div0"></div>    
         <div id="chart_div"></div>
         <div id="chart_div2"></div>
         <div id="chart_div3"></div>
