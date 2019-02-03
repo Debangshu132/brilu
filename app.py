@@ -318,6 +318,8 @@ def result(id):
         global RID
         R=int(getUserInformation(id,'totalquestionright'))
         T=int(getUserInformation(id,'totalquestionasked'))
+        AR=int(getUserInformation(id,'aptituderight'))
+        AT=int(getUserInformation(id,'aptitudetotal'))
         PR=int(getUserInformation(id,'physicsright'))
         PT=int(getUserInformation(id,'physicstotal'))
         CR=int(getUserInformation(id,'chemistryright'))
@@ -327,12 +329,13 @@ def result(id):
         MR=int(getUserInformation(id,'mathright'))
         MT=int(getUserInformation(id,'mathtotal'))
         W=T-R 
+        AW=AT-AR 
         PW=PT-PR
         BW=BT-BR 
         CW=CT-CR 
         MW=MT-MR 
         
-        return render_template('chart.html',R=R, W=W,PR=PR, PW=PW,CR=CR, CW=CW,MR=MR, MW=MW,BR=BR, BW=BW)
+        return render_template('chart.html',R=R, W=W,PR=PR, PW=PW,CR=CR, CW=CW,MR=MR, MW=MW,BR=BR, BW=BW,AR=AR,AW=AW)
 def initializeUser(id):
     a=requests.get("https://graph.facebook.com/"+id+"?fields=first_name,last_name,profile_pic&access_token="+ACCESS_TOKEN)
     data=a.json()
