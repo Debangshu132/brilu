@@ -134,7 +134,7 @@ def checkPostback(output):
       data=a.json()
       name=data['first_name']
       if output['entry'][0]['messaging'][0]['postback']['payload']=='Startyaar':
-         welcome='Welcome! '+name+' I am an AI-powered bot Brilu,I will help you practice MCQ problems to get you job while having fun! Get ready for the new improved kind of learning! :D'
+         welcome='Welcome! '+name+' I am an AI-powered bot Brilu,I will help you practice MCQ problems while having fun! Get ready for the new improved kind of learning! :D'
          initializeUser(id)
          send_message(id,'a','a', welcome)
          pay({"recipient":{"id":id},"sender_action":"typing_on"})
