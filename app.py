@@ -43,44 +43,12 @@ def receive_message():
                 recipient_id = message['sender']['id']
                 RID=recipient_id 
                 if message['message'].get('text'):
+                     isrightwrong=False
                     typingon=pay({"recipient":{"id":recipient_id},"sender_action":"typing_on"})
                     if  message['message'].get('quick_reply'):
-                      if message['message']['quick_reply']['payload']=='right':
-                        
-                        currtopic=getUserInformation(recipient_id,"currenttopic")
-                        #currtotal=str(currtopic)+'total'
-                        #currright=str(currtopic)+'right'
-                        updateUsersInformation(recipient_id,totalquestionasked=int(getUserInformation(recipient_id,'totalquestionasked'))+1)
-                        updateUsersInformation(recipient_id,totalquestionright=int(getUserInformation(recipient_id,'totalquestionright'))+1)
-                        updateUsersInformation(recipient_id,**{str(currtopic)+'total':int(getUserInformation(recipient_id,str(str(currtopic)+'total')))+1})
-                        updateUsersInformation(recipient_id,**{str(currtopic)+'right':int(getUserInformation(recipient_id,str(str(currtopic)+'right')))+1})
-                        noofconsecutiveright=getUserInformation(recipient_id,'noofconsecutiveright')
-                        updateUsersInformation(recipient_id,noofconsecutivewrong=0)
-                        updateUsersInformation(recipient_id,noofconsecutiveright=noofconsecutiveright+1)
-                        reply=decisionRightWrong('right', noofconsecutiveright)
-                        quickreply(recipient_id,['Another One','Go Back','Results','I am Bored!'],reply)
-                        
-                        return "Message Processed"
-                      if message['message']['quick_reply']['payload']=='wrong':
-                        
-                        updateUsersInformation(recipient_id,totalquestionasked=int(getUserInformation(recipient_id,'totalquestionasked'))+1)
-                        rightAns=getUserInformation(recipient_id,'lastRightAnswer')
-                        
-                        noofconsecutivewrong=getUserInformation(recipient_id,'noofconsecutivewrong')
-                        updateUsersInformation(recipient_id,noofconsecutiveright=0)
-                        updateUsersInformation(recipient_id,noofconsecutivewrong=noofconsecutivewrong+1)
-                        
-                        
-                        
-                        currtopic=getUserInformation(recipient_id,"currenttopic")
-                        #currtotal=str(currtopic)+'total'
-                        updateUsersInformation(recipient_id,**{str(currtopic)+'total':int(getUserInformation(recipient_id,str(str(currtopic)+'total')))+1})
-                        
-                        
-                        reply=decisionRightWrong('wrong', noofconsecutivewrong)
-                        quickreply(recipient_id,['Try Another','Go Back','Results','I am Bored!'],reply+ ' ,the right answer is: '+'\n'+rightAns)
-                        
-                        return "Message Processed"
+                        isrightwrong=checkrightwrong(message['message']['quick_reply']['payload'])
+                        if  isrightwrong==True:
+                            return "Message Processed"
                    
                     topic,mood,response = get_message(recipient_id,message['message'].get('text'))
                     #checkPostback(output)
@@ -174,7 +142,48 @@ def checkQuickReply(text,id):
            quickreply(id,listofitems,msges[len(msges)-2]) 
            return True
          except:
-            return False    
+            return False   
+def checkrightwrong(text):  
+    if text=='right':
+                        
+                        currtopic=getUserInformation(recipient_id,"currenttopic")
+                        #currtotal=str(currtopic)+'total'
+                        #currright=str(currtopic)+'right'
+                        updateUsersInformation(recipient_id,totalquestionasked=int(getUserInformation(recipient_id,'totalquestionasked'))+1)
+                        updateUsersInformation(recipient_id,totalquestionright=int(getUserInformation(recipient_id,'totalquestionright'))+1)
+                        updateUsersInformation(recipient_id,**{str(currtopic)+'total':int(getUserInformation(recipient_id,str(str(currtopic)+'total')))+1})
+                        updateUsersInformation(recipient_id,**{str(currtopic)+'right':int(getUserInformation(recipient_id,str(str(currtopic)+'right')))+1})
+                        noofconsecutiveright=getUserInformation(recipient_id,'noofconsecutiveright')
+                        updateUsersInformation(recipient_id,noofconsecutivewrong=0)
+                        updateUsersInformation(recipient_id,noofconsecutiveright=noofconsecutiveright+1)
+                        reply=decisionRightWrong('right', noofconsecutiveright)
+                        quickreply(recipient_id,['Another One','Go Back','Results','I am Bored!'],reply)
+                        
+                        return "Message Processed"
+                      if text=='wrong':
+                        
+                        updateUsersInformation(recipient_id,totalquestionasked=int(getUserInformation(recipient_id,'totalquestionasked'))+1)
+                        rightAns=getUserInformation(recipient_id,'lastRightAnswer')
+                        
+                        noofconsecutivewrong=getUserInformation(recipient_id,'noofconsecutivewrong')
+                        updateUsersInformation(recipient_id,noofconsecutiveright=0)
+                        updateUsersInformation(recipient_id,noofconsecutivewrong=noofconsecutivewrong+1)
+                        
+                        
+                        
+                        currtopic=getUserInformation(recipient_id,"currenttopic")
+                        #currtotal=str(currtopic)+'total'
+                        updateUsersInformation(recipient_id,**{str(currtopic)+'total':int(getUserInformation(recipient_id,str(str(currtopic)+'total')))+1})
+                       
+                        
+                        reply=decisionRightWrong('wrong', noofconsecutivewrong)
+                        quickreply(recipient_id,['Try Another','Go Back','Results','I am Bored!'],reply+ ' ,the right answer is: '+'\n'+rightAns)
+                        
+    return True
+    
+    
+    
+    
 def sendQuestion(id):
     question,options,right,exceeded=askQuestion(getUserInformation(id,'currenttopic'))
     updateUsersInformation(id,lastQuestion=question,lastRightAnswer=right)
