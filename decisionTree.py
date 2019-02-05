@@ -18,8 +18,11 @@ def updateUsersInformation(ID, **kwargs):
     return(0)
 
 
-def listOfExams():
-    return ['aptitude','physics','biology','chemistry','math']
+def listOfExams(supertopic):
+    if supertopic=='jobPrep':
+           return ['aptitude']
+    if supertopic=='class10':
+           return ['physics','biology','chemistry','math']    
 def decision(input):
      if input=='JEE Mains':
          msg=['Okay so JEE mains it is! I will continue giving you some random questions from mains paper ',' Untill you decide its enough','JEE Mains']
