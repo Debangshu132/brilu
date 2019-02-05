@@ -237,8 +237,7 @@ def send_gif_message(recipient_id, message):
     data = json.dumps({"recipient": {"id": recipient_id},"message": {"attachment": {"type": "image","payload": {"url": gif_url}}}})
     params = {"access_token": ACCESS_TOKEN }
     headers = {"Content-Type": "application/json"}
-    r = requests.post("https://graph.facebook.com/v2.6/me/messages", params=params, headers=headers, data=data)
-def generic topics(id,imageurl,topic,somedescription):    
+    r = requests.post("https://graph.facebook.com/v2.6/me/messages", params=params, headers=headers, data=data)   
 def shareme(message):
     shareit={
      "type": "element_share",
