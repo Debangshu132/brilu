@@ -133,7 +133,7 @@ def checkPostback(output):
       data=a.json()
       name=data['first_name']
       if output['entry'][0]['messaging'][0]['postback']['payload']=='Startyaar':
-         welcome='Welcome! '+name+' I am an AI-powered bot Brilu,I will help you practice problems while having fun! Get ready for some interactive learning! :D'
+         welcome='Welcome! '+name+' I am AI-powered bot Brilu,I will help you practice problems while having fun! Get ready for some interactive learning! :D'
          initializeUser(id)
          send_message(id,'a','a', welcome)
          pay({"recipient":{"id":id},"sender_action":"typing_on"})
