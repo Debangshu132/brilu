@@ -296,12 +296,12 @@ def sendSuperTopic(id):
                               },
                            "buttons":[
                              {"type":"postback",
-  "title":"class10",
+  "title":"Start now",
   "payload":"class10"}] },
                  
                  
                   {
-                 "title":"class10",
+                 "title":"Job Preparation",
                    #"image_url":https://images.pexels.com/photos/1642883/pexels-photo-1642883.jpeg?cs=srgb&dl=adults-affection-couple-1642883.jpg&fm=jpg,
                      "subtitle":"practice PCMB",
                         "default_action": {
@@ -311,8 +311,8 @@ def sendSuperTopic(id):
                               },
                            "buttons":[
                              {"type":"postback",
-  "title":"class10",
-  "payload":"class10"}] }
+  "title":"Start now",
+  "payload":"jobPrep"}] }
              
              
              
