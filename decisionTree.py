@@ -50,11 +50,11 @@ def decision(input):
          return msg,listitems 
      if input=='Lets test':
            msg=['Okay, lets test your knowledge! ','Choose a topic from below','biology']
-           listitems=listOfExams()
+           listitems=['checkcurrenttopics']
            return msg,listitems  
      if input=='Go Back':
             msg=['Going back,which topic would you like to practice']
-            listitems=['sendsuperid']   
+            listitems=['checkcurrenttopics']   
             return msg, listitems
      if input=='Another Level':
          msg=['Another Level']
