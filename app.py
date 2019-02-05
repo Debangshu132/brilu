@@ -269,13 +269,10 @@ def shareme(message):
     return shareit
 def sendSuperTopic(id):
     response=   {
-     "recipient":{
-           "id":id
-                      },
+     "recipient":{"id":id },
      "message":{
       "quick_replies": [
-     
-        {
+     {
         "content_type":"text",
         "title":"I am Bored!",
         "payload":'I am Bored!'
@@ -287,9 +284,21 @@ def sendSuperTopic(id):
            "template_type":"generic",
              "elements":[
                  {
-                 "title":"class10",
+                 "title":"jobPrep",
                    #"image_url":https://images.pexels.com/photos/1642883/pexels-photo-1642883.jpeg?cs=srgb&dl=adults-affection-couple-1642883.jpg&fm=jpg,
-                     "subtitle":"practice PCMB",
+                     "subtitle":"practice aptitude,verbal reasoning e.t.c.",
+                        "default_action": {
+                            "type":"web_url",
+                            "url":"http://brilu.herokuapp.com/result/"+str(id),
+                            "webview_height_ratio": "tall"  
+                              },
+                           "buttons":[
+                             {"type":"postback",
+  "title":"jobPrep",
+  "payload":"jobPrep"}] },
+   "title":"class10",
+                   #"image_url":https://images.pexels.com/photos/1642883/pexels-photo-1642883.jpeg?cs=srgb&dl=adults-affection-couple-1642883.jpg&fm=jpg,
+                     "subtitle":"practice Class 10 level science",
                         "default_action": {
                             "type":"web_url",
                             "url":"http://brilu.herokuapp.com/result/"+str(id),
@@ -298,7 +307,15 @@ def sendSuperTopic(id):
                            "buttons":[
                              {"type":"postback",
   "title":"class10",
-  "payload":"class10"}] }]}}}}
+  "payload":"class10"}] },               
+             
+             
+             
+             
+             
+             
+             
+             ]}}}}
     r=pay(response)
     return r
     
