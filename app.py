@@ -269,23 +269,22 @@ def shareme(message):
     return shareit
 def sendSuperTopic(id):
     response=   {
-     "recipient":{
-           "id":id
-                      },
+     "recipient":{"id":id},
      "message":{
       "quick_replies": [
-     
-        {
+      {
         "content_type":"text",
         "title":"I am Bored!",
         "payload":'I am Bored!'
-      }
-    ],   
+      }],   
       "attachment":{
         "type":"template",
           "payload":{
            "template_type":"generic",
              "elements":[
+                 
+                 
+                 
                  {
                  "title":"class10",
                    #"image_url":https://images.pexels.com/photos/1642883/pexels-photo-1642883.jpeg?cs=srgb&dl=adults-affection-couple-1642883.jpg&fm=jpg,
@@ -298,7 +297,34 @@ def sendSuperTopic(id):
                            "buttons":[
                              {"type":"postback",
   "title":"class10",
-  "payload":"class10"}] }]}}}}
+  "payload":"class10"}] },
+                 
+                 
+                  {
+                 "title":"class10",
+                   #"image_url":https://images.pexels.com/photos/1642883/pexels-photo-1642883.jpeg?cs=srgb&dl=adults-affection-couple-1642883.jpg&fm=jpg,
+                     "subtitle":"practice PCMB",
+                        "default_action": {
+                            "type":"web_url",
+                            "url":"http://brilu.herokuapp.com/result/"+str(id),
+                            "webview_height_ratio": "tall"  
+                              },
+                           "buttons":[
+                             {"type":"postback",
+  "title":"class10",
+  "payload":"class10"}] }
+             
+             
+             
+             
+             
+             
+             
+             
+             
+             
+             
+             ]}}}}
     r=pay(response)
     return r
     
