@@ -309,7 +309,7 @@ def sendSuperTopic(id):
                            "buttons":[
                              {"type":"postback",
   "title":"Start now",
-  "payload":"class10"}],shareme('Hey Brilu hepls practice class 10 questions,you should try it'): },
+  "payload":"class10"},shareme('Hey Brilu helps practice class 10 questions,you should try it')] },
                  
                  
                   {
@@ -320,7 +320,7 @@ def sendSuperTopic(id):
                            "buttons":[
                              {"type":"postback",
   "title":"Start now",
-  "payload":"jobPrep"},shareme('Hey Brilu hepls practice interview questions,you should try it'):] }
+  "payload":"jobPrep"},shareme('Hey Brilu helps practice interview questions,you should try it')] }
              
              
              
