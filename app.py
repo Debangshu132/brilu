@@ -143,11 +143,15 @@ def checkPostback(output):
       if output['entry'][0]['messaging'][0]['postback']['payload']=='jobPrep':
          updateUsersInformation(id,supercurrenttopic='jobPrep')
          exam='Choose any topic to start practising problems!'
-         quickreply(id,listOfExams('jobPrep'),exam) 
+         list=listOfExams('jobPrep')
+         list.append('Another Level')   
+         quickreply(id,list,exam) 
       if output['entry'][0]['messaging'][0]['postback']['payload']=='class10':
          updateUsersInformation(id,supercurrenttopic='class10')
          exam='Choose any topic to start practising problems!'
-         quickreply(id,listOfExams('class10'),exam)   
+         listOfExams('class10')
+         list.append('Another Level')   
+         quickreply(id,list,exam)   
     
 def checkQuickReply(text,id): 
          try: 
