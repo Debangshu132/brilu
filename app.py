@@ -138,7 +138,7 @@ def checkPostback(output):
          send_message(id,'a','a', welcome)
          pay({"recipient":{"id":id},"sender_action":"typing_on"})
          exam='Choose any level to start practising problems!'   
-         time.sleep(2)
+         time.sleep(3)
          sendSuperTopic(id)
       if output['entry'][0]['messaging'][0]['postback']['payload']=='jobPrep':
          updateUsersInformation(id,supercurrenttopic='jobPrep')
