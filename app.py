@@ -302,7 +302,7 @@ def sendSuperTopic(id):
                  
                   {
                  "title":"Job Preparation",
-                   "image_url":"http://dubingroup.com/wp-content/uploads/2014/04/shutterstock_70237444.jpg",
+                   "image_url":"http://www.dvc.edu/enrollment/career-employment/images/Jobs.jpg",
                       "subtitle":"practice problems that makes you ready for interview I have aptitude,verbal ability and logical reasoning",
                         "default_action": {
                             "type":"web_url",
