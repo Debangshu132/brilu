@@ -141,9 +141,11 @@ def checkPostback(output):
          time.sleep(1)
          sendSuperTopic(id)
       if output['entry'][0]['messaging'][0]['postback']['payload']=='jobPrep':
+         updateUsersInformation(id,supercurrenttopic=='jobPrep')
          exam='Choose any topic to start practising problems!'
          quickreply(id,listOfExams('jobPrep'),exam) 
       if output['entry'][0]['messaging'][0]['postback']['payload']=='class10':
+         updateUsersInformation(id,supercurrenttopic=='class10')
          exam='Choose any topic to start practising problems!'
          quickreply(id,listOfExams('class10'),exam)   
     
@@ -163,6 +165,15 @@ def checkQuickReply(text,id):
                  return True  
            if msges[0]=='Going back,Which exam would you like to take':
                updateUsersInformation(id,noofconsecutivewrong=0,noofconsecutiveright=0)
+               supertopic= getUserInformation(id,'supertopic') 
+               listofitems=listOfExams(supertopic)
+               listofitems.append('Another Level') 
+           if msges[0]=='Another Level':
+               
+               sendSuperTopic(id)
+            
+            
+            
            if msges[0]=="Results":
                send_message(id,'a','a', msges[1])
                total=int(getUserInformation(id,'totalquestionasked')) 
@@ -172,6 +183,7 @@ def checkQuickReply(text,id):
                print(sendResult(id,handleResults(total,right),result)) 
                #quickreply(id,listofitems,result)
                return True 
+           
            for msg in range(0,len(msges)-2):
               send_message(id,'a','a', msges[msg])
               time.sleep(1)
