@@ -139,6 +139,7 @@ def checkPostback(output):
          pay({"recipient":{"id":id},"sender_action":"typing_on"})
          exam='Choose any level to start practising problems!'   
          time.sleep(1)
+         sendSuperTopic(id)
       if output['entry'][0]['messaging'][0]['postback']['payload']=='jobPrep':
          exam='Choose any topic to start practising problems!'
          quickreply(id,listOfExams('jobPrep'),exam) 
@@ -266,25 +267,14 @@ def shareme(message):
                 "title": "Chat now"
               }]}]}}}}
     return shareit
-def sendgenericmessage(id,imageurl,title,subtitle,defaultaction,buttonsarray):
-    url=imageurl
+def sendSuperTopic(id):
     response=   {
      "recipient":{
            "id":id
                       },
      "message":{
       "quick_replies": [
-      {
-        "content_type":"text",
-        "title":"Go Back",
-        
-        "payload":"Go Back"
-      },
-      {
-        "content_type":"text",
-        "title":"Continue",
-        "payload":"Continue"
-      },
+     
         {
         "content_type":"text",
         "title":"I am Bored!",
@@ -297,22 +287,20 @@ def sendgenericmessage(id,imageurl,title,subtitle,defaultaction,buttonsarray):
            "template_type":"generic",
              "elements":[
                  {
-                 "title":"Here is your result!",
+                 "title":"class10",
                    #"image_url":https://images.pexels.com/photos/1642883/pexels-photo-1642883.jpeg?cs=srgb&dl=adults-affection-couple-1642883.jpg&fm=jpg,
-                     "subtitle":message,
+                     "subtitle":"practice PCMB",
                         "default_action": {
                             "type":"web_url",
                             "url":"http://brilu.herokuapp.com/result/"+str(id),
                             "webview_height_ratio": "tall"  
                               },
                            "buttons":[
-                             {
-                "type":"web_url",
-                "url":"http://brilu.herokuapp.com/result/"+str(id),
-                "title":"See Details!",
-                "webview_height_ratio": "tall"  
-              },share ] }]}}}}
-    return response
+                             {"type":"postback",
+  "title":"class10",
+  "payload":"class10"}] }]}}}}
+    r=pay(response)
+    return r
     
 def sendResult(id, gif,message):
     url = search_gif(gif)
