@@ -171,7 +171,7 @@ def checkQuickReply(text,id):
            if msges[0]=='Another Level':
                
                sendSuperTopic(id)
-            
+               return True
             
             
            if msges[0]=="Results":
