@@ -43,7 +43,7 @@ def receive_message():
                 recipient_id = message['sender']['id']
                 RID=recipient_id 
                 if message['message'].get('text'):
-                     isrightwrong=False
+                    isrightwrong=False
                     typingon=pay({"recipient":{"id":recipient_id},"sender_action":"typing_on"})
                     if  message['message'].get('quick_reply'):
                         isrightwrong=checkrightwrong(recipient_id,message['message']['quick_reply']['payload'])
