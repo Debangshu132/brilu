@@ -18,7 +18,6 @@ ACCESS_TOKEN = os.environ['ACCESS_TOKEN']
 VERIFY_TOKEN = os.environ['VERIFY_TOKEN']
 bot = Bot (ACCESS_TOKEN)
 #ps=PorterStemmer()
-listOfExams=listOfExams()
 RID=''
 #We will receive messages that Facebook sends our bot at this endpoint
 @app.route("/", methods=['GET', 'POST'])
@@ -138,13 +137,14 @@ def checkPostback(output):
          initializeUser(id)
          send_message(id,'a','a', welcome)
          pay({"recipient":{"id":id},"sender_action":"typing_on"})
-         exam='Choose any topic to start practising problems!'   
-         time.sleep(1)   
-         quickreply(id,listOfExams,exam)
-      if output['entry'][0]['messaging'][0]['postback']['payload']=='right':
-          quickreply(id,['Lets test','I am Bored!'],'Thats right!!')
-      if output['entry'][0]['messaging'][0]['postback']['payload']=='wrong':
-          quickreply(id,['Try again','I am Bored!'],'Sorry thats wrong!')      
+         exam='Choose any level to start practising problems!'   
+         time.sleep(1)
+      if output['entry'][0]['messaging'][0]['postback']['payload']=='jobPrep':
+         exam='Choose any topic to start practising problems!'
+         quickreply(id,listOfExams('jobPrep'),exam) 
+      if output['entry'][0]['messaging'][0]['postback']['payload']=='class10':
+         exam='Choose any topic to start practising problems!'
+         quickreply(id,listOfExams('class10'),exam)   
     
 def checkQuickReply(text,id): 
          try: 
