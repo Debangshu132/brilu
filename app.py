@@ -242,8 +242,7 @@ def send_gif_message(recipient_id, message):
     params = {"access_token": ACCESS_TOKEN }
     headers = {"Content-Type": "application/json"}
     r = requests.post("https://graph.facebook.com/v2.6/me/messages", params=params, headers=headers, data=data)
-def sendResult(id, gif,message):
-    url = search_gif(gif)
+def share(message):
     share={
   "type": "element_share",
   "share_contents": { 
@@ -266,6 +265,10 @@ def sendResult(id, gif,message):
                 "url": "https://www.messenger.com/t/teacherchatbot", 
                 "title": "Chat now"
               }]}]}}}}
+    return share
+def sendResult(id, gif,message):
+    url = search_gif(gif)
+    share=share(message)
     response=   {
      "recipient":{
            "id":id
