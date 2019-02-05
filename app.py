@@ -46,7 +46,7 @@ def receive_message():
                      isrightwrong=False
                     typingon=pay({"recipient":{"id":recipient_id},"sender_action":"typing_on"})
                     if  message['message'].get('quick_reply'):
-                        isrightwrong=checkrightwrong(message['message']['quick_reply']['payload'])
+                        isrightwrong=checkrightwrong(recipient_id,message['message']['quick_reply']['payload'])
                         if  isrightwrong==True:
                             return "Message Processed"
                    
@@ -143,7 +143,7 @@ def checkQuickReply(text,id):
            return True
          except:
             return False   
-def checkrightwrong(text):  
+def checkrightwrong(recipient_id,text):  
     if text=='right':
                         
                         currtopic=getUserInformation(recipient_id,"currenttopic")
