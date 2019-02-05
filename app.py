@@ -289,8 +289,7 @@ def sendSuperTopic(id):
                  "title":"class10",
                    "image_url":"http://2.bp.blogspot.com/_Q_ZJiaCqn38/TFIu3dkYfxI/AAAAAAAAACo/63Vuzi-IG4A/s1600/SCIENCE.png",
                      "subtitle":"practice science problems from class 10 and improve your concepts",
-                        "default_action": {"type":"postback",
-                        "payload":"class10"},
+                        
                            "buttons":[
                              {"type":"postback",
   "title":"Start now",
@@ -301,11 +300,7 @@ def sendSuperTopic(id):
                  "title":"Job Preparation",
                    "image_url":"http://www.dvc.edu/enrollment/career-employment/images/Jobs.jpg",
                       "subtitle":"practice problems that makes you ready for interview I have aptitude,verbal ability and logical reasoning",
-                        "default_action": {
-                            "type":"web_url",
-                            "url":"http://brilu.herokuapp.com/result/"+str(id),
-                            "webview_height_ratio": "tall"  
-                              },
+                       
                            "buttons":[
                              {"type":"postback",
   "title":"Start now",
