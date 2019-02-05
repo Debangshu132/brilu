@@ -244,8 +244,8 @@ def send_gif_message(recipient_id, message):
     r = requests.post("https://graph.facebook.com/v2.6/me/messages", params=params, headers=headers, data=data)
 def share(message):
     share={
-  "type": "element_share",
-  "share_contents": { 
+     "type": "element_share",
+     "share_contents": { 
     "attachment": {
       "type": "template",
       "payload": {
@@ -268,7 +268,28 @@ def share(message):
     return share
 def sendResult(id, gif,message):
     url = search_gif(gif)
-    share=share(message)
+    share={
+     "type": "element_share",
+     "share_contents": { 
+    "attachment": {
+      "type": "template",
+      "payload": {
+        "template_type": "generic",
+        "elements": [
+          {
+            "title": "I was just answering Brilu's questions!!",
+            "subtitle": "He says: " + message,
+            #"image_url": "<IMAGE_URL_TO_DISPLAY>",
+            "default_action": {
+              "type": "web_url",
+              "url": "https://www.messenger.com/t/teacherchatbot"
+            },
+            "buttons": [
+              {
+                "type": "web_url",
+                "url": "https://www.messenger.com/t/teacherchatbot", 
+                "title": "Chat now"
+              }]}]}}}}
     response=   {
      "recipient":{
            "id":id
