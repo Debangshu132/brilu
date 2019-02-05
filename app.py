@@ -165,7 +165,7 @@ def checkQuickReply(text,id):
                  return True  
            if msges[0]=='Going back,Which exam would you like to take':
                updateUsersInformation(id,noofconsecutivewrong=0,noofconsecutiveright=0)
-               supertopic= getUserInformation(id,'supertopic') 
+               supertopic= getUserInformation(id,'supercurrenttopic') 
                listofitems=listOfExams(supertopic)
                listofitems.append('Another Level') 
            if msges[0]=='Another Level':
