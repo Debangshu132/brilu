@@ -1,5 +1,6 @@
 from pymongo import MongoClient
 import random
+from app import getUserInformation,updateUserInformation
 def fetchData():
     MONGODB_URI = "mongodb://Debangshu:Starrynight.1@ds163694.mlab.com:63694/brilu"
     client = MongoClient(MONGODB_URI, connectTimeoutMS=30000)
