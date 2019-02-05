@@ -170,6 +170,9 @@ def checkQuickReply(text,id):
            if listofitems[0]=='checkcurrenttopics':
                updateUsersInformation(id,noofconsecutivewrong=0,noofconsecutiveright=0)
                supertopic= getUserInformation(id,'supercurrenttopic') 
+               if supertopic=="":
+                    sendSuperTopic(id)
+                    return True
                listofitems=listOfExams(supertopic)
                listofitems.append('Another Level') 
            if msges[0]=='Another Level':
