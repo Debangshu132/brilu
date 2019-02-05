@@ -391,24 +391,10 @@ def initializeUser(id):
     a=requests.get("https://graph.facebook.com/"+id+"?fields=first_name,last_name,profile_pic&access_token="+ACCESS_TOKEN)
     data=a.json()
     name=data['first_name']
-    updateUsersInformation(id,lastQuestion="",
-                                totalquestionasked=0,
-                           totalquestionright=0,
-                           currenttopic="",name=name,
-                               noofconsecutivewrong=0,
-                           noofconsecutiveright=0,
-                           lastRightAnswer= "",
-        physicstotal= 0,
-        physicsright= 0,
-        aptitudetotal= 0,
-        aptituderight= 0,                   
-        chemistrytotal= 0,
-        chemistryright= 0,
-        biologytotal= 0,
-        biologyright= 0,
-        mathtotal= 0,
-        mathright= 0
-                          )
+    updateUsersInformation(id,lastQuestion="",totalquestionasked=0,totalquestionright=0,currenttopic="",name=name,
+                               noofconsecutivewrong=0,noofconsecutiveright=0,lastRightAnswer= "",physicstotal= 0,
+        physicsright= 0,aptitudetotal= 0,aptituderight= 0,chemistrytotal= 0,chemistryright= 0,biologytotal= 0,
+        biologyright= 0,mathtotal= 0,mathright= 0,supercurrenttopic="")
     
 
 if __name__ == "__main__":
