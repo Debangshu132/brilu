@@ -167,7 +167,7 @@ def checkQuickReply(text,id):
                  send_gif_message(id,'study quotes')
                  quickreply(id,listofitems,'lets study now!')
                  return True  
-           if msges[0]=='Going back,which topic would you like to practice':
+           if listofitems[0]=='checkcurrenttopics':
                updateUsersInformation(id,noofconsecutivewrong=0,noofconsecutiveright=0)
                supertopic= getUserInformation(id,'supercurrenttopic') 
                listofitems=listOfExams(supertopic)
