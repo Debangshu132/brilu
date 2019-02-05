@@ -295,6 +295,8 @@ def sendSuperTopic(id):
                              {"type":"postback",
   "title":"jobPrep",
   "payload":"jobPrep"}] },
+                 
+                 {
    "title":"class10",
                    #"image_url":https://images.pexels.com/photos/1642883/pexels-photo-1642883.jpeg?cs=srgb&dl=adults-affection-couple-1642883.jpg&fm=jpg,
                      "subtitle":"practice Class 10 level science",
@@ -305,7 +307,7 @@ def sendSuperTopic(id):
                            "buttons":[
                              {"type":"postback",
   "title":"class10",
-  "payload":"class10"}] },               
+  "payload":"class10"}] }             
              
              
              
