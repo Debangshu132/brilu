@@ -43,13 +43,45 @@ def receive_message():
                 recipient_id = message['sender']['id']
                 RID=recipient_id 
                 if message['message'].get('text'):
-                    isrightwrong=False
                     typingon=pay({"recipient":{"id":recipient_id},"sender_action":"typing_on"})
                     if  message['message'].get('quick_reply'):
-                        isrightwrong=checkrightwrong(recipient_id,message['message']['quick_reply']['payload'])
-                        if  isrightwrong==True:
-                            return "Message Processed"
-                   
+                      if message['message']['quick_reply']['payload']=='right':
+                        
+                        currtopic=getUserInformation(recipient_id,"currenttopic")
+                        #currtotal=str(currtopic)+'total'
+                        #currright=str(currtopic)+'right'
+                        updateUsersInformation(recipient_id,totalquestionasked=int(getUserInformation(recipient_id,'totalquestionasked'))+1)
+                        updateUsersInformation(recipient_id,totalquestionright=int(getUserInformation(recipient_id,'totalquestionright'))+1)
+                        updateUsersInformation(recipient_id,**{str(currtopic)+'total':int(getUserInformation(recipient_id,str(str(currtopic)+'total')))+1})
+                        updateUsersInformation(recipient_id,**{str(currtopic)+'right':int(getUserInformation(recipient_id,str(str(currtopic)+'right')))+1})
+                        noofconsecutiveright=getUserInformation(recipient_id,'noofconsecutiveright')
+                        updateUsersInformation(recipient_id,noofconsecutivewrong=0)
+                        updateUsersInformation(recipient_id,noofconsecutiveright=noofconsecutiveright+1)
+                        reply=decisionRightWrong('right', noofconsecutiveright)
+                        quickreply(recipient_id,['Another One','Go Back','Results','I am Bored!'],reply)
+                        
+                        return "Message Processed"
+                      if message['message']['quick_reply']['payload']=='wrong':
+                        
+                        updateUsersInformation(recipient_id,totalquestionasked=int(getUserInformation(recipient_id,'totalquestionasked'))+1)
+                        rightAns=getUserInformation(recipient_id,'lastRightAnswer')
+                        
+                        noofconsecutivewrong=getUserInformation(recipient_id,'noofconsecutivewrong')
+                        updateUsersInformation(recipient_id,noofconsecutiveright=0)
+                        updateUsersInformation(recipient_id,noofconsecutivewrong=noofconsecutivewrong+1)
+                        
+                        
+                        
+                        currtopic=getUserInformation(recipient_id,"currenttopic")
+                        #currtotal=str(currtopic)+'total'
+                        updateUsersInformation(recipient_id,**{str(currtopic)+'total':int(getUserInformation(recipient_id,str(str(currtopic)+'total')))+1})
+                        
+                        
+                        reply=decisionRightWrong('wrong', noofconsecutivewrong)
+                        quickreply(recipient_id,['Try Another','Go Back','Results','I am Bored!'],reply+ ' ,the right answer is: '+'\n'+rightAns)
+                        
+                        return "Message Processed"
+                    
                     topic,mood,response = get_message(recipient_id,message['message'].get('text'))
                     #checkPostback(output)
                     isQuickReply=checkQuickReply(message['message'].get('text'),recipient_id)
@@ -109,7 +141,11 @@ def checkPostback(output):
          exam='Choose any topic to start practising problems!'   
          time.sleep(1)   
          quickreply(id,listOfExams,exam)
-     
+      if output['entry'][0]['messaging'][0]['postback']['payload']=='right':
+          quickreply(id,['Lets test','I am Bored!'],'Thats right!!')
+      if output['entry'][0]['messaging'][0]['postback']['payload']=='wrong':
+          quickreply(id,['Try again','I am Bored!'],'Sorry thats wrong!')      
+    
 def checkQuickReply(text,id): 
          try: 
            msges,listofitems=decision(text)
@@ -142,48 +178,7 @@ def checkQuickReply(text,id):
            quickreply(id,listofitems,msges[len(msges)-2]) 
            return True
          except:
-            return False   
-def checkrightwrong(recipient_id,text):  
-    if text=='right':
-                        
-                        currtopic=getUserInformation(recipient_id,"currenttopic")
-                        #currtotal=str(currtopic)+'total'
-                        #currright=str(currtopic)+'right'
-                        updateUsersInformation(recipient_id,totalquestionasked=int(getUserInformation(recipient_id,'totalquestionasked'))+1)
-                        updateUsersInformation(recipient_id,totalquestionright=int(getUserInformation(recipient_id,'totalquestionright'))+1)
-                        updateUsersInformation(recipient_id,**{str(currtopic)+'total':int(getUserInformation(recipient_id,str(str(currtopic)+'total')))+1})
-                        updateUsersInformation(recipient_id,**{str(currtopic)+'right':int(getUserInformation(recipient_id,str(str(currtopic)+'right')))+1})
-                        noofconsecutiveright=getUserInformation(recipient_id,'noofconsecutiveright')
-                        updateUsersInformation(recipient_id,noofconsecutivewrong=0)
-                        updateUsersInformation(recipient_id,noofconsecutiveright=noofconsecutiveright+1)
-                        reply=decisionRightWrong('right', noofconsecutiveright)
-                        quickreply(recipient_id,['Another One','Go Back','Results','I am Bored!'],reply)
-                        
-                        return "Message Processed"
-                      if text=='wrong':
-                        
-                        updateUsersInformation(recipient_id,totalquestionasked=int(getUserInformation(recipient_id,'totalquestionasked'))+1)
-                        rightAns=getUserInformation(recipient_id,'lastRightAnswer')
-                        
-                        noofconsecutivewrong=getUserInformation(recipient_id,'noofconsecutivewrong')
-                        updateUsersInformation(recipient_id,noofconsecutiveright=0)
-                        updateUsersInformation(recipient_id,noofconsecutivewrong=noofconsecutivewrong+1)
-                        
-                        
-                        
-                        currtopic=getUserInformation(recipient_id,"currenttopic")
-                        #currtotal=str(currtopic)+'total'
-                        updateUsersInformation(recipient_id,**{str(currtopic)+'total':int(getUserInformation(recipient_id,str(str(currtopic)+'total')))+1})
-                       
-                        
-                        reply=decisionRightWrong('wrong', noofconsecutivewrong)
-                        quickreply(recipient_id,['Try Another','Go Back','Results','I am Bored!'],reply+ ' ,the right answer is: '+'\n'+rightAns)
-                        
-    return True
-    
-    
-    
-    
+            return False    
 def sendQuestion(id):
     question,options,right,exceeded=askQuestion(getUserInformation(id,'currenttopic'))
     updateUsersInformation(id,lastQuestion=question,lastRightAnswer=right)
@@ -246,7 +241,7 @@ def send_gif_message(recipient_id, message):
     data = json.dumps({"recipient": {"id": recipient_id},"message": {"attachment": {"type": "image","payload": {"url": gif_url}}}})
     params = {"access_token": ACCESS_TOKEN }
     headers = {"Content-Type": "application/json"}
-    r = requests.post("https://graph.facebook.com/v2.6/me/messages", params=params, headers=headers, data=data)   
+    r = requests.post("https://graph.facebook.com/v2.6/me/messages", params=params, headers=headers, data=data)
 def shareme(message):
     shareit={
      "type": "element_share",
@@ -271,26 +266,101 @@ def shareme(message):
                 "title": "Chat now"
               }]}]}}}}
     return shareit
-
+def sendgenericmessage(id,imageurl,title,subtitle,defaultaction,buttonsarray):
+    url=imageurl
+    response=   {
+     "recipient":{
+           "id":id
+                      },
+     "message":{
+      "quick_replies": [
+      {
+        "content_type":"text",
+        "title":"Go Back",
+        
+        "payload":"Go Back"
+      },
+      {
+        "content_type":"text",
+        "title":"Continue",
+        "payload":"Continue"
+      },
+        {
+        "content_type":"text",
+        "title":"I am Bored!",
+        "payload":'I am Bored!'
+      }
+    ],   
+      "attachment":{
+        "type":"template",
+          "payload":{
+           "template_type":"generic",
+             "elements":[
+                 {
+                 "title":"Here is your result!",
+                   #"image_url":https://images.pexels.com/photos/1642883/pexels-photo-1642883.jpeg?cs=srgb&dl=adults-affection-couple-1642883.jpg&fm=jpg,
+                     "subtitle":message,
+                        "default_action": {
+                            "type":"web_url",
+                            "url":"http://brilu.herokuapp.com/result/"+str(id),
+                            "webview_height_ratio": "tall"  
+                              },
+                           "buttons":[
+                             {
+                "type":"web_url",
+                "url":"http://brilu.herokuapp.com/result/"+str(id),
+                "title":"See Details!",
+                "webview_height_ratio": "tall"  
+              },share ] }]}}}}
+    return response
     
 def sendResult(id, gif,message):
     url = search_gif(gif)
     share=shareme(message)
     response=   {
-     "recipient":{"id":id},
-     "message":{"quick_replies": [
-      {"content_type":"text","title":"Go Back","payload":"Go Back"},
-      {"content_type":"text","title":"Continue","payload":"Continue"},
-      {"content_type":"text","title":"I am Bored!","payload":'I am Bored!'}],   
-      "attachment":{"type":"template",
-          "payload":{"template_type":"generic", "elements":[
+     "recipient":{
+           "id":id
+                      },
+     "message":{
+      "quick_replies": [
+      {
+        "content_type":"text",
+        "title":"Go Back",
+        
+        "payload":"Go Back"
+      },
+      {
+        "content_type":"text",
+        "title":"Continue",
+        "payload":"Continue"
+      },
+        {
+        "content_type":"text",
+        "title":"I am Bored!",
+        "payload":'I am Bored!'
+      }
+    ],   
+      "attachment":{
+        "type":"template",
+          "payload":{
+           "template_type":"generic",
+             "elements":[
                  {
                  "title":"Here is your result!",
                    #"image_url":https://images.pexels.com/photos/1642883/pexels-photo-1642883.jpeg?cs=srgb&dl=adults-affection-couple-1642883.jpg&fm=jpg,
-                     "subtitle":message,"default_action": {
-                            "type":"web_url","url":"http://brilu.herokuapp.com/result/"+str(id),"webview_height_ratio": "tall"},
+                     "subtitle":message,
+                        "default_action": {
+                            "type":"web_url",
+                            "url":"http://brilu.herokuapp.com/result/"+str(id),
+                            "webview_height_ratio": "tall"  
+                              },
                            "buttons":[
-                             {"type":"web_url","url":"http://brilu.herokuapp.com/result/"+str(id),"title":"See Details!","webview_height_ratio": "tall"},share ] }]}}}}
+                             {
+                "type":"web_url",
+                "url":"http://brilu.herokuapp.com/result/"+str(id),
+                "title":"See Details!",
+                "webview_height_ratio": "tall"  
+              },share ] }]}}}}
     
     r=pay(response)
     return r
