@@ -302,8 +302,8 @@ def sendSuperTopic(id):
                  
                   {
                  "title":"Job Preparation",
-                   #"image_url":https://images.pexels.com/photos/1642883/pexels-photo-1642883.jpeg?cs=srgb&dl=adults-affection-couple-1642883.jpg&fm=jpg,
-                     "subtitle":"practice problems that makes you ready for interview",
+                   "image_url":"http://dubingroup.com/wp-content/uploads/2014/04/shutterstock_70237444.jpg",
+                      "subtitle":"practice problems that makes you ready for interview",
                         "default_action": {
                             "type":"web_url",
                             "url":"http://brilu.herokuapp.com/result/"+str(id),
