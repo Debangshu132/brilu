@@ -149,7 +149,7 @@ def checkPostback(output):
       if output['entry'][0]['messaging'][0]['postback']['payload']=='class10':
          updateUsersInformation(id,supercurrenttopic='class10')
          exam='Choose any topic to start practising problems!'
-         listOfExams('class10')
+         list=listOfExams('class10')
          list.append('Another Level')   
          quickreply(id,list,exam)   
     
