@@ -141,11 +141,11 @@ def checkPostback(output):
          time.sleep(1)
          sendSuperTopic(id)
       if output['entry'][0]['messaging'][0]['postback']['payload']=='jobPrep':
-         updateUsersInformation(id,supercurrenttopic=='jobPrep')
+         updateUsersInformation(id,supercurrenttopic='jobPrep')
          exam='Choose any topic to start practising problems!'
          quickreply(id,listOfExams('jobPrep'),exam) 
       if output['entry'][0]['messaging'][0]['postback']['payload']=='class10':
-         updateUsersInformation(id,supercurrenttopic=='class10')
+         updateUsersInformation(id,supercurrenttopic='class10')
          exam='Choose any topic to start practising problems!'
          quickreply(id,listOfExams('class10'),exam)   
     
