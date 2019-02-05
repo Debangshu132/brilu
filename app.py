@@ -288,9 +288,8 @@ def sendSuperTopic(id):
                    #"image_url":https://images.pexels.com/photos/1642883/pexels-photo-1642883.jpeg?cs=srgb&dl=adults-affection-couple-1642883.jpg&fm=jpg,
                      "subtitle":"practice aptitude,verbal reasoning e.t.c.",
                         "default_action": {
-                            "type":"web_url",
-                            "url":"http://brilu.herokuapp.com/result/"+str(id),
-                            "webview_height_ratio": "tall"  
+                            "type":"postback",
+                            "payload":"jobPrep"  
                               },
                            "buttons":[
                              {"type":"postback",
@@ -300,9 +299,8 @@ def sendSuperTopic(id):
                    #"image_url":https://images.pexels.com/photos/1642883/pexels-photo-1642883.jpeg?cs=srgb&dl=adults-affection-couple-1642883.jpg&fm=jpg,
                      "subtitle":"practice Class 10 level science",
                         "default_action": {
-                            "type":"web_url",
-                            "url":"http://brilu.herokuapp.com/result/"+str(id),
-                            "webview_height_ratio": "tall"  
+                           "type":"postback",
+                            "payload":"class10" 
                               },
                            "buttons":[
                              {"type":"postback",
