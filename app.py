@@ -141,11 +141,7 @@ def checkPostback(output):
          exam='Choose any topic to start practising problems!'   
          time.sleep(1)   
          quickreply(id,listOfExams,exam)
-      if output['entry'][0]['messaging'][0]['postback']['payload']=='right':
-          quickreply(id,['Lets test','I am Bored!'],'Thats right!!')
-      if output['entry'][0]['messaging'][0]['postback']['payload']=='wrong':
-          quickreply(id,['Try again','I am Bored!'],'Sorry thats wrong!')      
-    
+     
 def checkQuickReply(text,id): 
          try: 
            msges,listofitems=decision(text)
@@ -242,6 +238,7 @@ def send_gif_message(recipient_id, message):
     params = {"access_token": ACCESS_TOKEN }
     headers = {"Content-Type": "application/json"}
     r = requests.post("https://graph.facebook.com/v2.6/me/messages", params=params, headers=headers, data=data)
+def generic topics(id,imageurl,topic,somedescription):    
 def shareme(message):
     shareit={
      "type": "element_share",
