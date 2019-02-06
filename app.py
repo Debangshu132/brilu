@@ -84,9 +84,9 @@ def receive_message():
                     topic,mood,response = get_message(recipient_id,message['message'].get('text'))
                     #checkPostback(output)
                     isQuickReply=checkQuickReply(message['message'].get('text'),recipient_id)
-                    isQuickReply=checkQuickReply(response,recipient_id)
-                    if isQuickReply==False:
-                        #send_message(recipient_id,topic,mood, response)
+                    
+                    isQuickReplyHint=checkQuickReply(response,recipient_id)
+                    if isQuickReply==False and isQuickReplyHint==False:
                         quickreply(recipient_id,['Lets test', 'I am Bored!'],response)
                 #if user sends us a GIF, photo,video, or any other non-text item
                 if message['message'].get('attachments'):
