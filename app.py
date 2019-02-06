@@ -107,6 +107,9 @@ def get_message(recipient_id,query):
   if query=='Get Started':
      return 'dummy','dummy','Welcome'   
   try:  
+    punctuation=[',','.','!','?']
+    for i in punctuation:
+        query=query.replace(i,"")
     topic,mood,response=BRAIN(query)
     return(topic,mood,response)
   except:
