@@ -102,6 +102,9 @@ def BRAIN(query):
 
     if mood =='callrepresentative':
         return ('question', 'call', document['journeys']['callrepresentativeans']['button'])
+    isquickreply,answer=tryToHandleByQuickReply(mood,document)
+    if isquickreply==True:
+         return ("dummy", "dummy",answer)
     
     answer = findBestAnswer(mood, document)
     return (topic, mood,answer)
