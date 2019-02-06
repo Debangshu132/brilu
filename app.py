@@ -84,6 +84,7 @@ def receive_message():
                     topic,mood,response = get_message(recipient_id,message['message'].get('text'))
                     #checkPostback(output)
                     isQuickReply=checkQuickReply(message['message'].get('text'),recipient_id)
+                    isQuickReply=checkQuickReply(response,recipient_id)
                     if isQuickReply==False:
                         #send_message(recipient_id,topic,mood, response)
                         quickreply(recipient_id,['Lets test', 'I am Bored!'],response)
@@ -110,8 +111,6 @@ def get_message(recipient_id,query):
     for i in punctuation:
         query=query.replace(i,"")
     topic,mood,response=BRAIN(query)
-    #isQuickReply=checkQuickReply(response,recipient_id)
-    #if isQuickReply==False:
     return(topic,mood,response)
   except:
     return 'dummy','dummy','I am sorry I didnot quite get what you are saying'    
