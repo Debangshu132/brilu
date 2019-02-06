@@ -85,6 +85,10 @@ def stem(mystring):
   for word in range(0,len(mystring)):
     my=my+ ps.stem(mystring[word])+' '
   return my
+def tryToHandleByQuickReply(probableQuestion,document):
+     if document['quickreplymapping'].get(probableQuestion):
+           return True,probableQuestion
+     return False,"dummy"
 
 def BRAIN(query):
     document = fetchData()
