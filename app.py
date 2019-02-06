@@ -104,13 +104,13 @@ def verify_fb_token(token_sent):
 
 #chooses a random message to send to the user
 def get_message(recipient_id,query):
-  if query=='Get Started':
-     return 'dummy','dummy','Welcome'   
+      
   try:  
     punctuation=[',','.','!','?']
     for i in punctuation:
         query=query.replace(i,"")
     topic,mood,response=BRAIN(query)
+    
     return(topic,mood,response)
   except:
     return 'dummy','dummy','I am sorry I didnot quite get what you are saying'    
