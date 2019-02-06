@@ -76,7 +76,8 @@ def findBestAnswer(probableQuestion,document):
         #print(answer)
         myanswers.append(answer)
     return(random.choice(myanswers))
-
+def tryToHandleByQuickReply(document):
+    
 
 
 
@@ -100,6 +101,7 @@ def BRAIN(query):
 
     if mood =='callrepresentative':
         return ('question', 'call', document['journeys']['callrepresentativeans']['button'])
+    isquickreply=tryToHandleByQuickReply(document)
     answer = findBestAnswer(mood, document)
     return (topic, mood,answer)
 
