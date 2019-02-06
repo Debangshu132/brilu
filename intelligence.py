@@ -76,7 +76,7 @@ def findBestAnswer(probableQuestion,document):
         #print(answer)
         myanswers.append(answer)
     return(random.choice(myanswers))
-def tryToHandleByQuickReply(document):
+def tryToHandleByQuickReply(probableQuestion,document):
      if document['quickreplymapping'].get(probableQuestion):
            return True,probableQuestion
      return False,"dummy"
@@ -102,7 +102,7 @@ def BRAIN(query):
 
     if mood =='callrepresentative':
         return ('question', 'call', document['journeys']['callrepresentativeans']['button'])
-    isquickreply,answer=tryToHandleByQuickReply(document)
+    isquickreply,answer=tryToHandleByQuickReply(mood,document)
     if isquickreply==True:
          return ("dummy", "dummy",answer)
     answer = findBestAnswer(mood, document)
