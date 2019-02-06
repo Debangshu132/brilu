@@ -110,9 +110,9 @@ def get_message(recipient_id,query):
     for i in punctuation:
         query=query.replace(i,"")
     topic,mood,response=BRAIN(query)
-    isQuickReply=checkQuickReply(response,recipient_id)
-    if isQuickReply==False:
-        return(topic,mood,response)
+    #isQuickReply=checkQuickReply(response,recipient_id)
+    #if isQuickReply==False:
+    return(topic,mood,response)
   except:
     return 'dummy','dummy','I am sorry I didnot quite get what you are saying'    
 def quickreply(id,listofitems,text):
