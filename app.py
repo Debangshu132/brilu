@@ -307,15 +307,7 @@ def sendSuperTopic(id):
                  
                  
                  
-                 {
-                 "title":"class10",
-                   "image_url":"http://2.bp.blogspot.com/_Q_ZJiaCqn38/TFIu3dkYfxI/AAAAAAAAACo/63Vuzi-IG4A/s1600/SCIENCE.png",
-                     "subtitle":"practice science problems from class 10 and improve your concepts",
-                        
-                           "buttons":[
-                             {"type":"postback",
-  "title":"Start now",
-  "payload":"class10"},shareme('he helps practice class 10 questions,you should try it')] },
+                
                  
                  
                   {
@@ -326,7 +318,19 @@ def sendSuperTopic(id):
                            "buttons":[
                              {"type":"postback",
   "title":"Start now",
-  "payload":"jobPrep"},shareme('he helps practice interview questions,you should try it')] }
+  "payload":"jobPrep"},shareme('he helps practice interview questions,you should try it')] },
+                 
+                 
+                 
+                  {
+                 "title":"class10",
+                   "image_url":"http://2.bp.blogspot.com/_Q_ZJiaCqn38/TFIu3dkYfxI/AAAAAAAAACo/63Vuzi-IG4A/s1600/SCIENCE.png",
+                     "subtitle":"practice science problems from class 10 and improve your concepts",
+                        
+                           "buttons":[
+                             {"type":"postback",
+  "title":"Start now",
+  "payload":"class10"},shareme('he helps practice class 10 questions,you should try it')] }
              
              
              
