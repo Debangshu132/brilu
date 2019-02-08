@@ -206,6 +206,11 @@ def sendQuestion(id):
     question,options,right,hint,solution,exceeded=askQuestion(getUserInformation(id,'currenttopic'))
     #options.append("hint")
     updateUsersInformation(id,lastQuestion=question,lastRightAnswer=right,lasthint=hint,lastsolution=solution)
+    bot.send_button_message(id,'Not Satisfied with my responses? Call Our Representative! ',{
+  "type": "web_url",
+  "url": "www.google.com",
+  "title": "google baba",
+})
     if exceeded==False:
       payload = {"recipient": {"id": id}, "message": {"quick_replies": []         
                                                      
@@ -223,9 +228,9 @@ def sendQuestion(id):
            "template_type":"generic",
              "elements":[
                  {
-                 #"title":"",
+                 "title":"a",
                    #"image_url":https://images.pexels.com/photos/1642883/pexels-photo-1642883.jpeg?cs=srgb&dl=adults-affection-couple-1642883.jpg&fm=jpg,
-                     #"subtitle":"",
+                     "subtitle":"a",
                         "default_action": {
                             "type":"web_url",
                             "url":"http://brilu.herokuapp.com/result/"+str(id),
@@ -237,7 +242,7 @@ def sendQuestion(id):
                 "url":"http://brilu.herokuapp.com/result/"+str(id),
                 "title":"See Details!",
                 "webview_height_ratio": "tall"  
-              }] }]}}
+              }] }]}}}}
                                                       
                                                       
                                                       
@@ -248,9 +253,15 @@ def sendQuestion(id):
                                                       
                                                       
                                                      
-                                                     
-                                                     
-                                                     }}
+                                
+    
+    
+    
+    
+    
+    
+    
+    
       for item in options:
         if item==right:
            payload['message']['quick_replies'].append({"content_type":"text","title":str(item),"payload":'right'})
