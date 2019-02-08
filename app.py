@@ -63,7 +63,7 @@ def receive_message():
                         quickreply(recipient_id,['Another One','Go Back','Results','I am Bored!'],reply)
                         
                         return "Message Processed"
-                      if message['message']['quick_reply']['payload'][1]=='wrong':
+                      if message['message']['quick_reply']['payload'][0]=='wrong':
                         
                         updateUsersInformation(recipient_id,totalquestionasked=int(getUserInformation(recipient_id,'totalquestionasked'))+1)
                         rightAns=getUserInformation(recipient_id,'lastRightAnswer')
