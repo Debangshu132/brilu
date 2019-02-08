@@ -80,8 +80,8 @@ def receive_message():
                         
                         
                         reply=decisionRightWrong('wrong', noofconsecutivewrong)
-                        send_message(recipient_id, "dummy","dummy",reply+ ' ,the right answer is: '+'\n'+rightAns)
-                        quickreply(recipient_id,['Try Another','Go Back','Results','I am Bored!'],getUserInformation(recipient_id,lastsolution))
+                        #send_message(recipient_id, "dummy","dummy",reply+ ' ,the right answer is: '+'\n'+rightAns)
+                        quickreply(recipient_id,['Try Another','Go Back','Results','I am Bored!'],reply+ ' ,the right answer is: '+'\n'+rightAns+'\n'+getUserInformation(recipient_id,'lastsolution'))
                         
                         return "Message Processed"
                     
