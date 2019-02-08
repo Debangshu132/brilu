@@ -44,8 +44,8 @@ def receive_message():
                 if message['message'].get('text'):
                     typingon=pay({"recipient":{"id":recipient_id},"sender_action":"typing_on"})
                     if  message['message'].get('quick_reply'):  
-                     splitarray= message['message']['quick_reply']['payload'].split('|') 
-                     if len(splitarray==2):
+                      splitarray= message['message']['quick_reply']['payload'].split('|') 
+                      #if len(splitarray==2):
                       if splitarray[0]=='right':
                           
                         currtopic=getUserInformation(recipient_id,"currenttopic")
@@ -59,8 +59,8 @@ def receive_message():
                         updateUsersInformation(recipient_id,noofconsecutivewrong=0)
                         updateUsersInformation(recipient_id,noofconsecutiveright=noofconsecutiveright+1)
                         reply=decisionRightWrong('right', noofconsecutiveright)
-                        send_message(recipient_id, "dummy","dummy",reply)
-                        quickreply(recipient_id,['Another One','Go Back','Results','I am Bored!'],splitarray[1])
+                        #send_message(recipient_id, "dummy","dummy",reply)
+                        quickreply(recipient_id,['Another One','Go Back','Results','I am Bored!'],reply)
                         
                         return "Message Processed"
                       if splitarray[0]=='wrong':
@@ -80,8 +80,8 @@ def receive_message():
                         
                         
                         reply=decisionRightWrong('wrong', noofconsecutivewrong)
-                        send_message(recipient_id, "dummy","dummy",reply+ ' ,the right answer is: '+'\n'+rightAns)
-                        quickreply(recipient_id,['Try Another','Go Back','Results','I am Bored!'],splitarray[1])
+                        #send_message(recipient_id, "dummy","dummy",reply+ ' ,the right answer is: '+'\n'+rightAns)
+                        quickreply(recipient_id,['Try Another','Go Back','Results','I am Bored!'],reply+ ' ,the right answer is: '+'\n'+rightAns)
                         
                         return "Message Processed"
                     
