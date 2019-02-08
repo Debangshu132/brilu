@@ -224,10 +224,10 @@ def sendQuestion(id):
          payload = {"recipient": {"id": id}, "message": {"text":questionAns,"quick_replies": []}}
          for itemindex in range(0,4):
             if options[itemindex]==right:
-              payload['message']['quick_replies'].append({"content_type":"text","title":shortOptions[itemindex],"payload":"right"})
+              payload['message']['quick_replies'].append({"content_type":"text","title":shortOptions[itemindex],"payload":{"rightwrong":'right'}})
               
             else:
-              payload['message']['quick_replies'].append({"content_type":"text","title":shortOptions[itemindex],"payload":"wrong"})
+              payload['message']['quick_replies'].append({"content_type":"text","title":shortOptions[itemindex],"payload":{"rightwrong":'wrong'}})
          #payload['message']['quick_replies'].append({"content_type":"text","title":"Give me a hint!","payload":hint})    
          pay(payload)
          return 'success'  
