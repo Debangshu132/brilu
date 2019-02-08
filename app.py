@@ -208,7 +208,7 @@ def sendQuestion(id):
     updateUsersInformation(id,lastQuestion=question,lastRightAnswer=right,lasthint=hint,lastsolution=solution)
     send_message(id, "dummy","dummy",question)
     if exceeded==False:
-      payload = {"recipient": {"id": id}, "message": {"quick_replies": [] 
+      payload = {"recipient": {"id": id}, "message": {"quick_replies": [] ,
                                                      
                                                      
                                                      
@@ -233,7 +233,7 @@ def sendQuestion(id):
                 "url":"http://brilu.herokuapp.com/result/"+str(id),
                 "title":"See Details!",
                 "webview_height_ratio": "tall"  
-              },share ] }]}}    
+              } ] }]}}    
                                                      
                                                      
                                                      
