@@ -206,18 +206,53 @@ def sendQuestion(id):
     question,options,right,hint,solution,exceeded=askQuestion(getUserInformation(id,'currenttopic'))
     #options.append("hint")
     updateUsersInformation(id,lastQuestion=question,lastRightAnswer=right,lasthint=hint,lastsolution=solution)
-    bot.send_button_message(id,question,[{"type": "web_url","url": "https://www.google.com","title": "google baba"}])
+   
     if exceeded==False:
-      payload = {"recipient": {"id": id}, "message": {"quick_replies": []         
+      payload = {"recipient": {"id": id}, "message": {"quick_replies": [] 
                                                      
                                                      
-                                      
-                                                      
-                                                      
-                                                      
-                                                      
-                                                        
-    }}
+                                                     
+                                                     
+        "attachment":{
+        "type":"template",
+          "payload":{
+           "template_type":"generic",
+             "elements":[
+                 {
+                 "title":"Cant solve? Use a hint!",
+                   #"image_url":https://images.pexels.com/photos/1642883/pexels-photo-1642883.jpeg?cs=srgb&dl=adults-affection-couple-1642883.jpg&fm=jpg,
+                     #"subtitle":message,
+                        "default_action": {
+                            "type":"web_url",
+                            "url":"http://brilu.herokuapp.com/result/"+str(id),
+                            "webview_height_ratio": "tall"  
+                              },
+                           "buttons":[
+                             {
+                "type":"web_url",
+                "url":"http://brilu.herokuapp.com/result/"+str(id),
+                "title":"See Details!",
+                "webview_height_ratio": "tall"  
+              },share ] }]}}    
+                                                     
+                                                     
+                                                     
+                                                     
+                                                     
+                                                     
+                                                     
+                                                     
+                                                     
+                                                     
+                                                     
+                                                     
+                                                     
+                                                     
+                                                     
+                                                     
+                                                     
+                                                     
+                                                     }}
                                                       
                                                       
                                                       
