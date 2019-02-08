@@ -206,7 +206,7 @@ def sendQuestion(id):
     question,options,right,hint,solution,exceeded=askQuestion(getUserInformation(id,'currenttopic'))
     updateUsersInformation(id,lastQuestion=question,lastRightAnswer=right,lasthint=hint,lastsolution=solution)
     if exceeded==False:
-      payload = {"recipient": {"id": id}, "message": {"text":"What do you want to do next?","quick_replies": [],              
+      payload = {"recipient": {"id": id}, "message": {"text":"What do you want to do next?","quick_replies": []           
                                                      
                                                      
                                                      
@@ -217,20 +217,7 @@ def sendQuestion(id):
                                                       
                                                       
                                                       ,   
-      "attachment":{
-      "type":"template",
-      "payload":{
-        "template_type":"button",
-        "text":"What do you want to do next?",
-        "buttons":[
-          {
-            "type":"web_url",
-            "url":"https://www.messenger.com",
-            "title":"Visit Messenger"
-          }
-        ]
-      }
-    }
+   
                                                       
                                                       
                                                       
