@@ -44,7 +44,8 @@ def receive_message():
                 if message['message'].get('text'):
                     typingon=pay({"recipient":{"id":recipient_id},"sender_action":"typing_on"})
                     if  message['message'].get('quick_reply'):  
-                      splitarray= message['message']['quick_reply']['payload'].split('|') 
+                     splitarray= message['message']['quick_reply']['payload'].split('|') 
+                     if len(splitarray==2):
                       if splitarray[0]=='right':
                           
                         currtopic=getUserInformation(recipient_id,"currenttopic")
