@@ -203,7 +203,7 @@ def checkQuickReply(text,id):
          except:
             return False    
 def sendQuestion(id):
-    question,options,right,exceeded=askQuestion(getUserInformation(id,'currenttopic'))
+    question,options,right,hint,solution,exceeded=askQuestion(getUserInformation(id,'currenttopic'))
     updateUsersInformation(id,lastQuestion=question,lastRightAnswer=right)
     if exceeded==False:
       payload = {"recipient": {"id": id}, "message": {"text":question,"quick_replies": []}}
@@ -423,7 +423,8 @@ def initializeUser(id):
     a=requests.get("https://graph.facebook.com/"+id+"?fields=first_name,last_name,profile_pic&access_token="+ACCESS_TOKEN)
     data=a.json()
     name=data['first_name']
-    updateUsersInformation(id,lastQuestion="",totalquestionasked=0,totalquestionright=0,currenttopic="",name=name,
+    updateUsersInformation(id,lastQuestion="",lasthint="",lastsolution="",
+                           totalquestionasked=0,totalquestionright=0,currenttopic="",name=name,
                                noofconsecutivewrong=0,noofconsecutiveright=0,lastRightAnswer= "",physicstotal= 0,
         physicsright= 0,aptitudetotal= 0,aptituderight= 0,chemistrytotal= 0,chemistryright= 0,biologytotal= 0,
         biologyright= 0,mathtotal= 0,mathright= 0,supercurrenttopic="")
