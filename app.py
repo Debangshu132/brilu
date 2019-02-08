@@ -206,7 +206,7 @@ def sendQuestion(id):
     question,options,right,hint,solution,exceeded=askQuestion(getUserInformation(id,'currenttopic'))
     #options.append("hint")
     updateUsersInformation(id,lastQuestion=question,lastRightAnswer=right,lasthint=hint,lastsolution=solution)
-    bot.send_button_message(id,'Not Satisfied with my responses? Call Our Representative! ',{
+    bot.send_button_message(id,{
   "type": "web_url",
   "url": "www.google.com",
   "title": "google baba",
