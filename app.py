@@ -208,7 +208,7 @@ def sendQuestion(id):
     updateUsersInformation(id,lastQuestion=question,lastRightAnswer=right,lasthint=hint,lastsolution=solution)
     bot.send_button_message(id,{
   "type": "web_url",
-  "url": "www.google.com",
+  "url": "https://www.google.com",
   "title": "google baba",
 })
     if exceeded==False:
