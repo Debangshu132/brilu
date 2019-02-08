@@ -208,55 +208,14 @@ def sendQuestion(id):
     updateUsersInformation(id,lastQuestion=question,lastRightAnswer=right,lasthint=hint,lastsolution=solution)
     
     if exceeded==False:
-      payload = {"recipient": {"id": id}, "message": {"text":question,"quick_replies": [] 
-                                                     
-                                                     
-                                                     
-                                                     
-                              
-                                                     
-                                                     
-                                                     
-                                                     
-                                                     
-                                                     
-                                                     
-                                                     
-                                                     
-                                                     
-                                                     
-                                                     
-                                                     
-                                                     
-                                                     
-                                                     
-                                                     
-                                                     }}
-                                                      
-                                                      
-                                                      
-                                                      
-                                                      
-                                                      
-                                                      
-                                                      
-                                                      
-                                                     
-                                
-    
-    
-    
-    
-    
-    
-    
-    
+      payload = {"recipient": {"id": id}, "message": {"text":question,"quick_replies": [] }}
       for item in options:
         if item==right:
            payload['message']['quick_replies'].append({"content_type":"text","title":str(item),"payload":'right'})
            
         else:
-           payload['message']['quick_replies'].append({"content_type":"text","title":str(item),"payload":'wrong'})  
+           payload['message']['quick_replies'].append({"content_type":"text","title":str(item),"payload":'wrong'})
+      payload['message']['quick_replies'].append({"content_type":"text","title":"Give me a hint!","payload":hint})   
       pay(payload)
       return 'success'
     if exceeded==True:
@@ -269,6 +228,7 @@ def sendQuestion(id):
               
             else:
               payload['message']['quick_replies'].append({"content_type":"text","title":shortOptions[itemindex],"payload":'wrong'})
+         payload['message']['quick_replies'].append({"content_type":"text","title":"Give me a hint!","payload":hint})    
          pay(payload)
          return 'success'  
         
