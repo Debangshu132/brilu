@@ -59,8 +59,8 @@ def receive_message():
                         updateUsersInformation(recipient_id,noofconsecutivewrong=0)
                         updateUsersInformation(recipient_id,noofconsecutiveright=noofconsecutiveright+1)
                         reply=decisionRightWrong('right', noofconsecutiveright)
-                        #send_message(recipient_id, "dummy","dummy",reply)
-                        quickreply(recipient_id,['Another One','Go Back','Results','I am Bored!'],reply)
+                        send_message(recipient_id, "dummy","dummy",reply)
+                        quickreply(recipient_id,['Another One','Go Back','Results','I am Bored!'], getUserInformation(recipient_id,lastsolution))
                         
                         return "Message Processed"
                       if splitarray[0]=='wrong':
@@ -80,8 +80,8 @@ def receive_message():
                         
                         
                         reply=decisionRightWrong('wrong', noofconsecutivewrong)
-                        #send_message(recipient_id, "dummy","dummy",reply+ ' ,the right answer is: '+'\n'+rightAns)
-                        quickreply(recipient_id,['Try Another','Go Back','Results','I am Bored!'],reply+ ' ,the right answer is: '+'\n'+rightAns)
+                        send_message(recipient_id, "dummy","dummy",reply+ ' ,the right answer is: '+'\n'+rightAns)
+                        quickreply(recipient_id,['Try Another','Go Back','Results','I am Bored!'],getUserInformation(recipient_id,lastsolution))
                         
                         return "Message Processed"
                     
