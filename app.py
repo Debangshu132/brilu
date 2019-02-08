@@ -204,9 +204,27 @@ def checkQuickReply(text,id):
             return False    
 def sendQuestion(id):
     question,options,right,hint,solution,exceeded=askQuestion(getUserInformation(id,'currenttopic'))
-    updateUsersInformation(id,lastQuestion=question,lastRightAnswer=right)
+    updateUsersInformation(id,lastQuestion=question,lastRightAnswer=right,lasthint=hint,lastsolution=solution)
     if exceeded==False:
-      payload = {"recipient": {"id": id}, "message": {"text":question,"quick_replies": []}}
+      payload = {"recipient": {"id": id}, "message": {"text":question,"quick_replies": []
+                         "attachment":{"type":"template",
+      "payload":{"template_type":"button",
+        "text":"What do you want to do next?",
+        "buttons":[
+          {
+            "type":"web_url",
+            "url":"https://www.messenger.com",
+            "title":"Visit Messenger"
+          }]}}
+                                                     
+                                                     
+                                                     
+                                                     
+                                                     
+                                                     
+                                                     
+                                                     
+                                                     }}
       for item in options:
         if item==right:
            payload['message']['quick_replies'].append({"content_type":"text","title":str(item),"payload":'right'})
@@ -305,12 +323,7 @@ def sendSuperTopic(id):
            "template_type":"generic",
              "elements":[
                  
-                 
-                 
-                
-                 
-                 
-                  {
+                 {
                  "title":"Job Preparation",
                    "image_url":"http://www.dvc.edu/enrollment/career-employment/images/Jobs.jpg",
                       "subtitle":"practice problems that makes you ready for interview I have aptitude,verbal ability and logical reasoning",
