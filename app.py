@@ -47,7 +47,7 @@ def receive_message():
                       if message['message']['quick_reply']['payload']=='hint':
                          hint=getUserInformation(recipient_id,'lasthint')
                          quickreply(recipient_id,['Another One','Go Back','Results','I am Bored!'],hint)
-                      if message['message']['quick_reply']['payload'][0]=='right':
+                      if message['message']['quick_reply']['payload']['rightwrong']=='right':
                           
                         currtopic=getUserInformation(recipient_id,"currenttopic")
                         #currtotal=str(currtopic)+'total'
@@ -63,7 +63,7 @@ def receive_message():
                         quickreply(recipient_id,['Another One','Go Back','Results','I am Bored!'],reply)
                         
                         return "Message Processed"
-                      if message['message']['quick_reply']['payload'][0]=='wrong':
+                      if message['message']['quick_reply']['payload']['rightwrong']=='wrong':
                         
                         updateUsersInformation(recipient_id,totalquestionasked=int(getUserInformation(recipient_id,'totalquestionasked'))+1)
                         rightAns=getUserInformation(recipient_id,'lastRightAnswer')
