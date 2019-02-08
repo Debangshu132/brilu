@@ -147,7 +147,7 @@ def askQuestion(topic):
         solution=questionanswer['solution']
     except:
          solution='I dont have a solution for this'        
-            
+    print(solution)        
     exceeded=False
     for option in options:
         if len(option)>19:
