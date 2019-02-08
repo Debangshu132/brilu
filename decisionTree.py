@@ -139,11 +139,20 @@ def askQuestion(topic):
     question= questionanswer['question']
     options=questionanswer['options']
     right=questionanswer['right']
+    try:
+        hint=questionanswer['hint']
+    except:
+         hint='I dont have a hint for this'
+    try:
+        solution=questionanswer['solution']
+    except:
+         solution='I dont have a solution for this'        
+            
     exceeded=False
     for option in options:
         if len(option)>19:
             exceeded=True
-    return question,options,right,exceeded
+    return question,options,right,hint,solution,exceeded
 def fetchQuestionanswer(topic):
     MONGODB_URI = "mongodb://Debangshu:Starrynight.1@ds163694.mlab.com:63694/brilu"
     client = MongoClient(MONGODB_URI, connectTimeoutMS=30000)
