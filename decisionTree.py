@@ -146,7 +146,7 @@ def askQuestion(topic):
     try:
         solution=questionanswer['solution']
     except:
-         solution='I dont have a solution for this'        
+         solution=''        
     print(solution)        
     exceeded=False
     for option in options:
