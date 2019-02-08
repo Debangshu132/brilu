@@ -204,26 +204,13 @@ def checkQuickReply(text,id):
             return False    
 def sendQuestion(id):
     question,options,right,hint,solution,exceeded=askQuestion(getUserInformation(id,'currenttopic'))
+    options.append("hint")
     updateUsersInformation(id,lastQuestion=question,lastRightAnswer=right,lasthint=hint,lastsolution=solution)
     if exceeded==False:
-      payload = {"recipient": {"id": id}, "message": {"text":question,"quick_replies": []   ,        
+      payload = {"recipient": {"id": id}, "message": {"text":question,"quick_replies": []         
                                                      
                                                      
-                 "attachment":{
-                 "type":"template",
-                   "payload":{
-                    "template_type":"button",
-                      "text":"What do you want to do next?",
-                         "buttons":[
-                             {
-                            "type":"web_url",
-                            "url":"https://www.messenger.com",
-                            "title":"Visit Messenger"
-                             }
-                                   ]
-                             }
-                              }  
-                                                      
+                                      
                                                       
                                                       
                                                       
