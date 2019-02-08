@@ -218,26 +218,19 @@ def sendQuestion(id):
                                                       
                                                       ,   
       "attachment":{
-        "type":"template",
-          "payload":{
-           "template_type":"generic",
-             "elements":[
-                 {
-                 "title":question,
-                   #"image_url":https://images.pexels.com/photos/1642883/pexels-photo-1642883.jpeg?cs=srgb&dl=adults-affection-couple-1642883.jpg&fm=jpg,
-                     "subtitle":"question",
-                        "default_action": {
-                            "type":"web_url",
-                            "url":"http://brilu.herokuapp.com/result/"+str(id),
-                            "webview_height_ratio": "tall"  
-                              },
-                           "buttons":[
-                             {
-                "type":"web_url",
-                "url":"http://brilu.herokuapp.com/result/"+str(id),
-                "title":"See Details!",
-                "webview_height_ratio": "tall"  
-              } ] }]}}
+      "type":"template",
+      "payload":{
+        "template_type":"button",
+        "text":"What do you want to do next?",
+        "buttons":[
+          {
+            "type":"web_url",
+            "url":"https://www.messenger.com",
+            "title":"Visit Messenger"
+          }
+        ]
+      }
+    }
                                                       
                                                       
                                                       
