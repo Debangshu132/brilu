@@ -44,8 +44,11 @@ def receive_message():
                 if message['message'].get('text'):
                     typingon=pay({"recipient":{"id":recipient_id},"sender_action":"typing_on"})
                     if  message['message'].get('quick_reply'):
-                      if message['message']['quick_reply']['payload']=='right':
-                        
+                      if message['message']['quick_reply']['payload']=='hint':
+                         hint=getUserInformation(recipient_id,'lasthint')
+                         quickreply(recipient_id,['Another One','Go Back','Results','I am Bored!'],hint)
+                      if message['message']['quick_reply']['payload'][0]=='right':
+                          
                         currtopic=getUserInformation(recipient_id,"currenttopic")
                         #currtotal=str(currtopic)+'total'
                         #currright=str(currtopic)+'right'
@@ -60,7 +63,7 @@ def receive_message():
                         quickreply(recipient_id,['Another One','Go Back','Results','I am Bored!'],reply)
                         
                         return "Message Processed"
-                      if message['message']['quick_reply']['payload']=='wrong':
+                      if message['message']['quick_reply']['payload'][1]=='wrong':
                         
                         updateUsersInformation(recipient_id,totalquestionasked=int(getUserInformation(recipient_id,'totalquestionasked'))+1)
                         rightAns=getUserInformation(recipient_id,'lastRightAnswer')
@@ -215,7 +218,7 @@ def sendQuestion(id):
            
         else:
            payload['message']['quick_replies'].append({"content_type":"text","title":str(item),"payload":'wrong'})
-      payload['message']['quick_replies'].append({"content_type":"text","title":"Give me a hint!","payload":hint})   
+      #payload['message']['quick_replies'].append({"content_type":"text","title":"Give me a hint!","payload":hint})   
       pay(payload)
       return 'success'
     if exceeded==True:
@@ -224,11 +227,11 @@ def sendQuestion(id):
          payload = {"recipient": {"id": id}, "message": {"text":questionAns,"quick_replies": []}}
          for itemindex in range(0,4):
             if options[itemindex]==right:
-              payload['message']['quick_replies'].append({"content_type":"text","title":shortOptions[itemindex],"payload":'right'})
+              payload['message']['quick_replies'].append({"content_type":"text","title":shortOptions[itemindex],"payload":['right',solution]})
               
             else:
-              payload['message']['quick_replies'].append({"content_type":"text","title":shortOptions[itemindex],"payload":'wrong'})
-         payload['message']['quick_replies'].append({"content_type":"text","title":"Give me a hint!","payload":hint})    
+              payload['message']['quick_replies'].append({"content_type":"text","title":shortOptions[itemindex],"payload":['wrong',solution]})
+         #payload['message']['quick_replies'].append({"content_type":"text","title":"Give me a hint!","payload":hint})    
          pay(payload)
          return 'success'  
         
