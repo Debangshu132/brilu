@@ -44,7 +44,7 @@ def receive_message():
                 if message['message'].get('text'):
                     typingon=pay({"recipient":{"id":recipient_id},"sender_action":"typing_on"})
                     if  message['message'].get('quick_reply'):
-                      if message['message']['quick_reply']['payload']=='right':
+                      if message['message']['quick_reply']['payload']['rightwrong']=='right':
                           
                         currtopic=getUserInformation(recipient_id,"currenttopic")
                         #currtotal=str(currtopic)+'total'
@@ -60,7 +60,7 @@ def receive_message():
                         quickreply(recipient_id,['Another One','Go Back','Results','I am Bored!'],reply)
                         
                         return "Message Processed"
-                      if message['message']['quick_reply']['payload']=='wrong':
+                      if message['message']['quick_reply']['payload']['rightwrong']=='wrong':
                         
                         updateUsersInformation(recipient_id,totalquestionasked=int(getUserInformation(recipient_id,'totalquestionasked'))+1)
                         rightAns=getUserInformation(recipient_id,'lastRightAnswer')
