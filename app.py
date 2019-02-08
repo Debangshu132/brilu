@@ -44,6 +44,7 @@ def receive_message():
                 if message['message'].get('text'):
                     typingon=pay({"recipient":{"id":recipient_id},"sender_action":"typing_on"})
                     if  message['message'].get('quick_reply'):
+                     if  message['message']['quick_reply']['payload'].get('rightwrong'):   
                       if message['message']['quick_reply']['payload']['rightwrong']=='right':
                           
                         currtopic=getUserInformation(recipient_id,"currenttopic")
