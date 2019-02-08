@@ -237,7 +237,7 @@ def sendQuestion(id):
                 "url":"http://brilu.herokuapp.com/result/"+str(id),
                 "title":"See Details!",
                 "webview_height_ratio": "tall"  
-              } ] }]}}}}
+              } ] }]}}
                                                       
                                                       
                                                       
