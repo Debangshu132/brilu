@@ -70,6 +70,14 @@
               ['wrong', {{BW}}],
              
             ]);
+            var data6 = new google.visualization.DataTable();
+            data6.addColumn('string', 'parameter');    
+            data6.addColumn('number', 'value');
+            data6.addRows([
+              ['right', {{GR}}],
+              ['wrong', {{GW}}],
+             
+            ]);      
             
 
             // Set chart options
@@ -92,7 +100,10 @@
                            'height':700};   
             var options5 = {'title':'Biology',
                            'width':1000,'fontSize': 40,
-                           'height':700};                           
+                           'height':700}; 
+            var options6 = {'title':'Biology',
+                           'width':1000,'fontSize': 40,
+                           'height':700};     
 
             // Instantiate and draw our chart, passing in some options.
             var chart0 = new google.visualization.PieChart(document.getElementById('chart_div0'));
@@ -107,6 +118,8 @@
             chart4.draw(data4, options4);
             var chart5 = new google.visualization.PieChart(document.getElementById('chart_div5'));
             chart5.draw(data5, options5);
+             var chart6 = new google.visualization.PieChart(document.getElementById('chart_div6'));
+            chart6.draw(data6, options6);    
            
 
           }
@@ -117,7 +130,8 @@
         <!--Divs that will hold the charts-->
            
         <div id="chart_div"></div>
-        <div id="chart_div0"></div>      
+        <div id="chart_div0"></div>
+        <div id="chart_div6"></div>    
         <div id="chart_div2"></div>
         <div id="chart_div3"></div>
         <div id="chart_div4"></div>
