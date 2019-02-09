@@ -178,7 +178,7 @@ def checkCalculator(id,text):
      try: 
          p=sendLastOptionsQuickReply(id,resultOfCalculation.text)
          return True
-       except:
+     except:
             
           return True
    
