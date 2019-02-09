@@ -54,7 +54,7 @@ def receive_message():
                         currtopic=getUserInformation(recipient_id,"currenttopic")
                         #currtotal=str(currtopic)+'total'
                         #currright=str(currtopic)+'right'
-                        updateUsersInformation(recipient_id,totalquestionasked=int(getUserInformation(recipient_id,'totalquestionasked'))+1)
+                        updateUsersInformation(recipient_id,insidequestion=False,totalquestionasked=int(getUserInformation(recipient_id,'totalquestionasked'))+1)
                         updateUsersInformation(recipient_id,totalquestionright=int(getUserInformation(recipient_id,'totalquestionright'))+1)
                         updateUsersInformation(recipient_id,**{str(currtopic)+'total':int(getUserInformation(recipient_id,str(str(currtopic)+'total')))+1})
                         updateUsersInformation(recipient_id,**{str(currtopic)+'right':int(getUserInformation(recipient_id,str(str(currtopic)+'right')))+1})
@@ -71,7 +71,7 @@ def receive_message():
                         return "Message Processed"
                       if secretcode=='wrong':
                         
-                        updateUsersInformation(recipient_id,totalquestionasked=int(getUserInformation(recipient_id,'totalquestionasked'))+1)
+                        updateUsersInformation(recipient_id,insidequestion=False,totalquestionasked=int(getUserInformation(recipient_id,'totalquestionasked'))+1)
                         rightAns=getUserInformation(recipient_id,'lastRightAnswer')
                         
                         noofconsecutivewrong=getUserInformation(recipient_id,'noofconsecutivewrong')
@@ -181,13 +181,14 @@ def checkCalculator(id,text):
      text=text.replace("evaluate","")   
      resultOfCalculation=requests.get("http://api.mathjs.org/v4/?expr="+str(text)) 
      if str(resultOfCalculation)=="<Response [200]>":   
-      try: 
+      if getUserInformation(id,'insidequestion')==True: 
          p=sendLastOptionsQuickReply(id,resultOfCalculation.text)
          return True
-      except:
-          return True
+      else:
+         return False
      else:
-        return False    
+        return False
+    
    
    except:
     return False
@@ -241,7 +242,7 @@ def checkQuickReply(text,id):
 def sendQuestion(id):
     question,options,right,hint,solution,exceeded=askQuestion(getUserInformation(id,'currenttopic'))
     #options.append("hint")
-    updateUsersInformation(id,lastQuestion=question,lastRightAnswer=right,lasthint=hint,lastsolution=solution,lastOptions=options,lastExceeded=exceeded)
+    updateUsersInformation(id,insidequestion=True;lastQuestion=question,lastRightAnswer=right,lasthint=hint,lastsolution=solution,lastOptions=options,lastExceeded=exceeded)
     
     if exceeded==False:
       payload = {"recipient": {"id": id}, "message": {"text":question,"quick_replies": [] }}
@@ -502,7 +503,7 @@ def initializeUser(id):
     a=requests.get("https://graph.facebook.com/"+id+"?fields=first_name,last_name,profile_pic&access_token="+ACCESS_TOKEN)
     data=a.json()
     name=data['first_name']
-    updateUsersInformation(id,lastQuestion="",lasthint="",lastsolution="",lastOptions="",lastExceeded=False,
+    updateUsersInformation(id,lastQuestion="",lasthint="",lastsolution="",lastOptions="",lastExceeded=False,insidequestion=False,
                            totalquestionasked=0,totalquestionright=0,currenttopic="",name=name,
                                noofconsecutivewrong=0,noofconsecutiveright=0,lastRightAnswer= "",physicstotal= 0,
         physicsright= 0,aptitudetotal= 0,aptituderight= 0,chemistrytotal= 0,chemistryright= 0,biologytotal= 0,generalknowledgeright=0,
