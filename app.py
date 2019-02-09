@@ -99,6 +99,10 @@ def receive_message():
                 if message['message'].get('attachments'):
                     response = 'sorry i cannot handle attachments now, but wait for an update'
                     quickreply(recipient_id,['Lets test', 'I am Bored!'],response)
+                try:
+                    dummy=getUserInformation(recipient_id,'name')
+                except:
+                    initializeUser(recipient_id)
     return "Message Processed"
 
 
@@ -148,7 +152,7 @@ def checkPostback(output):
          send_message(id,'a','a', welcome)
          pay({"recipient":{"id":id},"sender_action":"typing_on"})
          exam='Choose any level to start practising problems!'   
-         time.sleep(3)
+         time.sleep(2)
          sendSuperTopic(id)
       if output['entry'][0]['messaging'][0]['postback']['payload']=='jobPrep':
          updateUsersInformation(id,supercurrenttopic='jobPrep')
