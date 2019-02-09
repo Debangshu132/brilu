@@ -60,7 +60,10 @@ def receive_message():
                         updateUsersInformation(recipient_id,noofconsecutiveright=noofconsecutiveright+1)
                         reply=decisionRightWrong('right', noofconsecutiveright)
                         #send_message(recipient_id, "dummy","dummy",reply)
-                        quickreply(recipient_id,['Another One','Go Back','Results','I am Bored!'], reply)
+                        if getUserInformation(recipient_id,'currenttopic')=='aptitude':
+                            quickreply(recipient_id,['Another One','Go Back','Results','I am Bored!'], reply)
+                        else:
+                            quickreply(recipient_id,['Another One','Go Back','Results','I am Bored!'], reply+'\n'+getUserInformation(recipient_id,'lastsolution'))
                         
                         return "Message Processed"
                       if splitarray[0]=='wrong':
