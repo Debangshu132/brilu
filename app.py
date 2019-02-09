@@ -275,16 +275,7 @@ def getUserInformation(id,property):
     cursor = col.find()
     userInfo = cursor[0]
     return(userInfo[id][property])
-def checkCalculator(id,text):
-    resultOfCalculation=requests.get("http://api.mathjs.org/v4/?expr="+str(text))
-    try:
-     if str(resultOfCalculation)=="<Response [200]>":
-              sendLastOptionsQuickReply(id,resultOfCalculation.text):
-              return True
-     else:
-        return False
-    except:
-        return False
+
 def search_gif(text):
     #get a GIF that is similar to text sent
     payload = {'s': text, 'api_key': '8uWKU7YtJ4bIzYcAnjRVov8poEHCCj8l'}
