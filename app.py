@@ -231,7 +231,8 @@ def sendQuestion(id):
            
         else:
            payload['message']['quick_replies'].append({"content_type":"text","title":str(item),"payload":'wrong'})
-      payload['message']['quick_replies'].append({"content_type":"text","title":"Give me a hint!","payload":'hint'})   
+      if hint!='noHint':  
+         payload['message']['quick_replies'].append({"content_type":"text","title":"Give me a hint!","payload":'hint'})   
       pay(payload)
       return 'success'
     if exceeded==True:
@@ -244,7 +245,8 @@ def sendQuestion(id):
               
             else:
               payload['message']['quick_replies'].append({"content_type":"text","title":shortOptions[itemindex],"payload":'wrong'})
-         payload['message']['quick_replies'].append({"content_type":"text","title":"Give me a hint!","payload":'hint'})    
+         if hint!='noHint':    
+             payload['message']['quick_replies'].append({"content_type":"text","title":"Give me a hint!","payload":'hint'})    
          pay(payload)
          return 'success'  
         
