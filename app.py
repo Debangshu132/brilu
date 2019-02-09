@@ -96,7 +96,8 @@ def receive_message():
                     isQuickReply=checkQuickReply(message['message'].get('text'),recipient_id)
                     
                     isQuickReplyHint=checkQuickReply(response,recipient_id)
-                    if isQuickReply==False and isQuickReplyHint==False:
+                    isCalculator=checkCalculator(recipient_id,message['message'].get('text'))
+                    if isQuickReply==False and isQuickReplyHint==False and isCalculator==False:
                         quickreply(recipient_id,['Lets test', 'I am Bored!'],response)
                         #sendLastOptionsQuickReply(recipient_id,'kya be')
                         return "Message Processed"
@@ -274,6 +275,13 @@ def getUserInformation(id,property):
     cursor = col.find()
     userInfo = cursor[0]
     return(userInfo[id][property])
+def checkCalculator(id,text):
+    resultOfCalculation=requests.get("http://api.mathjs.org/v4/?expr="+str(text))
+    if str(resultOfCalculation)=="<Response [200]>":
+              sendLastOptionsQuickReply(id,resultOfCalculation.text):
+              return True
+    else:
+        return False
 def search_gif(text):
     #get a GIF that is similar to text sent
     payload = {'s': text, 'api_key': '8uWKU7YtJ4bIzYcAnjRVov8poEHCCj8l'}
