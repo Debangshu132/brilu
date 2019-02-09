@@ -103,8 +103,8 @@ def receive_message():
                         return "Message Processed"
                 #if user sends us a GIF, photo,video, or any other non-text item
                 if message['message'].get('attachments'):
-                    response = 'sorry i cannot handle attachments now, but wait for an update'
-                    quickreply(recipient_id,['Lets test', 'I am Bored!'],response)
+                    response = ['(y)',':)',":D"]
+                    quickreply(recipient_id,['Lets test', 'I am Bored!'],random.choice(response))
                 try:
                     dummy=getUserInformation(recipient_id,'name')
                 except:
