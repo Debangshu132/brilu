@@ -172,6 +172,16 @@ def checkPostback(output):
          list=listOfExams('class10')
          list.append('Another Level')   
          quickreply(id,list,exam)   
+def checkCalculator(id,text):
+    resultOfCalculation=requests.get("http://api.mathjs.org/v4/?expr="+str(text))
+    try:
+     if str(resultOfCalculation)=="<Response [200]>":
+              sendLastOptionsQuickReply(id,resultOfCalculation.text):
+              return True
+     else:
+        return False
+    except:
+        return False            
     
 def checkQuickReply(text,id): 
          try: 
