@@ -185,6 +185,7 @@ def checkCalculator(id,text):
          p=sendLastOptionsQuickReply(id,resultOfCalculation.text)
          return True
       else:
+         quickreply(recipient_id,['Lets test', 'I am Bored!'],resultOfCalculation.text)   
          return False
      else:
         return False
