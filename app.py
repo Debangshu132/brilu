@@ -94,8 +94,9 @@ def receive_message():
                     
                     isQuickReplyHint=checkQuickReply(response,recipient_id)
                     if isQuickReply==False and isQuickReplyHint==False:
-                        quickreply(recipient_id,['Lets test', 'I am Bored!'],response)
+                        #quickreply(recipient_id,['Lets test', 'I am Bored!'],response)
                         sendLastOptionsQuickReply(recipient_id,'kya be')
+                        return "Message Processed"
                 #if user sends us a GIF, photo,video, or any other non-text item
                 if message['message'].get('attachments'):
                     response = 'sorry i cannot handle attachments now, but wait for an update'
