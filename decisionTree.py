@@ -20,7 +20,7 @@ def updateUsersInformation(ID, **kwargs):
 
 def listOfExams(supertopic):
     if supertopic=='jobPrep':
-           return ['aptitude']
+           return ['aptitude','generalknowledge']
     if supertopic=='class10':
            return ['physics','biology','chemistry','math']    
 def decision(input):
