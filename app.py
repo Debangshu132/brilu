@@ -174,6 +174,7 @@ def checkPostback(output):
          quickreply(id,list,exam)   
 def checkCalculator(id,text):
    try:
+     text=text.replace('+','%2B')
      resultOfCalculation=requests.get("http://api.mathjs.org/v4/?expr="+str(text)) 
      if str(resultOfCalculation)=="<Response [200]>":   
       try: 
