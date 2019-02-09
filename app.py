@@ -47,7 +47,7 @@ def receive_message():
                       secretcode= message['message']['quick_reply']['payload']
                       if secretcode=='hint':
                             hint=getUserInformation(recipient_id,'lasthint')
-                            sendLastOptionsQuickReply(id,hint)
+                            sendLastOptionsQuickReply(recipient_id,hint)
                             return "Message Processed"
                       if secretcode=='right':
                           
