@@ -286,9 +286,9 @@ def send_gif_message(recipient_id, message):
     headers = {"Content-Type": "application/json"}
     r = requests.post("https://graph.facebook.com/v2.6/me/messages", params=params, headers=headers, data=data)
 def sendLastOptionsQuickReply(id,text):
-    options=getUserInformation(id,lastOptions)
-    right=getUserInformation(id,lastRightAnswer)
-    exceeded=getUserInformation(id,lastExceeded)
+    options=getUserInformation(id,'lastOptions')
+    right=getUserInformation(id,'lastRightAnswer')
+    exceeded=getUserInformation(id,'lastExceeded')
     solution=""
     if exceeded==False:
       payload = {"recipient": {"id": id}, "message": {"text":text,"quick_replies": [] }}
