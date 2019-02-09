@@ -181,12 +181,12 @@ def checkCalculator(id,text):
      text=text.replace("evaluate","")   
      resultOfCalculation=requests.get("http://api.mathjs.org/v4/?expr="+str(text)) 
      if str(resultOfCalculation)=="<Response [200]>":   
-      if getUserInformation(id,'insidequestion')==True: 
+      #if getUserInformation(id,'insidequestion')==True: 
          p=sendLastOptionsQuickReply(id,resultOfCalculation.text)
          return True
-      else:
-         quickreply(recipient_id,['Lets test', 'I am Bored!'],resultOfCalculation.text)   
-         return False
+      #else:
+      #   quickreply(recipient_id,['Lets test', 'I am Bored!'],resultOfCalculation.text)   
+      #   return False
      else:
         return False
     
