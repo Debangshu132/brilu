@@ -181,12 +181,12 @@ def checkCalculator(id,text):
      text=text.replace("evaluate","")   
      resultOfCalculation=requests.get("http://api.mathjs.org/v4/?expr="+str(text)) 
      if str(resultOfCalculation)=="<Response [200]>":   
-      #if getUserInformation(id,'insidequestion')==True: 
+      if getUserInformation(id,'insidequestion')==True: 
          p=sendLastOptionsQuickReply(id,resultOfCalculation.text)
          return True
-      #else:
-      #   quickreply(recipient_id,['Lets test', 'I am Bored!'],resultOfCalculation.text)   
-      #   return False
+      else:
+         quickreply(recipient_id,['Lets test', 'I am Bored!'],resultOfCalculation.text)   
+         return False
      else:
         return False
     
@@ -243,7 +243,7 @@ def checkQuickReply(text,id):
 def sendQuestion(id):
     question,options,right,hint,solution,exceeded=askQuestion(getUserInformation(id,'currenttopic'))
     #options.append("hint")
-    updateUsersInformation(id,insidequestion=True;lastQuestion=question,lastRightAnswer=right,lasthint=hint,lastsolution=solution,lastOptions=options,lastExceeded=exceeded)
+    updateUsersInformation(id,insidequestion=True,lastQuestion=question,lastRightAnswer=right,lasthint=hint,lastsolution=solution,lastOptions=options,lastExceeded=exceeded)
     
     if exceeded==False:
       payload = {"recipient": {"id": id}, "message": {"text":question,"quick_replies": [] }}
