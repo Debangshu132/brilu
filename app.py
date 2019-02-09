@@ -174,6 +174,7 @@ def checkPostback(output):
          quickreply(id,list,exam)   
 def checkCalculator(id,text):
    try:
+     text=text.lower()
      text=text.replace('+','%2B')
      text=text.replace("what is","")
      text=text.replace("calculate","")
