@@ -142,7 +142,7 @@ def askQuestion(topic):
     try:
         hint=questionanswer['hint']
     except:
-         hint='I dont have a hint for this'
+         hint='noHint'
     try:
         solution=questionanswer['solution']
     except:
