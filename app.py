@@ -45,7 +45,10 @@ def receive_message():
                     typingon=pay({"recipient":{"id":recipient_id},"sender_action":"typing_on"})
                     if  message['message'].get('quick_reply'):  
                       secretcode= message['message']['quick_reply']['payload']
-                      #if len(splitarray==2):
+                      if secretcode=='hint':
+                            hint=getUserInformation(recipient_id,'lasthint')
+                            sendLastOptionsQuickReply(id,hint)
+                            return "Message Processed"
                       if secretcode=='right':
                           
                         currtopic=getUserInformation(recipient_id,"currenttopic")
