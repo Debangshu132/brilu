@@ -96,8 +96,8 @@ def receive_message():
                     isQuickReply=checkQuickReply(message['message'].get('text'),recipient_id)
                     
                     isQuickReplyHint=checkQuickReply(response,recipient_id)
-                    isCalculator=checkCalculator(recipient_id,message['message'].get('text'))
-                    if isQuickReply==False and isQuickReplyHint==False and isCalculator==False:
+                    #isCalculator=checkCalculator(recipient_id,message['message'].get('text'))
+                    if isQuickReply==False and isQuickReplyHint==False :
                         quickreply(recipient_id,['Lets test', 'I am Bored!'],response)
                         #sendLastOptionsQuickReply(recipient_id,'kya be')
                         return "Message Processed"
