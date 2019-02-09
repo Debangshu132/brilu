@@ -96,8 +96,8 @@ def receive_message():
                     isQuickReply=checkQuickReply(message['message'].get('text'),recipient_id)
                     
                     isQuickReplyHint=checkQuickReply(response,recipient_id)
-                    #isCalculator=checkCalculator(recipient_id,message['message'].get('text'))
-                    if isQuickReply==False and isQuickReplyHint==False :
+                    isCalculator=checkCalculator(recipient_id,message['message'].get('text'))
+                    if isQuickReply==False and isQuickReplyHint==False and isCalculator==False :
                         quickreply(recipient_id,['Lets test', 'I am Bored!'],response)
                         #sendLastOptionsQuickReply(recipient_id,'kya be')
                         return "Message Processed"
@@ -173,11 +173,12 @@ def checkPostback(output):
          list.append('Another Level')   
          quickreply(id,list,exam)   
 def checkCalculator(id,text):
-    try:
+   
      resultOfCalculation=requests.get("http://api.mathjs.org/v4/?expr="+str(text))   
-     sendLastOptionsQuickReply(id,resultOfCalculation.text):
-     return True
-    except:
+     if str(resultOfCalculation)=="<Response [200]>":
+       sendLastOptionsQuickReply(id,resultOfCalculation.text)
+       return True
+    else:
         return False            
     
 def checkQuickReply(text,id): 
