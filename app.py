@@ -95,6 +95,7 @@ def receive_message():
                     isQuickReplyHint=checkQuickReply(response,recipient_id)
                     if isQuickReply==False and isQuickReplyHint==False:
                         quickreply(recipient_id,['Lets test', 'I am Bored!'],response)
+                        sendLastOptionsQuickReply(recipient_id,'kya be')
                 #if user sends us a GIF, photo,video, or any other non-text item
                 if message['message'].get('attachments'):
                     response = 'sorry i cannot handle attachments now, but wait for an update'
@@ -216,7 +217,7 @@ def checkQuickReply(text,id):
 def sendQuestion(id):
     question,options,right,hint,solution,exceeded=askQuestion(getUserInformation(id,'currenttopic'))
     #options.append("hint")
-    updateUsersInformation(id,lastQuestion=question,lastRightAnswer=right,lasthint=hint,lastsolution=solution,lastOptions=options)
+    updateUsersInformation(id,lastQuestion=question,lastRightAnswer=right,lasthint=hint,lastsolution=solution,lastOptions=options,lastExceeded=exceeded)
     
     if exceeded==False:
       payload = {"recipient": {"id": id}, "message": {"text":question,"quick_replies": [] }}
@@ -280,6 +281,43 @@ def send_gif_message(recipient_id, message):
     params = {"access_token": ACCESS_TOKEN }
     headers = {"Content-Type": "application/json"}
     r = requests.post("https://graph.facebook.com/v2.6/me/messages", params=params, headers=headers, data=data)
+def sendLastOptionsQuickReply(id,text):
+    options=getUserInformation(id,lastOptions)
+    right=getUserInformation(id,lastRightAnswer)
+    exceeded=getUserInformation(id,lastExceeded)
+    solution=""
+    if exceeded==False:
+      payload = {"recipient": {"id": id}, "message": {"text":text,"quick_replies": [] }}
+      for item in options:
+        if item==right:
+           payload['message']['quick_replies'].append({"content_type":"text","title":str(item),"payload":'right|'+solution})
+           
+        else:
+           payload['message']['quick_replies'].append({"content_type":"text","title":str(item),"payload":'wrong|'+solution})
+      #payload['message']['quick_replies'].append({"content_type":"text","title":"Give me a hint!","payload":hint})   
+      pay(payload)
+      return 'success'
+    if exceeded==True:
+         shortOptions=['A','B','C','D']
+         payload = {"recipient": {"id": id}, "message": {"text":text,"quick_replies": []}}
+         for itemindex in range(0,4):
+            if options[itemindex]==right:
+              payload['message']['quick_replies'].append({"content_type":"text","title":shortOptions[itemindex],"payload":'right|'+solution})
+              
+            else:
+              payload['message']['quick_replies'].append({"content_type":"text","title":shortOptions[itemindex],"payload":'wrong|'+solution})
+         #payload['message']['quick_replies'].append({"content_type":"text","title":"Give me a hint!","payload":hint})    
+         pay(payload)
+    return 'succeeded'        
+    
+    
+    
+    
+    
+    
+    
+    
+    
 def shareme(message):
     shareit={
      "type": "element_share",
