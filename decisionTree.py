@@ -20,12 +20,16 @@ def updateUsersInformation(ID, **kwargs):
 
 def listOfExams(supertopic):
     if supertopic=='jobPrep':
-           return ['aptitude','generalknowledge']
+           return ['aptitude','generalknowledge','verbalability']
     if supertopic=='class10':
            return ['physics','biology','chemistry','math']    
 def decision(input):
      if input=='generalknowledge':
          msg=['Okay so general knowledge it is! I will continue giving you some random questions from general knowledge',' Untill you decide its enough','generalknowledge']
+         listitems=['Okay Sure','Go Back']
+         return msg,listitems
+     if input=='verbalability':
+         msg=['Okay so verbal ability it is! I will continue giving you some random questions from verbal ability',' Untill you decide its enough','verbalability']
          listitems=['Okay Sure','Go Back']
          return msg,listitems
      if input=='biology':
