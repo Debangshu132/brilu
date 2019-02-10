@@ -480,6 +480,8 @@ def result(id):
         T=int(getUserInformation(id,'totalquestionasked'))
         AR=int(getUserInformation(id,'aptituderight'))
         AT=int(getUserInformation(id,'aptitudetotal'))
+        VR=int(getUserInformation(id,'verbalabilityright'))
+        VT=int(getUserInformation(id,'verbalabilitytotal'))
         GR=int(getUserInformation(id,'generalknowledgeright'))
         GT=int(getUserInformation(id,'generalknowledgetotal'))
         PR=int(getUserInformation(id,'physicsright'))
@@ -492,13 +494,14 @@ def result(id):
         MT=int(getUserInformation(id,'mathtotal'))
         W=T-R 
         AW=AT-AR 
+        VW=VT-VR
         GW=GT-GR 
         PW=PT-PR
         BW=BT-BR 
         CW=CT-CR 
         MW=MT-MR 
         
-        return render_template('chart.html',R=R, W=W,PR=PR, PW=PW,CR=CR, CW=CW,MR=MR, MW=MW,BR=BR, BW=BW,AR=AR,AW=AW,GW=GW,GR=GR)
+        return render_template('chart.html',R=R, W=W,PR=PR, PW=PW,CR=CR, CW=CW,MR=MR, MW=MW,BR=BR, BW=BW,AR=AR,AW=AW,GW=GW,GR=GR,VW=VW,VR=VR)
     
 def initializeUser(id):
     a=requests.get("https://graph.facebook.com/"+id+"?fields=first_name,last_name,profile_pic&access_token="+ACCESS_TOKEN)
@@ -507,6 +510,7 @@ def initializeUser(id):
     updateUsersInformation(id,lastQuestion="",lasthint="",lastsolution="",lastOptions="",lastExceeded=False,insidequestion=False,
                            totalquestionasked=0,totalquestionright=0,currenttopic="",name=name,
                                noofconsecutivewrong=0,noofconsecutiveright=0,lastRightAnswer= "",physicstotal= 0,
+                           verbalabilityright=0,verbalabilitytotal=0,
         physicsright= 0,aptitudetotal= 0,aptituderight= 0,chemistrytotal= 0,chemistryright= 0,biologytotal= 0,generalknowledgeright=0,
         generalknowledgetotal=0,                   
         biologyright= 0,mathtotal= 0,mathright= 0,supercurrenttopic="")
