@@ -424,13 +424,13 @@ def sendSuperTopic(id):
     r=pay(response)
     return r
 def sendVideo(id,url):
-    response={"recipient":{"id":id},
+ response={"recipient":{"id":id},
   "message":{"attachment":{"type":"template",
       "payload":{"template_type":"open_graph",
         "elements":[
            {"url":url}]}}}}
-pay(response)    
-return True    
+ pay(response)    
+ return True    
 def sendResult(id, gif,message):
     url = search_gif(gif)
     share=shareme(message)
