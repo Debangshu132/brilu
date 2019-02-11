@@ -430,7 +430,7 @@ def sendVideo(id,url):
       "type":"video", 
       "payload":{
         "url":"http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4", 
-        "is_reusable":true}}}}
+        "is_reusable":True}}}}
  pay(response)    
  return True    
 def sendResult(id, gif,message):
