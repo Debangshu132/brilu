@@ -425,10 +425,12 @@ def sendSuperTopic(id):
     return r
 def sendVideo(id,url):
  response={"recipient":{"id":id},
-  "message":{"attachment":{"type":"template",
-      "payload":{"template_type":"open_graph",
-        "elements":[
-           {"url":url}]}}}}
+ "message":{
+    "attachment":{
+      "type":"video", 
+      "payload":{
+        "url":"http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4", 
+        "is_reusable":true}}}}
  pay(response)    
  return True    
 def sendResult(id, gif,message):
