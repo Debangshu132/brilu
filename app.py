@@ -104,6 +104,7 @@ def receive_message():
                 #if user sends us a GIF, photo,video, or any other non-text item
                 if message['message'].get('attachments'):
                     response = ['(y)',':)',":D"]
+                    sendVideo(recipient_id,'https://www.youtube.com/watch?v=wVqMjfDrtLc&start=8&end=2&autoplay=1')
                     quickreply(recipient_id,['Lets test', 'I am Bored!'],random.choice(response))
                 try:
                     dummy=getUserInformation(recipient_id,'name')
@@ -422,7 +423,14 @@ def sendSuperTopic(id):
              ]}}}}
     r=pay(response)
     return r
-    
+def sendVideo(id,url):
+    response={"recipient":{"id":id},
+  "message":{"attachment":{"type":"template",
+      "payload":{"template_type":"open_graph",
+        "elements":[
+           {"url":url}]}}}}
+pay(response)    
+return True    
 def sendResult(id, gif,message):
     url = search_gif(gif)
     share=shareme(message)
