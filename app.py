@@ -104,7 +104,7 @@ def receive_message():
                 #if user sends us a GIF, photo,video, or any other non-text item
                 if message['message'].get('attachments'):
                     response = ['(y)',':)',":D"]
-                    sendVideo(recipient_id,'https://yt2fb.com/video/play-youtube-videos-while-chatting-on-whatsapp-tec/')
+                    sendVideo(recipient_id,'http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4')
                     quickreply(recipient_id,['Lets test', 'I am Bored!'],random.choice(response))
                 try:
                     dummy=getUserInformation(recipient_id,'name')
