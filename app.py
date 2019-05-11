@@ -400,26 +400,25 @@ def sendSuperTopic(id):
                  
                  
                  
+                 
                   {
-                 "title":"class10",
+                 "title":"Internship interview",
+                   "image_url":"http://www.dvc.edu/enrollment/career-employment/images/Jobs.jpg",
+                      "subtitle":"solve questions and get interview with top companies!!",
+                       "buttons":[{"type":"postback","title":"Start now",
+                                   "payload":"InternPrep"},shareme('Let us practice interview questions!')] },
+                 
+                 
+                 
+                  {
+                 "title":"Basic Science",
                    "image_url":"http://2.bp.blogspot.com/_Q_ZJiaCqn38/TFIu3dkYfxI/AAAAAAAAACo/63Vuzi-IG4A/s1600/SCIENCE.png",
-                     "subtitle":"practice science problems from class 10 and improve your concepts",
+                     "subtitle":"Practice basic science problems and improve your concepts",
                         
                            "buttons":[
                              {"type":"postback",
   "title":"Start now",
-  "payload":"class10"},shareme('he helps practice class 10 questions,you should try it')] }
-             
-             
-             
-             
-             
-             
-             
-             
-             
-             
-             
+  "payload":"Basic Science"},shareme('Lets practice basic science questions,you should try it')] }
              ]}}}}
     r=pay(response)
     return r
