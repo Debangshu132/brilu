@@ -25,10 +25,12 @@ def receive_message():
         """Before allowing people to message your bot, Facebook has implemented a verify token
         that confirms all requests that your bot receives came from Facebook."""
         token_sent = request.args.get("hub.verify_token")
+        print('bot started yeay')
         return verify_fb_token(token_sent)
     #if the request was not get, it must be POST and we can just proceed with sending a message back to user
     else:
       # get whatever message a user sent the bot
+      print('bot started yeay')
       output = request.get_json()
       print('bot started yeay')  
       #for first time only check if this is the get started click or no
@@ -116,6 +118,7 @@ def receive_message():
 def verify_fb_token(token_sent):
     #take token sent by facebook and verify it matches the verify token you sent
     #if they match, allow the request, else return an error
+    print('bot started yeay')
     if token_sent == VERIFY_TOKEN:
         return request.args.get("hub.challenge")
     return 'Invalid verification token'
