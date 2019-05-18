@@ -248,7 +248,7 @@ def checkQuickReply(text,id):
           if text=='Yup':
                 send_message(id,'a','a', 'Cool,hope you follow it! B)')
                 send_message(id,'a','a', 'Alright!')
-                quickreply(id,['Pretty well :)','Not so well :) '],'How well did you sleep? 😴') 
+                quickreply(id,['Pretty well','Not so well'],'How well did you sleep? 😴') 
                 return True 
           if text=='No Never':
                 send_message(id,'a','a', 'Well its a popular saying: \n Anyways it means its important to be eating good to be feeling good')
