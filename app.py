@@ -31,8 +31,9 @@ def receive_message():
       # get whatever message a user sent the bot
       output = request.get_json()
       #for first time only check if this is the get started click or no
+      checkReferral(output) 
       checkPostback(output)
-      checkReferral(output)  
+        
       for event in output['entry']:
           messaging = event['messaging']
           for message in messaging:
@@ -181,6 +182,9 @@ def checkReferral(output):
          welcome='Hey '+name+',how are you doing today?'
          quickreply(id,['Good', 'Not Good','Bad','Very Good','Very Bad','Worse','Best','Amazing'],welcome)   
          time.sleep(1)
+      welcome='Hey '+name+',how are you doing today?'
+      quickreply(id,['Good', 'Not Good','Bad','Very Good','Very Bad','Worse','Best','Amazing'],welcome)   
+      time.sleep(1)       
       
       return True                  
             
