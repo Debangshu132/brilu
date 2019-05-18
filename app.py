@@ -271,7 +271,7 @@ def checkQuickReply(text,id):
                 send_message(id,'a','a', 'Alright!')
                 quickreply(id,['Pretty well','Not so well'],'How well did you sleep?') 
                 return True  
-          if text=='Pretty Well':
+          if text=='Pretty well':
                 
                 send_message(id,'a','a', 'Great!')
                 quickreply(id,['I surely do!','Nope I am busy'],'Do you get time to work out?') 
