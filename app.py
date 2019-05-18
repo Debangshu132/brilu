@@ -215,12 +215,12 @@ def checkCalculator(id,text):
     
 def checkQuickReply(text,id): 
          try: 
-           msges,listofitems=decision(text)
-           if msges[0]=='Good':
+          msges,listofitems=decision(text)
+          if msges[0]=='Good':
                 send_message(id,'a','a', 'I am glad.')
                 quickreply(id,['Yes','No'],'Do you feel healthy?') 
                 return True 
-           if msges[0]=='Not Good':
+          if msges[0]=='Not Good':
                 send_message(id,'a','a', 'ooh.')
                 quickreply(id,['Yes','No'],'Do you feel healthy?') 
                 return True 
