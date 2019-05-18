@@ -30,6 +30,7 @@ def receive_message():
     else:
       # get whatever message a user sent the bot
       output = request.get_json()
+      print('bot started')  
       #for first time only check if this is the get started click or no
       checkReferral(output) 
       checkPostback(output)
@@ -170,7 +171,7 @@ def checkPostback(output):
           time.sleep(1)
             
 def checkReferral(output):
-    
+     print('bot started2')
      if output['entry'][0]['messaging'][0].get('referral'):
       id=  output['entry'][0]['messaging'][0]['sender']['id']  
       consumer_id=id
@@ -179,6 +180,7 @@ def checkReferral(output):
       name=data['first_name']
       fulladdress=str(output['entry'][0]['messaging'][0]['referral']['ref'])
       if fulladdress=='clinic':
+         print('bot started3')
          welcome='Hey '+name+',how are you doing today?'
          quickreply(id,['Good', 'Not Good','Bad','Very Good','Very Bad','Worse','Best','Amazing'],welcome)   
          time.sleep(1)
