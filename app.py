@@ -45,20 +45,10 @@ def receive_message():
                 recipient_id = message['sender']['id']
                 RID=recipient_id 
                 if message['message'].get('text'):
-                    typingon=pay({"recipient":{"id":recipient_id},"sender_action":"typing_on"})
-                    if  message['message'].get('quick_reply'):  
-                      secretcode= message['message']['quick_reply']['payload']
-                      
-                      
-                      
-                        
-                       
-                        return "Message Processed"
-                    
-                    topic,mood,response = get_message(recipient_id,message['message'].get('text'))
+                    typingon=pay({"recipient":{"id":recipient_id},"sender_action":"typing_on"}
                     
                     isQuickReply=checkQuickReply(message['message'].get('text'),recipient_id)
-                    
+                    return "Message Processed"
                     
                     
                     if isQuickReply==False  :
