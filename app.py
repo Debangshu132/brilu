@@ -100,7 +100,7 @@ def receive_message():
                     isQuickReplyHint=checkQuickReply(response,recipient_id)
                     isCalculator=checkCalculator(recipient_id,message['message'].get('text'))
                     if isQuickReply==False and isQuickReplyHint==False and isCalculator==False :
-                        quickreply(recipient_id,['Lets test', 'I am Bored!'],response)
+                        quickreply(recipient_id,['I am good', 'I am Bored!'],response)
                         #sendLastOptionsQuickReply(recipient_id,'kya be')
                         return "Message Processed"
                 #if user sends us a GIF, photo,video, or any other non-text item
