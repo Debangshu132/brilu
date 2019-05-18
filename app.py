@@ -161,13 +161,13 @@ def checkPostback(output):
          fulladdress=str(output['entry'][0]['messaging'][0]['postback']['referral']['ref'])
          if fulladdress=='clinic':   
           welcome='Hey '+name+',how are you doing today?'
-          quickreply(id,['Good', 'Not Good','Bad','Very Good','Very Bad','Worse','Best','Amazing'],welcome)   
+          quickreply(id,['Amazing :D ','Good :) ', 'Not Good :/','Bad :('],welcome)   
           time.sleep(1)
               
         
        else:
           welcome='Hey '+name+',how are you doing today?'
-          quickreply(id,['Good', 'Not Good','Bad','Very Good','Very Bad','Worse','Best','Amazing'],welcome)   
+          quickreply(id,['Amazing :D ','Good :) ', 'Not Good :/','Bad :('],welcome)   
           time.sleep(1)
             
 def checkReferral(output):
@@ -182,7 +182,7 @@ def checkReferral(output):
       if fulladdress=='clinic':
          print('bot started3')
          welcome='Hey '+name+',how are you doing today?'
-         quickreply(id,['Good', 'Not Good','Bad','Very Good','Very Bad','Worse','Best','Amazing'],welcome)   
+         quickreply(id,['Amazing :D ','Good :) ', 'Not Good :/','Bad :('],welcome)   
          time.sleep(1)
              
       
@@ -221,37 +221,21 @@ def checkCalculator(id,text):
 def checkQuickReply(text,id): 
           
           
-          if text=='Good':
-                send_message(id,'a','a', 'I am glad.')
-                quickreply(id,['Yes','No'],'Do you feel healthy?') 
+          if text=='Good :) ':
+                send_message(id,'a','a', 'I am glad :) ')
+                quickreply(id,['Yes (y)','No'],'Do you feel healthy?') 
                 return True 
-          if text=='Not Good':
-                send_message(id,'a','a', 'ooh.')
-                quickreply(id,['Yes','No'],'Do you feel healthy?') 
+          if text=='Not Good :/':
+                send_message(id,'a','a', 'ooh :( ')
+                quickreply(id,['Yes (y)','No'],'Do you feel healthy?') 
                 return True 
-          if text=='Bad':
+          if text=='Bad :(':
                 send_message(id,'a','a', 'Ooh.Sorry to hear that')
-                quickreply(id,['Yes','No'],'Do you feel healthy?') 
+                quickreply(id,['Yes (y)','No'],'Do you feel healthy?') 
                 return True   
-          if text=='Very Good':
-                send_message(id,'a','a', 'Great.')
-                quickreply(id,['Yes','No'],'Do you feel healthy?') 
-                return True 
-          if text=='Very Bad':
-                send_message(id,'a','a', 'Sorry to hear that')
-                quickreply(id,['Yes','No'],'Do you feel healthy?') 
-                return True 
-          if text=='Worse':
-                send_message(id,'a','a', 'Sorry to hear that.')
-                quickreply(id,['Yes','No'],'Do you feel healthy?') 
-                return True 
-          if text=='Best':
-                send_message(id,'a','a', 'Thats Great :D.')
-                quickreply(id,['Yes','No'],'Do you feel healthy?') 
-                return True 
-          if text=='Amazing':
+          if text=='Amazing :D ':
                 send_message(id,'a','a', 'Awesome :D.')
-                quickreply(id,['Yes','No'],'Do you feel healthy?') 
+                quickreply(id,['Yes (y)','No'],'Do you feel healthy?') 
                 return True 
           if text=='Yes':
                 send_message(id,'a','a', 'Great :D.')
@@ -262,34 +246,34 @@ def checkQuickReply(text,id):
                 quickreply(id,['Yup','No Never'],'Have you ever heard the quote-"we are what we eat"?') 
                 return True
           if text=='Yup':
-                send_message(id,'a','a', 'Cool,hope you follow it!')
+                send_message(id,'a','a', 'Cool,hope you follow it! B)')
                 send_message(id,'a','a', 'Alright!')
-                quickreply(id,['Pretty well','Not so well'],'How well did you sleep?') 
+                quickreply(id,['Pretty well :)','Not so well :) '],'How well did you sleep? 😴') 
                 return True 
           if text=='No Never':
-                send_message(id,'a','a', 'Well its a popular saying,Anyways it means its important to be eating good to be feeling good')
+                send_message(id,'a','a', 'Well its a popular saying: \n Anyways it means its important to be eating good to be feeling good')
                 send_message(id,'a','a', 'Alright!')
-                quickreply(id,['Pretty well','Not so well'],'How well did you sleep?') 
+                quickreply(id,['Pretty well','Not so well'],'How well did you sleep? 😴') 
                 return True  
           if text=='Pretty well':
                 
                 send_message(id,'a','a', 'Great!')
-                quickreply(id,['I surely do!','Nope I am busy'],'Do you get time to work out?') 
+                quickreply(id,['I surely do!','Nope I am busy'],'Do you get time to work out? 💪') 
                 return True 
           if text=='Not so well':
                 send_message(id,'a','a', 'Ooh,I see')
-                quickreply(id,['I surely do!','Nope I am busy'],'Do you get time to work out?')  
+                quickreply(id,['I surely do!','Nope I am busy'],'Do you get time to work out? 💪')  
                 return True  
           if text=='I surely do!':
                 
                 send_message(id,'a','a', 'Good for you!')
-                quickreply(id,['Yes please','No Thanks'],'Are you ready for a fun healthy diet?,you would see the real results,its not difficult but needs only slight disciplpine,anyways I am here to help.You ready for a good change?') 
+                quickreply(id,['Yes please 🥗','No Thanks'],'Are you ready for a fun healthy diet?🥗 \n You would see the real results,its not difficult but needs only slight disciplpine,anyways I am here to help.You ready for a good change?') 
                 return True 
           if text=='Nope I am busy':
                 send_message(id,'a','a', 'Ooh,I see')
-                quickreply(id,['Yes please','No Thanks'],'Are you ready for a fun healthy diet?,you would see the real results,its not difficult but needs only slight disciplpine,anyways I am here to help.You ready for a good change?')  
+                quickreply(id,['Yes please 🥗','No Thanks'],'Are you ready for a fun healthy diet?🥗 \n You would see the real results,its not difficult but needs only slight disciplpine,anyways I am here to help.You ready for a good change?')  
                 return True   
-          if text=='Yes please':
+          if text=='Yes please 🥗':
                 
                 send_message(id,'a','a', 'Please schedule a time wih us here, and lets meet and discuss')
                 return True 
