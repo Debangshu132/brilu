@@ -10,14 +10,12 @@ import json
 from decisionTree import decision,listOfExams,askQuestion,handleResults,decisionRightWrong
 from intelligence import BRAIN
 import time
-#from sklearn.feature_extraction.text import CountVectorizer
-#from sklearn.metrics.pairwise import euclidean_distances
-#from nltk.stem import PorterStemmer
+
 app = Flask(__name__)
 ACCESS_TOKEN = os.environ['ACCESS_TOKEN']
 VERIFY_TOKEN = os.environ['VERIFY_TOKEN']
 bot = Bot (ACCESS_TOKEN)
-#ps=PorterStemmer()
+
 RID=''
 #We will receive messages that Facebook sends our bot at this endpoint
 @app.route("/", methods=['GET', 'POST'])
@@ -52,8 +50,7 @@ def receive_message():
                       if secretcode=='right':
                           
                         currtopic=getUserInformation(recipient_id,"currenttopic")
-                        #currtotal=str(currtopic)+'total'
-                        #currright=str(currtopic)+'right'
+                       
                         updateUsersInformation(recipient_id,insidequestion=False,totalquestionasked=int(getUserInformation(recipient_id,'totalquestionasked'))+1)
                         updateUsersInformation(recipient_id,totalquestionright=int(getUserInformation(recipient_id,'totalquestionright'))+1)
                         updateUsersInformation(recipient_id,**{str(currtopic)+'total':int(getUserInformation(recipient_id,str(str(currtopic)+'total')))+1})
@@ -62,7 +59,7 @@ def receive_message():
                         updateUsersInformation(recipient_id,noofconsecutivewrong=0)
                         updateUsersInformation(recipient_id,noofconsecutiveright=noofconsecutiveright+1)
                         reply=decisionRightWrong('right', noofconsecutiveright)
-                        #send_message(recipient_id, "dummy","dummy",reply)
+                        
                         if getUserInformation(recipient_id,'currenttopic')=='aptitude':
                             quickreply(recipient_id,['Another One','Go Back','Results','I am Bored!'], reply)
                         else:
@@ -154,25 +151,11 @@ def checkPostback(output):
       data=a.json()
       name=data['first_name']
       if output['entry'][0]['messaging'][0]['postback']['payload']=='Startyaar':
-         welcome='Welcome! '+name+' I am AI-powered bot Brilu,I will help you practice problems while having fun! Get ready for some interactive learning! :D'
-         initializeUser(id)
-         send_message(id,'a','a', welcome)
-         pay({"recipient":{"id":id},"sender_action":"typing_on"})
-         exam='Choose any level to start practising problems!'   
-         time.sleep(2)
-         sendSuperTopic(id)
-      if output['entry'][0]['messaging'][0]['postback']['payload']=='jobPrep':
-         updateUsersInformation(id,supercurrenttopic='jobPrep')
-         exam='Choose any topic to start practising problems!'
-         list=listOfExams('jobPrep')
-         list.append('Another Level')   
-         quickreply(id,list,exam) 
-      if output['entry'][0]['messaging'][0]['postback']['payload']=='class10':
-         updateUsersInformation(id,supercurrenttopic='class10')
-         exam='Choose any topic to start practising problems!'
-         list=listOfExams('class10')
-         list.append('Another Level')   
-         quickreply(id,list,exam)   
+         welcome='Hey '+name+',how are you doing today?'
+         quickreply(id,['Good', 'Not Good','Bad','Very Good','Very Bad','Worse','Best','Amazing'],welcome)   
+         time.sleep(1)
+         
+      
 def checkCalculator(id,text):
    try:
      text=text.lower()
@@ -198,80 +181,86 @@ def checkCalculator(id,text):
 def checkQuickReply(text,id): 
          try: 
            msges,listofitems=decision(text)
-           if msges[0]=='okay,Lets start':
-                sendQuestion(id)
-                updateUsersInformation(id,noofconsecutivewrong=0,noofconsecutiveright=0)
+           if msges[0]=='Good':
+                send_message(id,'a','a', 'I am glad.')
+                quickreply(id,['Yes','No'],'Do you feel healthy?') 
+                return True 
+           if msges[0]=='Not Good':
+                send_message(id,'a','a', 'ooh.')
+                quickreply(id,['Yes','No'],'Do you feel healthy?') 
+                return True 
+          if msges[0]=='Bad':
+                send_message(id,'a','a', 'Ooh.Sorry to hear that')
+                quickreply(id,['Yes','No'],'Do you feel healthy?') 
+                return True   
+          if msges[0]=='Very Good':
+                send_message(id,'a','a', 'Great.')
+                quickreply(id,['Yes','No'],'Do you feel healthy?') 
+                return True 
+          if msges[0]=='Very Bad':
+                send_message(id,'a','a', 'Sorry to hear that')
+                quickreply(id,['Yes','No'],'Do you feel healthy?') 
+                return True 
+          if msges[0]=='Worse':
+                send_message(id,'a','a', 'Sorry to hear that.')
+                quickreply(id,['Yes','No'],'Do you feel healthy?') 
+                return True 
+          if msges[0]=='Best':
+                send_message(id,'a','a', 'Thats Great :D.')
+                quickreply(id,['Yes','No'],'Do you feel healthy?') 
+                return True 
+          if msges[0]=='Amazing':
+                send_message(id,'a','a', 'Awesome :D.')
+                quickreply(id,['Yes','No'],'Do you feel healthy?') 
+                return True 
+          if msges[0]=='Yes':
+                send_message(id,'a','a', 'Great :D.')
+                quickreply(id,['Yup','No Never'],'Have you ever heard the quote-"we are what we eat"?') 
+                return True 
+          if msges[0]=='No':
+                send_message(id,'a','a', 'Ok!')
+                quickreply(id,['Yup','No Never'],'Have you ever heard the quote-"we are what we eat"?') 
+                return True
+          if msges[0]=='Yup':
+                send_message(id,'a','a', 'Cool,hope you follow it!')
+                send_message(id,'a','a', 'Alright!')
+                quickreply(id,['Pretty well','Not so well'],'How well did you sleep?') 
+                return True 
+          if msges[0]=='No Never':
+                send_message(id,'a','a', 'Well its a popular saying,Anyways it means its important to be eating good to be feeling good')
+                send_message(id,'a','a', 'Alright!')
+                quickreply(id,['Pretty well','Not so well'],'How well did you sleep?') 
                 return True  
-           if msges[0]=='okay,Lets start again':
-                sendQuestion(id)
+          if msges[0]=='Pretty Well':
+                
+                send_message(id,'a','a', 'Great!')
+                quickreply(id,['I surely do!','Nope I am busy'],'Do you get time to work out?') 
+                return True 
+          if msges[0]=='Not so well':
+                send_message(id,'a','a', 'Ooh,I see')
+                quickreply(id,['I surely do!','Nope I am busy'],'Do you get time to work out?')  
                 return True  
-           if msges[0]==  'I am Bored!':
-                 send_gif_message(id,'study quotes')
-                 quickreply(id,listofitems,'lets study now!')
-                 return True  
-           if listofitems[0]=='checkcurrenttopics':
-               updateUsersInformation(id,noofconsecutivewrong=0,noofconsecutiveright=0)
-               supertopic= getUserInformation(id,'supercurrenttopic') 
-               if supertopic=="":
-                    sendSuperTopic(id)
-                    return True
-               listofitems=listOfExams(supertopic)
-               listofitems.append('Another Level') 
-           if msges[0]=='Another Level':
-               
-               sendSuperTopic(id)
-               return True
-            
-            
-           if msges[0]=="Results":
-               send_message(id,'a','a', msges[1])
-               total=int(getUserInformation(id,'totalquestionasked')) 
-               right=int(getUserInformation(id,'totalquestionright'))
-               result="You got "+str(right)+' out of '+str(total)+' correct!'
-               send_gif_message(id, handleResults(total,right))
-               print(sendResult(id,handleResults(total,right),result)) 
-               #quickreply(id,listofitems,result)
-               return True 
-           
-           for msg in range(0,len(msges)-2):
-              send_message(id,'a','a', msges[msg])
-              time.sleep(1)
-           updateUsersInformation(id, currenttopic=str(msges[len(msges)-1])) 
-           quickreply(id,listofitems,msges[len(msges)-2]) 
-           return True
+          if msges[0]=='I surely do!':
+                
+                send_message(id,'a','a', 'Good for you!')
+                quickreply(id,['Yes please','No Thanks'],'Are you ready for a fun healthy diet?,you would see the real results,its not difficult but needs only slight disciplpine,anyways I am here to help.You ready for a good change?') 
+                return True 
+          if msges[0]=='Nope I am busy':
+                send_message(id,'a','a', 'Ooh,I see')
+                quickreply(id,['Yes please','No Thanks'],'Are you ready for a fun healthy diet?,you would see the real results,its not difficult but needs only slight disciplpine,anyways I am here to help.You ready for a good change?')  
+                return True   
+          if msges[0]=='Yes please':
+                
+                send_message(id,'a','a', 'Please schedule a time wih us here, and lets meet and discuss')
+                return True 
+          if msges[0]=='No Thanks':
+                send_message(id,'a','a', 'Cool,Please let us know if we can help!')
+                return True   
+              
+        
          except:
             return False    
-def sendQuestion(id):
-    question,options,right,hint,solution,exceeded=askQuestion(getUserInformation(id,'currenttopic'))
-    #options.append("hint")
-    updateUsersInformation(id,insidequestion=True,lastQuestion=question,lastRightAnswer=right,lasthint=hint,lastsolution=solution,lastOptions=options,lastExceeded=exceeded)
-    
-    if exceeded==False:
-      payload = {"recipient": {"id": id}, "message": {"text":question,"quick_replies": [] }}
-      for item in options:
-        if item==right:
-           payload['message']['quick_replies'].append({"content_type":"text","title":str(item),"payload":'right'})
-           
-        else:
-           payload['message']['quick_replies'].append({"content_type":"text","title":str(item),"payload":'wrong'})
-      if hint!='noHint':  
-         payload['message']['quick_replies'].append({"content_type":"text","title":"Give me a hint!","payload":'hint'})   
-      pay(payload)
-      return 'success'
-    if exceeded==True:
-         shortOptions=['A','B','C','D']
-         questionAns=question+'\n'+"A)"+options[0]+"\n"+"B)"+options[1]+"\n"+"C)"+options[2]+"\n"+"D)"+options[3]+"\n"
-         payload = {"recipient": {"id": id}, "message": {"text":questionAns,"quick_replies": []}}
-         for itemindex in range(0,4):
-            if options[itemindex]==right:
-              payload['message']['quick_replies'].append({"content_type":"text","title":shortOptions[itemindex],"payload":'right'})
-              
-            else:
-              payload['message']['quick_replies'].append({"content_type":"text","title":shortOptions[itemindex],"payload":'wrong'})
-         if hint!='noHint':    
-             payload['message']['quick_replies'].append({"content_type":"text","title":"Give me a hint!","payload":'hint'})    
-         pay(payload)
-         return 'success'  
+
         
 #uses PyMessenger to send response to user
 def send_message(recipient_id, topic,mood,response):
@@ -282,21 +271,7 @@ def send_message(recipient_id, topic,mood,response):
     bot.send_text_message(recipient_id, response)
     return "success"
 
-def updateUsersInformation(ID, **kwargs):
-    MONGODB_URI = "mongodb://Debangshu:Starrynight.1@ds163694.mlab.com:63694/brilu"
-    client = MongoClient(MONGODB_URI, connectTimeoutMS=30000)
-    db = client.get_database("brilu")
-    for key in kwargs:
-        db.userInfo.update({"_id" : "5c4e064ffb6fc05326ad8c57"}, {"$set":{str(ID)+"."+str(key): kwargs[key]}},upsert=True);
-    return(0)
-def getUserInformation(id,property):
-    MONGODB_URI = "mongodb://Debangshu:Starrynight.1@ds163694.mlab.com:63694/brilu"
-    client = MongoClient(MONGODB_URI, connectTimeoutMS=30000)
-    db = client.get_database("brilu")
-    col = db["userInfo"]
-    cursor = col.find()
-    userInfo = cursor[0]
-    return(userInfo[id][property])
+
 
 def search_gif(text):
     #get a GIF that is similar to text sent
@@ -311,35 +286,7 @@ def send_gif_message(recipient_id, message):
     params = {"access_token": ACCESS_TOKEN }
     headers = {"Content-Type": "application/json"}
     r = requests.post("https://graph.facebook.com/v2.6/me/messages", params=params, headers=headers, data=data)
-def sendLastOptionsQuickReply(id,text):
-    options=getUserInformation(id,'lastOptions')
-    right=getUserInformation(id,'lastRightAnswer')
-    exceeded=getUserInformation(id,'lastExceeded')
-    solution=""
-    if exceeded==False:
-      payload = {"recipient": {"id": id}, "message": {"text":text,"quick_replies": [] }}
-      for item in options:
-        if item==right:
-           payload['message']['quick_replies'].append({"content_type":"text","title":str(item),"payload":'right'})
-           
-        else:
-           payload['message']['quick_replies'].append({"content_type":"text","title":str(item),"payload":'wrong'})
-      #payload['message']['quick_replies'].append({"content_type":"text","title":"Give me a hint!","payload":hint})   
-      pay(payload)
-      return 'success'
-    if exceeded==True:
-         shortOptions=['A','B','C','D']
-         payload = {"recipient": {"id": id}, "message": {"text":text,"quick_replies": []}}
-         for itemindex in range(0,4):
-            if options[itemindex]==right:
-              payload['message']['quick_replies'].append({"content_type":"text","title":shortOptions[itemindex],"payload":'right'})
-              
-            else:
-              payload['message']['quick_replies'].append({"content_type":"text","title":shortOptions[itemindex],"payload":'wrong'})
-         #payload['message']['quick_replies'].append({"content_type":"text","title":"Give me a hint!","payload":hint})    
-         pay(payload)
-    return 'succeeded'        
-    
+
     
     
     
@@ -422,16 +369,7 @@ def sendSuperTopic(id):
              ]}}}}
     r=pay(response)
     return r
-def sendVideo(id,url):
- response={"recipient":{"id":id},
- "message":{
-    "attachment":{
-      "type":"video", 
-      "payload":{
-        "url":"https://www.youtube.com/watch?v=2KKkj-DJWzY", 
-        "is_reusable":True}}}}
- pay(response)    
- return True    
+  
 def sendResult(id, gif,message):
     url = search_gif(gif)
     share=shareme(message)
