@@ -30,9 +30,9 @@ def receive_message():
     else:
       # get whatever message a user sent the bot
       output = request.get_json()
-      print('bot started')  
+      print('bot started yeay')  
       #for first time only check if this is the get started click or no
-       checkReferral(output) 
+      checkReferral(output) 
       checkPostback(output)
         
       for event in output['entry']:
