@@ -187,9 +187,7 @@ def checkReferral(output):
          welcome='Hey '+name+',how are you doing today?'
          quickreply(id,['Good', 'Not Good','Bad','Very Good','Very Bad','Worse','Best','Amazing'],welcome)   
          time.sleep(1)
-      welcome='Hey '+name+',how are you doing today?'
-      quickreply(id,['Good', 'Not Good','Bad','Very Good','Very Bad','Worse','Best','Amazing'],welcome)   
-      time.sleep(1)       
+             
       
       return True                  
             
