@@ -226,79 +226,79 @@ def checkCalculator(id,text):
 def checkQuickReply(text,id): 
          try: 
           msges,listofitems=decision(text)
-          if msges[0]=='Good':
+          if text=='Good':
                 send_message(id,'a','a', 'I am glad.')
                 quickreply(id,['Yes','No'],'Do you feel healthy?') 
                 return True 
-          if msges[0]=='Not Good':
+          if text=='Not Good':
                 send_message(id,'a','a', 'ooh.')
                 quickreply(id,['Yes','No'],'Do you feel healthy?') 
                 return True 
-          if msges[0]=='Bad':
+          if text=='Bad':
                 send_message(id,'a','a', 'Ooh.Sorry to hear that')
                 quickreply(id,['Yes','No'],'Do you feel healthy?') 
                 return True   
-          if msges[0]=='Very Good':
+          if text=='Very Good':
                 send_message(id,'a','a', 'Great.')
                 quickreply(id,['Yes','No'],'Do you feel healthy?') 
                 return True 
-          if msges[0]=='Very Bad':
+          if text=='Very Bad':
                 send_message(id,'a','a', 'Sorry to hear that')
                 quickreply(id,['Yes','No'],'Do you feel healthy?') 
                 return True 
-          if msges[0]=='Worse':
+          if text=='Worse':
                 send_message(id,'a','a', 'Sorry to hear that.')
                 quickreply(id,['Yes','No'],'Do you feel healthy?') 
                 return True 
-          if msges[0]=='Best':
+          if text=='Best':
                 send_message(id,'a','a', 'Thats Great :D.')
                 quickreply(id,['Yes','No'],'Do you feel healthy?') 
                 return True 
-          if msges[0]=='Amazing':
+          if text=='Amazing':
                 send_message(id,'a','a', 'Awesome :D.')
                 quickreply(id,['Yes','No'],'Do you feel healthy?') 
                 return True 
-          if msges[0]=='Yes':
+          if text=='Yes':
                 send_message(id,'a','a', 'Great :D.')
                 quickreply(id,['Yup','No Never'],'Have you ever heard the quote-"we are what we eat"?') 
                 return True 
-          if msges[0]=='No':
+          if text=='No':
                 send_message(id,'a','a', 'Ok!')
                 quickreply(id,['Yup','No Never'],'Have you ever heard the quote-"we are what we eat"?') 
                 return True
-          if msges[0]=='Yup':
+          if text=='Yup':
                 send_message(id,'a','a', 'Cool,hope you follow it!')
                 send_message(id,'a','a', 'Alright!')
                 quickreply(id,['Pretty well','Not so well'],'How well did you sleep?') 
                 return True 
-          if msges[0]=='No Never':
+          if text=='No Never':
                 send_message(id,'a','a', 'Well its a popular saying,Anyways it means its important to be eating good to be feeling good')
                 send_message(id,'a','a', 'Alright!')
                 quickreply(id,['Pretty well','Not so well'],'How well did you sleep?') 
                 return True  
-          if msges[0]=='Pretty Well':
+          if text=='Pretty Well':
                 
                 send_message(id,'a','a', 'Great!')
                 quickreply(id,['I surely do!','Nope I am busy'],'Do you get time to work out?') 
                 return True 
-          if msges[0]=='Not so well':
+          if text=='Not so well':
                 send_message(id,'a','a', 'Ooh,I see')
                 quickreply(id,['I surely do!','Nope I am busy'],'Do you get time to work out?')  
                 return True  
-          if msges[0]=='I surely do!':
+          if text=='I surely do!':
                 
                 send_message(id,'a','a', 'Good for you!')
                 quickreply(id,['Yes please','No Thanks'],'Are you ready for a fun healthy diet?,you would see the real results,its not difficult but needs only slight disciplpine,anyways I am here to help.You ready for a good change?') 
                 return True 
-          if msges[0]=='Nope I am busy':
+          if text=='Nope I am busy':
                 send_message(id,'a','a', 'Ooh,I see')
                 quickreply(id,['Yes please','No Thanks'],'Are you ready for a fun healthy diet?,you would see the real results,its not difficult but needs only slight disciplpine,anyways I am here to help.You ready for a good change?')  
                 return True   
-          if msges[0]=='Yes please':
+          if text=='Yes please':
                 
                 send_message(id,'a','a', 'Please schedule a time wih us here, and lets meet and discuss')
                 return True 
-          if msges[0]=='No Thanks':
+          if text=='No Thanks':
                 send_message(id,'a','a', 'Cool,Please let us know if we can help!')
                 return True   
               
