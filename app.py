@@ -32,6 +32,7 @@ def receive_message():
       output = request.get_json()
       #for first time only check if this is the get started click or no
       checkPostback(output)
+      checkReferral(output)  
       for event in output['entry']:
           messaging = event['messaging']
           for message in messaging:
