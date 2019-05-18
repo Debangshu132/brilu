@@ -161,13 +161,13 @@ def checkPostback(output):
          fulladdress=str(output['entry'][0]['messaging'][0]['postback']['referral']['ref'])
          if fulladdress=='clinic':   
           welcome='Hey '+name+',how are you doing today?'
-          quickreply(id,['Amazing :D ','Good :) ', 'Not Good :/','Bad :('],welcome)   
+          quickreply(id,['Amazing','Good', 'Not Good','Bad'],welcome)   
           time.sleep(1)
               
         
        else:
           welcome='Hey '+name+',how are you doing today?'
-          quickreply(id,['Amazing :D ','Good :) ', 'Not Good :/','Bad :('],welcome)   
+          quickreply(id,['Amazing','Good', 'Not Good','Bad'],welcome)   
           time.sleep(1)
             
 def checkReferral(output):
@@ -182,7 +182,7 @@ def checkReferral(output):
       if fulladdress=='clinic':
          print('bot started3')
          welcome='Hey '+name+',how are you doing today?'
-         quickreply(id,['Amazing :D ','Good :) ', 'Not Good :/','Bad :('],welcome)   
+         quickreply(id,['Amazing','Good', 'Not Good','Bad'],welcome)   
          time.sleep(1)
              
       
@@ -221,21 +221,21 @@ def checkCalculator(id,text):
 def checkQuickReply(text,id): 
           
           
-          if text=='Good :) ':
+          if text=='Good':
                 send_message(id,'a','a', 'I am glad :) ')
-                quickreply(id,['Yes (y)','No'],'Do you feel healthy?') 
+                quickreply(id,['Yes','No'],'Do you feel healthy?') 
                 return True 
-          if text=='Not Good :/':
+          if text=='Not Good':
                 send_message(id,'a','a', 'ooh :( ')
-                quickreply(id,['Yes (y)','No'],'Do you feel healthy?') 
+                quickreply(id,['Yes','No'],'Do you feel healthy?') 
                 return True 
-          if text=='Bad :(':
+          if text=='Bad':
                 send_message(id,'a','a', 'Ooh.Sorry to hear that')
-                quickreply(id,['Yes (y)','No'],'Do you feel healthy?') 
+                quickreply(id,['Yes','No'],'Do you feel healthy?') 
                 return True   
-          if text=='Amazing :D ':
-                send_message(id,'a','a', 'Awesome :D.')
-                quickreply(id,['Yes (y)','No'],'Do you feel healthy?') 
+          if text=='Amazing':
+                send_message(id,'a','a', 'Awesome :D ')
+                quickreply(id,['Yes','No'],'Do you feel healthy?') 
                 return True 
           if text=='Yes':
                 send_message(id,'a','a', 'Great :D.')
