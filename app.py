@@ -48,60 +48,22 @@ def receive_message():
                     typingon=pay({"recipient":{"id":recipient_id},"sender_action":"typing_on"})
                     if  message['message'].get('quick_reply'):  
                       secretcode= message['message']['quick_reply']['payload']
-                      if secretcode=='hint':
-                            hint=getUserInformation(recipient_id,'lasthint')
-                            sendLastOptionsQuickReply(recipient_id,hint)
-                            return "Message Processed"
-                      if secretcode=='right':
-                          
-                        currtopic=getUserInformation(recipient_id,"currenttopic")
+                      
+                      
+                      
+                        
                        
-                        updateUsersInformation(recipient_id,insidequestion=False,totalquestionasked=int(getUserInformation(recipient_id,'totalquestionasked'))+1)
-                        updateUsersInformation(recipient_id,totalquestionright=int(getUserInformation(recipient_id,'totalquestionright'))+1)
-                        updateUsersInformation(recipient_id,**{str(currtopic)+'total':int(getUserInformation(recipient_id,str(str(currtopic)+'total')))+1})
-                        updateUsersInformation(recipient_id,**{str(currtopic)+'right':int(getUserInformation(recipient_id,str(str(currtopic)+'right')))+1})
-                        noofconsecutiveright=getUserInformation(recipient_id,'noofconsecutiveright')
-                        updateUsersInformation(recipient_id,noofconsecutivewrong=0)
-                        updateUsersInformation(recipient_id,noofconsecutiveright=noofconsecutiveright+1)
-                        reply=decisionRightWrong('right', noofconsecutiveright)
-                        
-                        if getUserInformation(recipient_id,'currenttopic')=='aptitude':
-                            quickreply(recipient_id,['Another One','Go Back','Results','I am Bored!'], reply)
-                        else:
-                            quickreply(recipient_id,['Another One','Go Back','Results','I am Bored!'], reply+'\n'+getUserInformation(recipient_id,'lastsolution'))
-                        
-                        return "Message Processed"
-                      if secretcode=='wrong':
-                        
-                        updateUsersInformation(recipient_id,insidequestion=False,totalquestionasked=int(getUserInformation(recipient_id,'totalquestionasked'))+1)
-                        rightAns=getUserInformation(recipient_id,'lastRightAnswer')
-                        
-                        noofconsecutivewrong=getUserInformation(recipient_id,'noofconsecutivewrong')
-                        updateUsersInformation(recipient_id,noofconsecutiveright=0)
-                        updateUsersInformation(recipient_id,noofconsecutivewrong=noofconsecutivewrong+1)
-                        
-                        
-                        
-                        currtopic=getUserInformation(recipient_id,"currenttopic")
-                        #currtotal=str(currtopic)+'total'
-                        updateUsersInformation(recipient_id,**{str(currtopic)+'total':int(getUserInformation(recipient_id,str(str(currtopic)+'total')))+1})
-                        
-                        
-                        reply=decisionRightWrong('wrong', noofconsecutivewrong)
-                        #send_message(recipient_id, "dummy","dummy",reply+ ' ,the right answer is: '+'\n'+rightAns)
-                        quickreply(recipient_id,['Try Another','Go Back','Results','I am Bored!'],reply+ ' ,the right answer is: '+'\n'+rightAns+'\n'+getUserInformation(recipient_id,'lastsolution'))
-                        
                         return "Message Processed"
                     
                     topic,mood,response = get_message(recipient_id,message['message'].get('text'))
-                    #checkPostback(output)
+                    
                     isQuickReply=checkQuickReply(message['message'].get('text'),recipient_id)
                     
-                    isQuickReplyHint=checkQuickReply(response,recipient_id)
-                    isCalculator=checkCalculator(recipient_id,message['message'].get('text'))
-                    if isQuickReply==False and isQuickReplyHint==False and isCalculator==False :
-                        quickreply(recipient_id,['Lets test', 'I am Bored!'],response)
-                        #sendLastOptionsQuickReply(recipient_id,'kya be')
+                    
+                    
+                    if isQuickReply==False  :
+                        quickreply(recipient_id,['Lets test', 'I am Bored!'],'I didnot get that')
+                        
                         return "Message Processed"
                 #if user sends us a GIF, photo,video, or any other non-text item
                 if message['message'].get('attachments'):
@@ -222,8 +184,8 @@ def checkCalculator(id,text):
     return False
     
 def checkQuickReply(text,id): 
-         try: 
-          msges,listofitems=decision(text)
+        
+          
           if text=='Good':
                 send_message(id,'a','a', 'I am glad.')
                 quickreply(id,['Yes','No'],'Do you feel healthy?') 
@@ -301,7 +263,7 @@ def checkQuickReply(text,id):
                 return True   
               
         
-         except:
+          else:
             return False    
 
         
