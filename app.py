@@ -108,10 +108,7 @@ def receive_message():
                     response = ['(y)',':)',":D"]
                     sendVideo(recipient_id,'http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4')
                     quickreply(recipient_id,['Lets test', 'I am Bored!'],random.choice(response))
-                try:
-                    dummy=getUserInformation(recipient_id,'name')
-                except:
-                    initializeUser(recipient_id)
+                
     return "Message Processed"
 
 
