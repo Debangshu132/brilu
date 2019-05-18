@@ -145,15 +145,50 @@ def pay(payload):
   result = response.json()
   return result
 def checkPostback(output):
-    if output['entry'][0]['messaging'][0].get('postback'):
+
+ if output['entry'][0]['messaging'][0].get('postback'):
+    global consumer_id     
+    id=  output['entry'][0]['messaging'][0]['sender']['id']  
+    consumer_id=id
+    a=requests.get("https://graph.facebook.com/"+id+"?fields=first_name,last_name,profile_pic&access_token="+ACCESS_TOKEN)
+    data=a.json()
+    name=data['first_name']
+    if output['entry'][0]['messaging'][0]['postback']['payload']=='Startyaar':
+       if output['entry'][0]['messaging'][0]['postback'].get('referral'):
+         fulladdress=str(output['entry'][0]['messaging'][0]['postback']['referral']['ref'])
+         if fulladdress=='clinic':   
+          welcome='Hey '+name+',how are you doing today?'
+          quickreply(id,['Good', 'Not Good','Bad','Very Good','Very Bad','Worse','Best','Amazing'],welcome)   
+          time.sleep(1)
+              
+        
+       else:
+          welcome='Hey '+name+',how are you doing today?'
+          quickreply(id,['Good', 'Not Good','Bad','Very Good','Very Bad','Worse','Best','Amazing'],welcome)   
+          time.sleep(1)
+            
+def checkReferral(output):
+    
+     if output['entry'][0]['messaging'][0].get('referral'):
       id=  output['entry'][0]['messaging'][0]['sender']['id']  
+      consumer_id=id
       a=requests.get("https://graph.facebook.com/"+id+"?fields=first_name,last_name,profile_pic&access_token="+ACCESS_TOKEN)
       data=a.json()
       name=data['first_name']
-      if output['entry'][0]['messaging'][0]['postback']['payload']=='Startyaar':
+      fulladdress=str(output['entry'][0]['messaging'][0]['referral']['ref'])
+      if fulladdress=='clinic':
          welcome='Hey '+name+',how are you doing today?'
          quickreply(id,['Good', 'Not Good','Bad','Very Good','Very Bad','Worse','Best','Amazing'],welcome)   
          time.sleep(1)
+      
+      return True                  
+            
+            
+            
+            
+            
+            
+     
          
       
 def checkCalculator(id,text):
