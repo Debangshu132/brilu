@@ -401,12 +401,6 @@ def sendSuperTopic(id):
                  
                  
                  
-                  {
-                 "title":"Internship interview",
-                   "image_url":"http://www.dvc.edu/enrollment/career-employment/images/Jobs.jpg",
-                      "subtitle":"solve questions and get interview with top companies!!",
-                       "buttons":[{"type":"postback","title":"Start now",
-                                   "payload":"InternPrep"},shareme('Let us practice interview questions!')] },
                  
                  
                  
