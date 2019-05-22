@@ -390,13 +390,24 @@ def sendSuperTopic(id):
                  
                  {
                  "title":"Job Preparation",
-                   "image_url":"http://www.dvc.edu/enrollment/career-employment/images/Jobs.jpg",
-                      "subtitle":"practice problems that makes you ready for interview I have aptitude,verbal ability and logical reasoning",
+                   "image_url":"https://storage.googleapis.com/brilupics/BRILU/jobs.png",
+                      "subtitle":"Practice problems that makes you ready for interview ",
                        
                            "buttons":[
                              {"type":"postback",
   "title":"Start now",
-  "payload":"jobPrep"},shareme('he helps practice interview questions,you should try it')] },
+  "payload":"jobPrep"},shareme('Hey I just found worlds first AI powered computer aadaptive testing!Give it a try!')] },
+                 
+                 
+                  {
+                 "title":"GMAT Adaptive Test",
+                   "image_url":"https://storage.googleapis.com/brilupics/BRILU/gmat.png",
+                      "subtitle":"Computer adaptive testing like GMAT",
+                       
+                           "buttons":[
+                             {"type":"postback",
+  "title":"Start now",
+  "payload":"jobPrep"},shareme('Hey I just found worlds first AI powered computer aadaptive testing!Give it a try!')] },
                  
                  
                  
@@ -406,13 +417,13 @@ def sendSuperTopic(id):
                  
                   {
                  "title":"Basic Science",
-                   "image_url":"http://2.bp.blogspot.com/_Q_ZJiaCqn38/TFIu3dkYfxI/AAAAAAAAACo/63Vuzi-IG4A/s1600/SCIENCE.png",
-                     "subtitle":"Practice basic science problems and improve your concepts",
+                   "image_url":"https://storage.googleapis.com/brilupics/BRILU/gmat.png",
+                     "subtitle":"Interesting science puzzles!",
                         
                            "buttons":[
                              {"type":"postback",
   "title":"Start now",
-  "payload":"Basic Science"},shareme('Lets practice basic science questions,you should try it')] }
+  "payload":"Basic Science"},shareme('Lets practice basic science questions,its fun')] }
              ]}}}}
     r=pay(response)
     return r
