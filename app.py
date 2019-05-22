@@ -417,7 +417,7 @@ def sendSuperTopic(id):
                  
                   {
                  "title":"Basic Science",
-                   "image_url":"https://storage.googleapis.com/brilupics/BRILU/gmat.png",
+                   "image_url":"https://storage.googleapis.com/brilupics/BRILU/science.png",
                      "subtitle":"Interesting science puzzles!",
                         
                            "buttons":[
