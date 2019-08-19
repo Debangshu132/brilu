@@ -1,3 +1,3 @@
 # brilu
 A conversational messenger chatbot
-Brilu is your personal friend and examiner.
+Answer question from the AI based chatbot and get detailed feedback on your learning abilities
